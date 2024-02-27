@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
-import 'package:mussefy_app/utilities/helpers/screen_size.dart';
+import 'package:mussefy_app/utilities/helpers/navigator.dart';
 import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/view_layout/sizebox.dart';
 import 'package:mussefy_app/views/onboarding_view/translations_icon_widget.dart';
+import 'package:mussefy_app/views/paramedic_view/paramedic_auth_view/paramedic_login_view.dart';
+import 'package:mussefy_app/views/patient_view/patient_auth_view/patient_login_view.dart';
 
 class SelectUserView extends StatelessWidget {
   const SelectUserView({super.key});
@@ -27,22 +29,30 @@ class SelectUserView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    context.pushView(view:  ParamedicLoginView());
+                  },
                   child: Column(
                     children: [
                       Image.asset('assets/images/logo_red.png'),
                       height10,
-                      TextWidget(text: 'Paramedic')
+                      const TextWidget(
+                        text: 'Paramedic',
+                        textColor: red,
+                        fontSize: 20,
+                      )
                     ],
                   ),
                 ),
                 InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.pushView(view:  PatientLoginView());
+                    },
                     child: Column(
                       children: [
                         Image.asset('assets/images/logo_blue.png'),
                         height10,
-                        TextWidget(
+                        const TextWidget(
                           text: 'User',
                           textColor: blue,
                           fontSize: 20,
