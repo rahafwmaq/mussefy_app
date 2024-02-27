@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/screen_size.dart';
+import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/view_layout/sizebox.dart';
 import 'package:mussefy_app/views/onboarding_view/translations_icon_widget.dart';
 
@@ -17,7 +18,7 @@ class SelectUserView extends StatelessWidget {
           children: [
             const TranslationIconWidget(),
             height30,
-            const TextWidget(text: 'Kindly Choose your '),
+            const TextWidget(text: 'Are you  '),
             height50,
             height50,
             height16,
@@ -27,19 +28,27 @@ class SelectUserView extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {},
-                  child: Stack(
+                  child: Column(
                     children: [
                       Image.asset('assets/images/logo_red.png'),
-                      Positioned(
-                          bottom: context.getWidth(divide: 5.5),
-                          left: context.getWidth(divide: 7.5),
-                          child: TextWidget(text: 'Paramedic'))
-                    ],   
+                      height10,
+                      TextWidget(text: 'Paramedic')
+                    ],
                   ),
                 ),
                 InkWell(
                     onTap: () {},
-                    child: Image.asset('assets/images/logo_blue.png'))
+                    child: Column(
+                      children: [
+                        Image.asset('assets/images/logo_blue.png'),
+                        height10,
+                        TextWidget(
+                          text: 'User',
+                          textColor: blue,
+                          fontSize: 20,
+                        )
+                      ],
+                    ))
               ],
             )
           ],
