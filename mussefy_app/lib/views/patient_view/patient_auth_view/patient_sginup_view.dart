@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
+import 'package:mussefy_app/utilities/gloable_widgets/logo_image.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/navigator.dart';
@@ -33,20 +34,7 @@ class PatientSginupView extends StatelessWidget {
                 height: context.getHeight(),
                 child: Column(
                   children: [
-                    Image.asset(
-                      'assets/images/mussefy_logo.png',
-                      width: 250,
-                    ),
-                    const TextWidget(
-                      text: 'مسعفي',
-                      textColor: red,
-                      fontSize: 40,
-                    ),
-                    const TextWidget(
-                      text: 'الثواني الأولى تشكل الفرق',
-                      textColor: blue,
-                      fontSize: 25,
-                    ),
+                    const LogoImage(),
                     height10,
                     const Row(
                       children: [
