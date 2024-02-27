@@ -46,3 +46,4 @@ const SizedBox height44 = SizedBox(height: 44);
 const SizedBox height46 = SizedBox(height: 46);
 const SizedBox height48 = SizedBox(height: 48);
 const SizedBox height50 = SizedBox(height: 50);
+const SizedBox height70 = SizedBox(height: 70);

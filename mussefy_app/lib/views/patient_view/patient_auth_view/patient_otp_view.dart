@@ -16,45 +16,51 @@ class PatientOTPView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String otp = "";
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
-            child: SizedBox(
-              height: context.getHeight(),
-              child: Column(
-                children: [
-                  Image.asset('assets/images/mussefy_logo.png'),
-                  height20,
-                  const TextWidget(
-                    text: 'OTP',
-                    textColor: red,
-                    fontSize: 40,
-                  ),
-                  TextWidget(
-                    text: 'enter the otp code $email',
-                    textColor: blue,
-                    fontSize: 20,
-                  ),
-                  height20,
-                  Pinput(
-                    length: 6,
-                    showCursor: true,
-                    onCompleted: (pin) => otp = pin,
-                  ),
-                  height40,
-                  ClickContainerWidget(
-                    onTap: () {
-                      context.removeUntil(view: const PatientHomeView());
-                    },
-                    color: blueTransit,
-                    text: 'Sgin Up',
-                    textColor: white,
-                    fontSize: 22,
-                  ),
-                ],
+
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
+              child: SizedBox(
+                height: context.getHeight(),
+                child: Column(
+                  children: [
+                    Image.asset('assets/images/mussefy_logo.png'),
+                    height20,
+                    const TextWidget(
+                      text: 'OTP',
+                      textColor: red,
+                      fontSize: 40,
+                    ),
+                    TextWidget(
+                      text: 'enter the otp code $email',
+                      textColor: blue,
+                      fontSize: 20,
+                    ),
+                    height20,
+                    Pinput(
+                      length: 6,
+                      showCursor: true,
+                      onCompleted: (pin) => otp = pin,
+                    ),
+                    height40,
+                    ClickContainerWidget(
+                      onTap: () {
+                        context.removeUntil(view: const PatientHomeView());
+                      },
+                      color: blueTransit,
+                      text: 'Sgin Up',
+                      textColor: white,
+                      fontSize: 22,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
