@@ -51,8 +51,7 @@ class ParamedicLoginView extends StatelessWidget {
                         height40,
                         ClickContainerWidget(
                           onTap: () {
-                            context.removeUntil(
-                                view: const ParamedicHomeView());
+                            context.removeUntil(view: ParamedicHomeView());
                           },
                           color: blueTransit,
                           text: 'Login',
@@ -62,9 +61,9 @@ class ParamedicLoginView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Column(
+                  const Column(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: [const NoteParamedic()],
+                    children: [NoteParamedic()],
                   )
                 ],
               ),

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 const Color white = Color.fromARGB(255, 255, 255, 255);
+const Color darkWhite = Color.fromARGB(255, 224, 224, 224);
 const Color black = Color.fromARGB(255, 0, 0, 0);
 const Color noColor = Color.fromARGB(0, 0, 0, 0);
 const Color gray = Color.fromARGB(255, 129, 129, 129);
