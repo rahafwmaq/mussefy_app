@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
@@ -14,50 +15,52 @@ class ParamedicHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-      child: SizedBox(
-        width: context.getWidth(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const ParamedicProfilePic(),
-              height10,
-              const TextWidget(
-                text: 'ID : 103',
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-              const TextWidget(
-                text: 'Faisal Alshamary',
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-              ),
-              const TextWidget(
-                text: 'Dr.fisal99@gmail.com',
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-              ),
-              const TextWidget(
-                text: 'King Abdulaziz Hosital',
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-              ),
-              height70,
-              Column(
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+          body: SafeArea(
+        child: SizedBox(
+          width: context.getWidth(),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SearchPatientOptions(
-                    onTap: () {},
-                    textOption: 'Scan QR',
-                    iconPathImage: 'assets/images/scan_qr.png',
-                  ),
-                  height20,
-                  TextWidget(
-                    text: 'OR',
+                  const ParamedicProfilePic(),
+                  height10,
+                  const TextWidget(
+                    text: 'ID : 103',
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
+                  ),
+                  const TextWidget(
+                    text: 'Faisal Alshamary',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  const TextWidget(
+                    text: 'Dr.fisal99@gmail.com',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  const TextWidget(
+                    text: 'King Abdulaziz Hosital',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  height70,
+                  const Row(
+                    children: [
+                      TextWidget(
+                        text: 'Search by Patient ID :',
+                        fontSize: 18,
+                        textColor: red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ],
                   ),
                   height20,
                   TextFormFieldWidget(
@@ -73,17 +76,30 @@ class ParamedicHomeView extends StatelessWidget {
                       color: red,
                     ),
                   ),
-                  // SearchPatientOptions(
-                  //   onTap: () {},
-                  //   textOption: 'Search by ID',
-                  //   iconPathImage: 'assets/images/search_id.png',
-                  // )
+                  height20,
+                  const TextWidget(text: 'OR'),
+                  height20,
+                  Row(
+                    children: [
+                      const TextWidget(
+                        text: 'Scan QR Code :',
+                        fontSize: 18,
+                        textColor: red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      width80,
+                      SearchPatientOptions(
+                        onTap: () {},
+                        iconPathImage: 'assets/images/scan_qr.png',
+                      ),
+                    ],
+                  ),
                 ],
-              )
-            ],
+              ),
+            ),
           ),
         ),
-      ),
-    ));
+      )),
+    );
   }
 }
