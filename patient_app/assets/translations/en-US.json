@@ -1,0 +1,37 @@
+{
+    "Patient_regestraion_screen": {
+        "title": "Registration",
+        "name": "Full Name",
+        "nameHint": "Enter your full name",
+        "email": "Email",
+        "emailHint": "Enter your email",
+        "password": "Password",
+        "passwordHint": "Enter Password",
+        "phone": "Phone",
+        "phoneHint": "Enter phone number",
+        "text1": "Already a Moseefy client? ",
+        "text2": "Login",
+        "phoneFormatError": "Please enter a valid phone to register",
+        "passwordFormatError": "Password length should be at least 6 digits",
+        "emailFormatError": "Please enter a valid email to register",
+        "validatorMessage": "Please fill all required fields to register",
+        "validatorMessage2": "Please fill all required fields to uploud",
+        "buttonText": "Register",
+        "errorMessage": "Error was found"
+    },
+    "Patient_login_screen": {
+        "title": "Login",
+        "email": "Email",
+        "emailHint": "Enter your email",
+        "password": "Password",
+        "passwordHint": "Enter Password",
+        "text1": "You don't have an account? ",
+        "text2": "Create account",
+        "buttonText": "login",
+        "errorMessage": "invalid credintals"
+    },
+    "otpscreen": {
+        "message": "Please enter OTP sent to email ",
+        "buttonText": "Enter"
+    }
+}

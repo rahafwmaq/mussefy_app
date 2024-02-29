@@ -6,7 +6,7 @@ class PatientHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('home pagae'),
+      body: Text('home page'),
     );
   }
 }

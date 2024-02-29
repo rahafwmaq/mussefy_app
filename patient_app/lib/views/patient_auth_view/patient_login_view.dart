@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/logo_image.dart';
@@ -30,7 +31,8 @@ class PatientLoginView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const PreviousPageIconWidget(),
+                // const PreviousPageIconWidget(),
+                height50,
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
@@ -40,10 +42,10 @@ class PatientLoginView extends StatelessWidget {
                       children: [
                         const LogoImage(),
                         height10,
-                        const Row(
+                        Row(
                           children: [
                             TextWidget(
-                              text: 'Login',
+                              text: 'Patient_login_screen.title'.tr(),
                               textColor: red,
                               fontSize: 30,
                             ),
@@ -53,7 +55,7 @@ class PatientLoginView extends StatelessWidget {
                         TextFormFieldWidget(
                           keyboardType: TextInputType.text,
                           controller: emailController,
-                          labelText: 'Email',
+                          labelText: 'Patient_login_screen.email'.tr(),
                           labelTextColor: red,
                           controllerTextColor: black,
                           cursorColor: red,
@@ -67,28 +69,27 @@ class PatientLoginView extends StatelessWidget {
                         TextFormFieldWidget(
                           keyboardType: TextInputType.visiblePassword,
                           controller: passwordController,
-                          labelText: 'Password',
+                          labelText: 'Patient_login_screen.password'.tr(),
                           labelTextColor: red,
                           controllerTextColor: black,
                           cursorColor: red,
                           obscureText: true,
                           suffixIcon: const Icon(
-                            Icons.person,
+                            Icons.remove_red_eye,
                             color: red,
                           ),
                         ),
                         height8,
                         Row(
                           children: [
-                            const TextWidget(
-                                text: 'You don\'t have an account ?'),
+                            TextWidget(text: 'Patient_login_screen.text1'.tr()),
                             width10,
                             InkWell(
                                 onTap: () {
                                   context.pushView(view: PatientSginupView());
                                 },
-                                child: const TextWidget(
-                                    text: 'Create account',
+                                child: TextWidget(
+                                    text: 'Patient_login_screen.text2'.tr(),
                                     textColor: red,
                                     fontWeight: FontWeight.bold)),
                           ],
@@ -96,11 +97,10 @@ class PatientLoginView extends StatelessWidget {
                         height40,
                         ClickContainerWidget(
                           onTap: () {
-                            context.removeUntil(
-                                view: const PatientHomeView());
+                            context.removeUntil(view: const PatientHomeView());
                           },
                           color: blueTransit,
-                          text: 'Login',
+                          text: 'Patient_login_screen.buttonText'.tr(),
                           textColor: white,
                           fontSize: 22,
                         ),
