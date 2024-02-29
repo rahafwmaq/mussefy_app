@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
-import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/view_layout/sizebox.dart';
 
 class KeyBodyDigram extends StatelessWidget {
