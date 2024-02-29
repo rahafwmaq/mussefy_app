@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
@@ -39,7 +40,7 @@ class PatientOTPView extends StatelessWidget {
                       fontSize: 40,
                     ),
                     TextWidget(
-                      text: 'enter the otp code $email',
+                      text: "${'otpscreen.message'.tr()}  $email",
                       textColor: blue,
                       fontSize: 20,
                     ),
@@ -55,7 +56,7 @@ class PatientOTPView extends StatelessWidget {
                         context.removeUntil(view: const PatientHomeView());
                       },
                       color: blueTransit,
-                      text: 'Sgin Up',
+                      text: 'otpscreen.buttonText'.tr(),
                       textColor: white,
                       fontSize: 22,
                     ),
