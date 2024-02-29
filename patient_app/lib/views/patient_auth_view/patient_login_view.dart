@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:mussefy_app/services/auth_services.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/logo_image.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/previous_icon_widget.dart';
@@ -96,8 +97,13 @@ class PatientLoginView extends StatelessWidget {
                         ),
                         height40,
                         ClickContainerWidget(
-                          onTap: () {
-                            context.removeUntil(view: const PatientHomeView());
+                          onTap: () async {
+                            print(emailController.text.trim());
+                            await AuthService().loginPatient({
+                              "email": "wegyse@tutuapp.bid",
+                              "password": "123456"
+                            });
+                            //context.removeUntil(view: const PatientHomeView());
                           },
                           color: blueTransit,
                           text: 'Patient_login_screen.buttonText'.tr(),
