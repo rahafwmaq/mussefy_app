@@ -1,16 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:paramedic_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
+import 'package:paramedic_app/utilities/helpers/navigator.dart';
+import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 
 class PatientBodyStructureView extends StatelessWidget {
   const PatientBodyStructureView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(context: context, title: 'Body Structure'),
-      body: Center(
-        child: TextWidget(text: 'text'),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const TextWidget(text: 'Body Structure'),
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: () {
+              context.popView();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 35,
+            ),
+          ),
+          bottom: const TabBar(tabs: [
+            TextWidget(text: 'Front Body'),
+            TextWidget(text: 'Back Body')
+          ]),
+        ),
+        body: TabBarView(
+          children: [
+            SizedBox(
+              height: context.getHeight(),
+              width: context.getWidth(),
+              child: Image.asset(
+                'assets/images/frontbody.png',
+                scale: 1.35,
+              ),
+            ),
+            SizedBox(
+              height: context.getHeight(),
+              width: context.getWidth(),
+              child: Image.asset('assets/images/backbody.png'),
+            )
+          ],
+        ),
       ),
     );
   }

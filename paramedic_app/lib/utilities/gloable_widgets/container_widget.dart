@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
@@ -13,6 +14,8 @@ class ContainerWidget extends StatelessWidget {
     this.containerTitle,
     this.heightImage,
     this.widthImage,
+    this.titleSize,
+    this.titleSizeBox,
   });
 
   final Function()? onTap;
@@ -22,6 +25,8 @@ class ContainerWidget extends StatelessWidget {
   final String? containerTitle;
   final double? heightImage;
   final double? widthImage;
+  final double? titleSize;
+  final double? titleSizeBox;
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +49,10 @@ class ContainerWidget extends StatelessWidget {
               color: blueTransit,
             ),
             SizedBox(
-              width: context.getWidth(divide: 1.75),
+              width: context.getWidth(divide: titleSizeBox ?? 1.75),
               child: TextWidget(
-                text: containerTitle!,
-                fontSize: 20,
+                text: containerTitle ?? '',
+                fontSize: titleSize ?? 20,
                 fontWeight: FontWeight.w400,
               ),
             )
