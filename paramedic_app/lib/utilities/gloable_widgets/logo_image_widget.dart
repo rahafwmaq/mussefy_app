@@ -3,8 +3,8 @@ import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 
 import '../../view_layout/color.dart';
 
-class LogoImage extends StatelessWidget {
-  const LogoImage({super.key});
+class LogoImageWidget extends StatelessWidget {
+  const LogoImageWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

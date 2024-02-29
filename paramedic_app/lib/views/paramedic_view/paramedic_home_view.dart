@@ -6,7 +6,7 @@ import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/view_layout/sizebox.dart';
 import 'package:paramedic_app/views/paramedic_view/paramedic_profile_pic.dart';
-import 'package:paramedic_app/views/paramedic_view/search_patient_options.dart';
+import 'package:paramedic_app/utilities/gloable_widgets/container_widget.dart';
 
 class ParamedicHomeView extends StatelessWidget {
   ParamedicHomeView({super.key});
@@ -88,8 +88,10 @@ class ParamedicHomeView extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                       width80,
-                      SearchPatientOptions(
+                      ContainerWidget(
                         onTap: () {},
+                        heightContainer: 8,
+                        widthContainer: 4,
                         iconPathImage: 'assets/images/scan_qr.png',
                       ),
                     ],

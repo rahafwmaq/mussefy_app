@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/utilities/helpers/navigator.dart';
 import 'package:paramedic_app/view_layout/color.dart';
 
 class PreviousPageIconWidget extends StatelessWidget {
-  const PreviousPageIconWidget({super.key});
+  const PreviousPageIconWidget({super.key, this.appBarTitle});
+  final String? appBarTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class PreviousPageIconWidget extends StatelessWidget {
             color: red,
           ),
         ),
+        TextWidget(text: appBarTitle!)
       ],
     );
   }

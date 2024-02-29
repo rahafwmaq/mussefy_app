@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/click_container_widget.dart';
-import 'package:paramedic_app/utilities/gloable_widgets/logo_image.dart';
+import 'package:paramedic_app/utilities/gloable_widgets/logo_image_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:paramedic_app/utilities/helpers/navigator.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
@@ -33,7 +33,7 @@ class ParamedicLoginView extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                     child: Column(
                       children: [
-                        const LogoImage(),
+                        const LogoImageWidget(),
                         height20,
                         TextFormFieldWidget(
                           keyboardType: TextInputType.text,
