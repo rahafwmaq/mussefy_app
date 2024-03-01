@@ -87,6 +87,7 @@ class AuthService {
     } on AuthException catch (e) {
       throw AuthException(e.message);
     } catch (e) {
+      print(e);
       throw Error();
     }
   }

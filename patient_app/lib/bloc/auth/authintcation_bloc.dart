@@ -72,6 +72,7 @@ class AuthintcationBloc extends Bloc<AuthintcationEvent, AuthintcationState> {
               message: 'Patient_regestraion_screen.authException'.tr(),
               stopLoading: true));
         } catch (error) {
+          print(error);
           emit(ErrorState(
               message: 'Patient_regestraion_screen.errorMessage'.tr(),
               stopLoading: true));
