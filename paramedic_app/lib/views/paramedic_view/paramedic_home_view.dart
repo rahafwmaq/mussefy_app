@@ -14,7 +14,7 @@ import 'package:paramedic_app/views/paramedic_view/patient_view_for_paramedic.da
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class ParamedicHomeView extends StatefulWidget {
-  ParamedicHomeView({super.key});
+  const ParamedicHomeView({super.key});
 
   @override
   State<ParamedicHomeView> createState() => _ParamedicHomeViewState();

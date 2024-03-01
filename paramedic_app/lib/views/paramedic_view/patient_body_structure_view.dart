@@ -39,7 +39,7 @@ class _PatientBodyStructureViewState extends State<PatientBodyStructureView> {
       var patient = await SupaGetAndDelete()
           .getPatientById(widget.patientId); // Replace with actual patient ID
       MobilityProblem? mobilty;
-      MedicalInformation? medcation;
+      MedicalInformation? medication;
       if (patient != null) {
         // Load doctor data
         currentMobilityProblem =
@@ -50,7 +50,7 @@ class _PatientBodyStructureViewState extends State<PatientBodyStructureView> {
       setState(() {
         currentPatient = patient;
 
-        currentMedications = medcation;
+        currentMedications = medication;
         if (currentMobilityProblem.isNotEmpty) {
           mobilty = currentMobilityProblem[0];
           isLoading = false;
@@ -108,19 +108,19 @@ class _PatientBodyStructureViewState extends State<PatientBodyStructureView> {
             SizedBox(
               height: context.getHeight(),
               width: context.getWidth(),
-              child: Stack(
+              child: const Stack(
                 alignment: Alignment.center,
                 children: [
                   FrontBodyDiagram(
                     patientId: "1abe2dce-529f-49dd-8b1d-c3f7af31233d",
                   ),
-                  const KeyBodyDigram(
+                  KeyBodyDigram(
                     positionTop: 12,
                     positionLeft: 20,
                     keyName: 'Ingury',
                     color: redTransit,
                   ),
-                  const KeyBodyDigram(
+                  KeyBodyDigram(
                     positionTop: 50,
                     positionLeft: 20,
                     keyName: 'Disability',
