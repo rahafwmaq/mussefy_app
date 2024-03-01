@@ -16,7 +16,7 @@ void main() async {
         supportedLocales: const [Locale('en', 'US'), Locale('ar', 'SA')],
         path:
             'assets/translations', // <-- change the path of the translation files
-        fallbackLocale: const Locale('ar', 'SA'),
+        fallbackLocale: const Locale('en', 'US'),
         child: const MainApp()),
   );
 }
@@ -32,8 +32,12 @@ class MainApp extends StatelessWidget {
           create: (context) => ParamedicBloc(),
         )
       ],
-      child: const MaterialApp(
-          debugShowCheckedModeBanner: false, home: LogoView()),
+      child: MaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          debugShowCheckedModeBanner: false,
+          home: const LogoView()),
     );
   }
 }

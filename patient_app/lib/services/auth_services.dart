@@ -62,9 +62,12 @@ class AuthService {
     String password,
   ) async {
     try {
+      await supabase.auth.signInWithPassword(
+        email: email,
+        password: password,
+      );
       final response =
           await supabase.from('patients').select().eq('email', email);
-
       return Patient.fromJson(response[0]);
     } on AuthException catch (e) {
       throw AuthException(e.message);
