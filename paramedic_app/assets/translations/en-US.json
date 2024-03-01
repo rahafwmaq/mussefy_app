@@ -1,0 +1,11 @@
+{
+    "ParamedicRegistrationScreen": {
+        "title": "Enter your Moseefy ID",
+        "buttonText": "Submit",
+        "pre": "Note: ",
+        "note": "Note: this id is given to paramedics whom information was submitted to Moseefy database through an employer",
+        "notfoundmessage": "No Paramedic with this id was found",
+        "errorMessage": "error was found in system",
+        "validatorMessage": "Please enter the id to continue"
+    }
+}

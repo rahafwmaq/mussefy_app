@@ -1,4 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:paramedic_app/bloc/paramedic_bloc/bloc/paramedic_bloc.dart';
+import 'package:paramedic_app/utilities/functions/loading_screen.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/logo_image_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_form_field_widget.dart';
@@ -38,7 +42,7 @@ class ParamedicLoginView extends StatelessWidget {
                         TextFormFieldWidget(
                           keyboardType: TextInputType.text,
                           controller: paramedicIDController,
-                          labelText: 'Mussefy ID',
+                          labelText: 'ParamedicRegistrationScreen.title'.tr(),
                           labelTextColor: red,
                           controllerTextColor: black,
                           cursorColor: red,
@@ -49,14 +53,31 @@ class ParamedicLoginView extends StatelessWidget {
                           ),
                         ),
                         height40,
-                        ClickContainerWidget(
-                          onTap: () {
-                            context.removeUntil(view: ParamedicHomeView());
+                        BlocListener<ParamedicBloc, ParamedicState>(
+                          listener: (context, state) {
+                            if (state is ParamedicLoginSuccessState) {
+                              context.removeUntil(
+                                  view: const ParamedicHomeView());
+                            } else if (state is ParamedicErrorState) {
+                              context.popView();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(state.message)));
+                            } else if (state is ParamedicLoadingState) {
+                              showLoadingDialog(context);
+                            }
                           },
-                          color: blueTransit,
-                          text: 'Login',
-                          textColor: white,
-                          fontSize: 22,
+                          child: ClickContainerWidget(
+                            onTap: () {
+                              context.read<ParamedicBloc>().add(
+                                  ParamedicLoginEvent(
+                                      moseefyID:
+                                          paramedicIDController.text.trim()));
+                            },
+                            color: blueTransit,
+                            text: 'ParamedicRegistrationScreen.buttonText'.tr(),
+                            textColor: white,
+                            fontSize: 22,
+                          ),
                         ),
                       ],
                     ),
