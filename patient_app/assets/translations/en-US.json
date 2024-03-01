@@ -17,7 +17,8 @@
         "validatorMessage": "Please fill all required fields to register",
         "validatorMessage2": "Please fill all required fields to uploud",
         "buttonText": "Register",
-        "errorMessage": "Error was found"
+        "errorMessage": "Error was found",
+        "authException": "Invalid authrization"
     },
     "Patient_login_screen": {
         "title": "Login",
@@ -28,10 +29,12 @@
         "text1": "You don't have an account? ",
         "text2": "Create account",
         "buttonText": "login",
-        "errorMessage": "invalid credintals"
+        "errorMessage": "invalid credintals",
+        "authException": "Invalid authrization"
     },
     "otpscreen": {
         "message": "Please enter OTP sent to email ",
-        "buttonText": "Enter"
+        "buttonText": "Enter",
+        "authException": "Invalid authrization"
     }
 }

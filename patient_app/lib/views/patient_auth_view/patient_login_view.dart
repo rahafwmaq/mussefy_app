@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:mussefy_app/services/auth_services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mussefy_app/bloc/auth/authintcation_bloc.dart';
+import 'package:mussefy_app/utilities/functions/loading_screen.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/logo_image.dart';
-import 'package:mussefy_app/utilities/gloable_widgets/previous_icon_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/navigator.dart';
@@ -96,19 +97,34 @@ class PatientLoginView extends StatelessWidget {
                           ],
                         ),
                         height40,
-                        ClickContainerWidget(
-                          onTap: () async {
-                            print(emailController.text.trim());
-                            await AuthService().loginPatient({
-                              "email": "wegyse@tutuapp.bid",
-                              "password": "123456"
-                            });
-                            //context.removeUntil(view: const PatientHomeView());
+                        BlocListener<AuthintcationBloc, AuthintcationState>(
+                          listener: (context, state) {
+                            if (state is PatientLoginSuccessState) {
+                              context.removeUntil(
+                                  view: const PatientHomeView());
+                            } else if (state is ErrorState) {
+                              if (state.stopLoading) {
+                                context.popView();
+                              }
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(state.message)));
+                            } else if (state is LoadingState) {
+                              showLoadingDialog(context);
+                            }
                           },
-                          color: blueTransit,
-                          text: 'Patient_login_screen.buttonText'.tr(),
-                          textColor: white,
-                          fontSize: 22,
+                          child: ClickContainerWidget(
+                            onTap: () {
+                              context.read<AuthintcationBloc>().add(
+                                  PatientLoginEvent(
+                                      email: emailController.text.trim(),
+                                      password:
+                                          passwordController.text.trim()));
+                            },
+                            color: blueTransit,
+                            text: 'Patient_login_screen.buttonText'.tr(),
+                            textColor: white,
+                            fontSize: 22,
+                          ),
                         ),
                       ],
                     ),

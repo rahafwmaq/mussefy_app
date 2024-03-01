@@ -1,5 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mussefy_app/bloc/auth/authintcation_bloc.dart';
+import 'package:mussefy_app/utilities/functions/loading_screen.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/logo_image.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/previous_icon_widget.dart';
@@ -126,17 +129,38 @@ class PatientSginupView extends StatelessWidget {
                           ],
                         ),
                         height40,
-                        ClickContainerWidget(
-                          onTap: () {
-                            context.removeUntil(
-                                view: PatientOTPView(
-                              email: emailController.text,
-                            ));
+                        BlocListener<AuthintcationBloc, AuthintcationState>(
+                          listener: (context, state) {
+                            if (state is PatientRegisterationSuccessState) {
+                              context.removeUntil(
+                                  view: PatientOTPView(
+                                email: emailController.text,
+                              ));
+                            } else if (state is ErrorState) {
+                              if (state.stopLoading) {
+                                context.popView();
+                              }
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(state.message)));
+                            } else if (state is LoadingState) {
+                              showLoadingDialog(context);
+                            }
                           },
-                          color: blueTransit,
-                          text: 'Patient_regestraion_screen.buttonText'.tr(),
-                          textColor: white,
-                          fontSize: 22,
+                          child: ClickContainerWidget(
+                            onTap: () {
+                              context.read<AuthintcationBloc>().add(
+                                  PatientRegisterationEvent(
+                                      name: fullNameController.text.trim(),
+                                      email: emailController.text.trim(),
+                                      password: passwordController.text.trim(),
+                                      phone:
+                                          phoneNumberController.text.trim()));
+                            },
+                            color: blueTransit,
+                            text: 'Patient_regestraion_screen.buttonText'.tr(),
+                            textColor: white,
+                            fontSize: 22,
+                          ),
                         ),
                       ],
                     ),
