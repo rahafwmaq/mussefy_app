@@ -61,9 +61,12 @@ class AuthintcationBloc extends Bloc<AuthintcationEvent, AuthintcationState> {
       emit(LoadingState());
       if (newPatient != null) {
         try {
-          await AuthService().verfiyOTP(event.email, event.pin, newPatient!);
-          emit(
-              VerficationSuccessState(patient: newPatient!, stopLoading: true));
+          final response = await AuthService()
+              .verfiyOTP(event.email, event.pin, newPatient!);
+          if (response.isNotEmpty) {
+            emit(VerficationSuccessState(
+                patient: newPatient!, stopLoading: true));
+          }
         } on AuthException {
           emit(ErrorState(
               message: 'Patient_regestraion_screen.authException'.tr(),
@@ -76,6 +79,7 @@ class AuthintcationBloc extends Bloc<AuthintcationEvent, AuthintcationState> {
       }
     });
     on<PatientLoginEvent>((event, emit) async {
+      print("in PatientLoginEvent ");
       emit(LoadingState());
       if (event.email.isEmpty || event.password.isEmpty) {
         emit(ErrorState(
@@ -84,7 +88,7 @@ class AuthintcationBloc extends Bloc<AuthintcationEvent, AuthintcationState> {
       } else {
         try {
           final Patient curr =
-              AuthService().loginPatient(event.email, event.password);
+              await AuthService().loginPatient(event.email, event.password);
           emit(PatientLoginSuccessState(stopLoading: true, patient: curr));
         } on AuthException {
           emit(ErrorState(

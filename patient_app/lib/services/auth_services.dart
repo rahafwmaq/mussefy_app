@@ -50,6 +50,7 @@ class AuthService {
       );
       return response;
     } on AuthException catch (e) {
+      print(e.message);
       throw AuthException(e.message);
     } catch (e) {
       throw Error();
@@ -61,12 +62,13 @@ class AuthService {
     String password,
   ) async {
     try {
-      await supabase.auth.signInWithPassword(
+      final x = await supabase.auth.signInWithPassword(
         email: email,
         password: password,
       );
       final response =
           await supabase.from('patients').select().eq('email', email);
+
       return Patient.fromJson(response[0]);
     } on AuthException catch (e) {
       throw AuthException(e.message);
@@ -77,8 +79,9 @@ class AuthService {
 
   verfiyOTP(String email, String token, Patient patient) async {
     try {
-      await supabase.auth
+      final temp = await supabase.auth
           .verifyOTP(email: email, token: token, type: OtpType.signup);
+      print(temp);
       final response =
           await supabase.from('patients').insert(patient.toJson()).select();
       return response;

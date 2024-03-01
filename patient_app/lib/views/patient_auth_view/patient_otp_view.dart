@@ -70,7 +70,9 @@ class PatientOTPView extends StatelessWidget {
                       },
                       child: ClickContainerWidget(
                         onTap: () {
-                          context.removeUntil(view: const PatientHomeView());
+                          context
+                              .read<AuthintcationBloc>()
+                              .add(VerficationEvent(pin: otp, email: email));
                         },
                         color: blueTransit,
                         text: 'otpscreen.buttonText'.tr(),
