@@ -4,6 +4,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 supaInitializer() async {
   await Supabase.initialize(
     url: dotenv.env['URL']!,
-    anonKey: dotenv.env['KEY']!,
+    anonKey: dotenv.env['ANONKEY']!,
   );
 }

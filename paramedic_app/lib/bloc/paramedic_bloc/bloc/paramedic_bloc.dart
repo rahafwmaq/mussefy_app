@@ -13,14 +13,14 @@ part 'paramedic_state.dart';
 class ParamedicBloc extends Bloc<ParamedicEvent, ParamedicState> {
   ParamedicBloc() : super(ParamedicInitial()) {
     on<ParamedicLoginEvent>((event, emit) async {
+      emit(ParamedicLoadingState());
       if (event.moseefyID.isEmpty) {
         emit(ParamedicErrorState(
           message: 'ParamedicRegistrationScreen.validatorMessage'.tr(),
         ));
       } else {
-        emit(ParamedicLoadingState());
         try {
-          final Paramedic? paramedic =
+          final paramedic =
               await SupaGetAndDelete().getParamedic(event.moseefyID);
           if (paramedic == null) {
             emit(ParamedicErrorState(
@@ -32,6 +32,7 @@ class ParamedicBloc extends Bloc<ParamedicEvent, ParamedicState> {
             emit(ParamedicLoginSuccessState(paramedic: paramedic));
           }
         } catch (error) {
+          print(error);
           emit(ParamedicErrorState(
             message: 'ParamedicRegistrationScreen.errorMessage'.tr(),
           ));

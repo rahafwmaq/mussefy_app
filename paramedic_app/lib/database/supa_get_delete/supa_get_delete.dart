@@ -19,6 +19,7 @@ class SupaGetAndDelete {
   final supabase = Supabase.instance.client;
 
   getParamedic(String id) async {
+    print("object");
     try {
       final response =
           await supabase.from('paramedic').select().eq('moseefy_id', id);
