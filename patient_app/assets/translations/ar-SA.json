@@ -61,7 +61,9 @@
     },
     "patient_home_screen": {
         "welcoming_word": "مرحبا",
+
         "patient_card_title": "البطاقة الطبية : ",
+        "medical_services": "الخدمات الطبية : ",
         "patient_history_title": "السجل الطبي :",
         "first_container": "طبيبي",
         "second_container": "المعلومات الطبية",

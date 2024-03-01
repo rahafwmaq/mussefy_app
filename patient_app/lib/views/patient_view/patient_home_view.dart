@@ -1,8 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
+import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
 import 'package:mussefy_app/models/patient.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/container_text_and_image.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
+import 'package:mussefy_app/utilities/helpers/get_first_word.dart';
 import 'package:mussefy_app/utilities/helpers/navigator.dart';
 import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/view_layout/sizebox.dart';
@@ -20,6 +24,8 @@ class PatientHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<PatientBloc>().add(GetPatientInfoCardEvent(patient));
+    final firstName = getFirstWords(patient.fullName!);
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(size: 35, color: red),
@@ -34,11 +40,28 @@ class PatientHomeView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextWidget(text: 'text'),
-                  const TextWidget(text: 'text'),
-                  const Center(child: PatientCard()),
+                  TextWidget(
+                    text:
+                        '${'patient_home_screen.welcoming_word'.tr()}, $firstName',
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  height10,
+                  TextWidget(
+                    text: 'patient_home_screen.patient_card_title'.tr(),
+                    fontSize: 20,
+                  ),
                   height20,
-                  const TextWidget(text: 'text'),
+                  Center(
+                    child: PatientCard(
+                      patient: patient,
+                    ),
+                  ),
+                  height20,
+                  TextWidget(
+                    text: 'patient_home_screen.medical_services'.tr(),
+                    fontSize: 20,
+                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -68,7 +91,11 @@ class PatientHomeView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const TextWidget(text: 'text'),
+                  TextWidget(
+                    text: 'patient_home_screen.patient_history_title'.tr(),
+                    fontSize: 20,
+                  ),
+                  height20,
                   const MedicalHistoryCard()
                 ],
               ),

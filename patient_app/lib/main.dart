@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mussefy_app/bloc/auth/authintcation_bloc.dart';
+import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/utilities/functions/supa_initilizer.dart';
 import 'package:mussefy_app/views/onboarding_view/logo_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +32,10 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider<AuthintcationBloc>(
           create: (context) => AuthintcationBloc(),
-        )
+        ),
+        BlocProvider<PatientBloc>(
+          create: (context) => PatientBloc(),
+        ),
       ],
       child: MaterialApp(
           localizationsDelegates: context.localizationDelegates,

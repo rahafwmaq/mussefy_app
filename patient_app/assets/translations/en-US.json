@@ -62,6 +62,7 @@
     "patient_home_screen": {
         "welcoming_word": "Hello",
         "patient_card_title": "Medical Card : ",
+        "medical_services": "Medical Services : ",
         "patient_history_title": "Medical Record : ",
         "first_container": "My Doctor",
         "second_container": "Medical Information",
