@@ -23,6 +23,8 @@ class PatientLoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    emailController.text = 'wegyse@tutuapp.bid';
+    passwordController.text = "123456";
     return GestureDetector(
       onTap: () {
         FocusManager.instance.primaryFocus?.unfocus();
@@ -33,7 +35,6 @@ class PatientLoginView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                // const PreviousPageIconWidget(),
                 height50,
                 Padding(
                   padding:

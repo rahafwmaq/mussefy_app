@@ -5,7 +5,6 @@ import 'package:mussefy_app/bloc/auth/authintcation_bloc.dart';
 import 'package:mussefy_app/utilities/functions/loading_screen.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/logo_image.dart';
-import 'package:mussefy_app/utilities/gloable_widgets/previous_icon_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/navigator.dart';
@@ -35,7 +34,6 @@ class PatientSginupView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                // const PreviousPageIconWidget(),
                 height50,
                 Padding(
                   padding:
