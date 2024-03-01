@@ -10,6 +10,12 @@ dependencies:
   flutter:
     sdk: flutter
   pinput: ^4.0.0
+  lottie:
+  easy_localization: 
+  flutter_bloc: 
+  flutter_dotenv: 
+  http: 
+  supabase_flutter: 
 
 dev_dependencies:
   flutter_test:
@@ -20,6 +26,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/translations/
+    - assets/animations/
+    - .env
   fonts:
     - family: Tajawal
       fonts:

@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mussefy_app/bloc/auth/authintcation_bloc.dart';
+import 'package:mussefy_app/utilities/functions/loading_screen.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/logo_image.dart';
-import 'package:mussefy_app/utilities/gloable_widgets/previous_icon_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/navigator.dart';
@@ -30,7 +33,8 @@ class PatientLoginView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const PreviousPageIconWidget(),
+                // const PreviousPageIconWidget(),
+                height50,
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
@@ -40,10 +44,10 @@ class PatientLoginView extends StatelessWidget {
                       children: [
                         const LogoImage(),
                         height10,
-                        const Row(
+                        Row(
                           children: [
                             TextWidget(
-                              text: 'Login',
+                              text: 'Patient_login_screen.title'.tr(),
                               textColor: red,
                               fontSize: 30,
                             ),
@@ -53,7 +57,7 @@ class PatientLoginView extends StatelessWidget {
                         TextFormFieldWidget(
                           keyboardType: TextInputType.text,
                           controller: emailController,
-                          labelText: 'Email',
+                          labelText: 'Patient_login_screen.email'.tr(),
                           labelTextColor: red,
                           controllerTextColor: black,
                           cursorColor: red,
@@ -67,42 +71,60 @@ class PatientLoginView extends StatelessWidget {
                         TextFormFieldWidget(
                           keyboardType: TextInputType.visiblePassword,
                           controller: passwordController,
-                          labelText: 'Password',
+                          labelText: 'Patient_login_screen.password'.tr(),
                           labelTextColor: red,
                           controllerTextColor: black,
                           cursorColor: red,
                           obscureText: true,
                           suffixIcon: const Icon(
-                            Icons.person,
+                            Icons.remove_red_eye,
                             color: red,
                           ),
                         ),
                         height8,
                         Row(
                           children: [
-                            const TextWidget(
-                                text: 'You don\'t have an account ?'),
+                            TextWidget(text: 'Patient_login_screen.text1'.tr()),
                             width10,
                             InkWell(
                                 onTap: () {
                                   context.pushView(view: PatientSginupView());
                                 },
-                                child: const TextWidget(
-                                    text: 'Create account',
+                                child: TextWidget(
+                                    text: 'Patient_login_screen.text2'.tr(),
                                     textColor: red,
                                     fontWeight: FontWeight.bold)),
                           ],
                         ),
                         height40,
-                        ClickContainerWidget(
-                          onTap: () {
-                            context.removeUntil(
-                                view: const PatientHomeView());
+                        BlocListener<AuthintcationBloc, AuthintcationState>(
+                          listener: (context, state) {
+                            if (state is PatientLoginSuccessState) {
+                              context.removeUntil(
+                                  view: const PatientHomeView());
+                            } else if (state is ErrorState) {
+                              if (state.stopLoading) {
+                                context.popView();
+                              }
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(state.message)));
+                            } else if (state is LoadingState) {
+                              showLoadingDialog(context);
+                            }
                           },
-                          color: blueTransit,
-                          text: 'Login',
-                          textColor: white,
-                          fontSize: 22,
+                          child: ClickContainerWidget(
+                            onTap: () {
+                              context.read<AuthintcationBloc>().add(
+                                  PatientLoginEvent(
+                                      email: emailController.text.trim(),
+                                      password:
+                                          passwordController.text.trim()));
+                            },
+                            color: blueTransit,
+                            text: 'Patient_login_screen.buttonText'.tr(),
+                            textColor: white,
+                            fontSize: 22,
+                          ),
                         ),
                       ],
                     ),

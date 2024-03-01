@@ -1,0 +1,40 @@
+{
+    "Patient_regestraion_screen": {
+        "title": "إنشاء حساب",
+        "name": "الاسم الكامل",
+        "nameHint": "ادخل اسمك الثلاثي",
+        "email": "الايميل",
+        "emailHint": "ادخل الايميل",
+        "password": "الرقم السري",
+        "passwordHint": "ادخل الرمز السري",
+        "phone": "الهاتف",
+        "phoneHint": "ادخل رقم الهاتف",
+        "text1": "لديك حساب في مسعفي ؟ ",
+        "text2": "سجل الدخول",
+        "validatorMessage": "من فضلك قم بتعبئة جميع الخانات ",
+        "validatorMessage2": "من فضلك قم بتعبئة جميع الخانات ",
+        "passwordFormatError": "الرمز السري يجب ان يكون مكون من ٦ خانات على الاقل",
+        "phoneFormatError": "من فضلك ادخل رقم هاتف صحيح",
+        "emailFormatError": "من فضلك ادخل بريد الكتروني صحيح",
+        "buttonText": "سجل",
+        "errorMessage": "وجد خطأ في النظام",
+        "authException": "بيانات الاعتماد غير صالحة"
+    },
+    "Patient_login_screen": {
+        "title": "تسجيل الدخول",
+        "email": "الايميل",
+        "emailHint": "ادخل الايميل",
+        "password": "الرقم السري",
+        "passwordHint": "ادخل الرمز السري",
+        "text1": "ليس لديك حساب؟ ",
+        "text2": "انشاء حساب جديد",
+        "buttonText": "تسجيل الدخول",
+        "errorMessage": "بيانات التسجيل غير صحيحة",
+        "authException": "بيانات الاعتماد غير صالحة"
+    },
+    "otpscreen": {
+        "message": "أدخل الرمز المرسل إلى البريد الإلكتروني",
+        "buttonText": "إدخال",
+        "authException": "بيانات الاعتماد غير صالحة"
+    }
+}
