@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
-import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/view_layout/sizebox.dart';
 
 class DrawerContent extends StatelessWidget {
@@ -23,7 +22,6 @@ class DrawerContent extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: red,
           ),
           width12,
           TextWidget(

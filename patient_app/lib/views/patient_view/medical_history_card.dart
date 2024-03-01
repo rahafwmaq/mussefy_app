@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
+import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
+import 'package:mussefy_app/models/patient.dart';
 import 'package:mussefy_app/utilities/gloable_data/data.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
@@ -9,10 +13,10 @@ import 'package:mussefy_app/view_layout/sizebox.dart';
 
 class MedicalHistoryCard extends StatelessWidget {
   const MedicalHistoryCard({
-    super.key,
+    super.key, required this.patient,
   });
 
-  // final Patient patient;
+   final Patient patient;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +35,8 @@ class MedicalHistoryCard extends StatelessWidget {
             InkWell(
               onTap: () {
                 context.pushView(view: home[index]["view"]);
-                // context.read<PatientBloc>().add(
-                //     GetdataEvent(patient.id!, patient, home[index]["type"]));
+                context.read<PatientBloc>().add(
+                    GetdataEvent(patient.id!, patient, home[index]["type"]));
               },
               child: ContainerWidget(
                 shadowColor: lightGrey,

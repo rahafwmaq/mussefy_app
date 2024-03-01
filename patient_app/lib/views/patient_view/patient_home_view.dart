@@ -96,7 +96,9 @@ class PatientHomeView extends StatelessWidget {
                     fontSize: 20,
                   ),
                   height20,
-                  const MedicalHistoryCard()
+                  MedicalHistoryCard(
+                    patient: patient,
+                  )
                 ],
               ),
             ),

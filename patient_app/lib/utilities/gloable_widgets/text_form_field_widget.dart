@@ -1,12 +1,14 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/view_layout/color.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
-  const TextFormFieldWidget(
+  TextFormFieldWidget(
       {super.key,
       this.validator,
-     this.keyboardType,
+      this.keyboardType,
       required this.controller,
       this.labelText,
       this.labelTextColor,
@@ -14,11 +16,13 @@ class TextFormFieldWidget extends StatelessWidget {
       this.controllerTextColor,
       this.suffixIcon,
       required this.obscureText,
-      this.hintText, this.readOnly, this.onTap});
+      this.hintText,
+      this.readOnly,
+      this.onTap});
 
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
-  final TextEditingController controller;
+  TextEditingController controller = TextEditingController();
   final String? labelText;
   final Color? labelTextColor;
   final Color? cursorColor;
@@ -32,7 +36,6 @@ class TextFormFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-     
       onTap: onTap,
       readOnly: readOnly ?? false,
       validator: validator,

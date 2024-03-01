@@ -21,7 +21,6 @@ class DatePickerWidget extends StatelessWidget {
       labelText: labelText,
       suffixIcon: const Icon(
         Icons.date_range_rounded,
-        color: red,
       ),
       onTap: () async {
         await selectDate(context: context, dateController: dateController);

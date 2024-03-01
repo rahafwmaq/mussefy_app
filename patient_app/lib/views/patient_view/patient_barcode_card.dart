@@ -20,11 +20,11 @@ class PatientbarcodeCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           IconButton(
-              onPressed: () async {},
-              icon: const Icon(
-                Icons.print_rounded,
-                color: red,
-              )),
+            onPressed: () async {},
+            icon: const Icon(
+              Icons.print_rounded,
+            ),
+          ),
           height20,
           Center(
             child: Container(

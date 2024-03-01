@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:mussefy_app/utilities/gloable_data/globals.dart';
 import 'package:mussefy_app/views/patient_view/laboratory_result.dart';
 import 'package:mussefy_app/views/patient_view/medical_information_view.dart';
 import 'package:mussefy_app/views/patient_view/my_doctor_view.dart';
@@ -11,8 +12,8 @@ import 'package:mussefy_app/views/patient_view/xray_report_view.dart';
 List home = [
   {
     "type": "My Doctor",
-    "view": const MyDoctorView(
-        //patient: globalCurrentPatient,
+    "view":  MyDoctorView(
+        patient: globalCurrentPatient,
         ),
     "image": 'assets/images/my_doctor.png',
     "title": 'patient_home_screen.first_container'.tr(),

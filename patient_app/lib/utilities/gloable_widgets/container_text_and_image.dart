@@ -37,13 +37,12 @@ class ContainerTextAndImageWidget extends StatelessWidget {
               Image.asset(
                 imagePath,
                 color: red,
-                scale: 10,
+                scale: 11,
               ),
               width10,
               height20,
               SizedBox(
                 width: context.getHeight(divide: 7),
-                
                 child: TextWidget(
                   text: title,
                   textColor: black,

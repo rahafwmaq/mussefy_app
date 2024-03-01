@@ -66,7 +66,7 @@ class PatientAccount extends StatelessWidget {
                         cursorColor: red,
                         suffixIcon: const Icon(
                           Icons.assignment_ind_outlined,
-                          color: red,
+                          
                         ),
                       ),
                       height20,
@@ -79,7 +79,7 @@ class PatientAccount extends StatelessWidget {
                         cursorColor: red,
                         suffixIcon: const Icon(
                           Icons.height_rounded,
-                          color: red,
+                      
                         ),
                       ),
                       height20,
@@ -92,7 +92,7 @@ class PatientAccount extends StatelessWidget {
                         cursorColor: red,
                         suffixIcon: const Icon(
                           Icons.line_weight_rounded,
-                          color: red,
+                      
                         ),
                       ),
                       height20,

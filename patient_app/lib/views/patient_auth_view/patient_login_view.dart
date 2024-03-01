@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mussefy_app/bloc/auth/authintcation_bloc.dart';
 import 'package:mussefy_app/bloc/auth/authintcation_event.dart';
 import 'package:mussefy_app/utilities/functions/loading_screen.dart';
+import 'package:mussefy_app/utilities/gloable_data/globals.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/logo_image.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_form_field_widget.dart';
@@ -102,8 +103,11 @@ class PatientLoginView extends StatelessWidget {
                         BlocListener<AuthintcationBloc, AuthintcationState>(
                           listener: (context, state) {
                             if (state is PatientLoginSuccessState) {
+                              globalCurrentPatient = state.patient;
                               context.removeUntil(
-                                  view:  PatientHomeView(patient: state.patient,));
+                                  view: PatientHomeView(
+                                patient: state.patient,
+                              ));
                             } else if (state is ErrorState) {
                               if (state.stopLoading) {
                                 context.popView();
