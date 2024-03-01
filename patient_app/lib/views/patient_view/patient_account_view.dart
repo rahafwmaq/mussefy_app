@@ -31,7 +31,10 @@ class PatientAccount extends StatelessWidget {
       },
       child: Scaffold(
         appBar: customAppBar(
-            centerTitle: true, title: 'My Account', context: context),
+            centerTitle: true,
+            title: 'My Account',
+            context: context,
+            widget: Container()),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

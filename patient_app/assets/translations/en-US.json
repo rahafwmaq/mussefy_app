@@ -1,13 +1,10 @@
 {
-<<<<<<< HEAD
     "user_type_screen": {
         "userSelection1": "I am a paramedic",
         "userSelection2": "I am a user",
         "buttonText": "Continue",
         "buttonText2": "التبديل للغة العربية"
     },
-=======
->>>>>>> main
     "Patient_regestraion_screen": {
         "title": "Registration",
         "name": "Full Name",
@@ -26,12 +23,8 @@
         "validatorMessage": "Please fill all required fields to register",
         "validatorMessage2": "Please fill all required fields to uploud",
         "buttonText": "Register",
-<<<<<<< HEAD
-        "errorMessage": "Error was found"
-=======
         "errorMessage": "Error was found",
         "authException": "Invalid authrization"
->>>>>>> main
     },
     "Patient_login_screen": {
         "title": "Login",
@@ -42,7 +35,6 @@
         "text1": "You don't have an account? ",
         "text2": "Create account",
         "buttonText": "login",
-<<<<<<< HEAD
         "errorMessage": "invalid credintals"
     },
     "ParamedicRegistrationScreen": {
@@ -51,10 +43,7 @@
         "note": "Note: this id is given to paramedics whom information was submitted to Moseefy database through an employer",
         "notfoundmessage": "No Paramedic with this id was found"
     },
-    "otpscreen": {
-        "message": "Please enter OTP sent to email ",
-        "buttonText": "Enter"
-    },
+
     "main_screen": {
         "title": "sergery report",
         "toptitle": "Helth Status",
@@ -284,8 +273,7 @@
     },
     "print_medical_card": {
         "confirm_mess": "The medical card will be printed immediately and we will contact you soon, God willing.",
-        "ok": "ok"
-=======
+        "ok": "ok",
         "errorMessage": "invalid credintals",
         "authException": "Invalid authrization"
     },
@@ -293,6 +281,5 @@
         "message": "Please enter OTP sent to email ",
         "buttonText": "Enter",
         "authException": "Invalid authrization"
->>>>>>> main
     }
 }

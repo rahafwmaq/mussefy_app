@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mussefy_app/models/patient.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/views/patient_view/drawer_view.dart';
@@ -6,7 +7,9 @@ import 'package:mussefy_app/views/patient_view/medical_history_card.dart';
 import 'package:mussefy_app/views/patient_view/patient_card.dart';
 
 class PatientHomeView extends StatelessWidget {
-  const PatientHomeView({super.key});
+  const PatientHomeView({super.key, required this.patient});
+
+  final Patient patient;
 
   @override
   Widget build(BuildContext context) {

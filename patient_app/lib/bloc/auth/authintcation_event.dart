@@ -1,4 +1,5 @@
-part of 'authintcation_bloc.dart';
+
+import 'package:flutter/material.dart';
 
 @immutable
 abstract class AuthintcationEvent {}

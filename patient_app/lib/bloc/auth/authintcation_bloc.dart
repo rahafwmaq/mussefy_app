@@ -1,11 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mussefy_app/bloc/auth/authintcation_event.dart';
 import 'package:mussefy_app/models/patient.dart';
 import 'package:mussefy_app/services/auth_services.dart';
 import 'package:mussefy_app/utilities/helpers/format.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-part 'authintcation_event.dart';
 part 'authintcation_state.dart';
 
 class AuthintcationBloc extends Bloc<AuthintcationEvent, AuthintcationState> {

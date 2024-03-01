@@ -6,6 +6,7 @@ AppBar customAppBar({
   required BuildContext context,
   String? title,
   bool? centerTitle,
+ required Widget widget
 }) {
   return AppBar(
     title: TextWidget(text: title!),
@@ -18,6 +19,8 @@ AppBar customAppBar({
         Icons.arrow_back_ios_new_rounded,
         size: 35,
       ),
+      
     ),
+    actions: [widget],
   );
 }

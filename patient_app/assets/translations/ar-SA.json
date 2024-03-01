@@ -1,13 +1,10 @@
 {
-<<<<<<< HEAD
     "user_type_screen": {
         "userSelection1": "أنا مسعف",
         "userSelection2": "أنا مستخدم",
         "buttonText": "الاستمرار",
         "buttonText2": "Switch to English"
     },
-=======
->>>>>>> main
     "Patient_regestraion_screen": {
         "title": "إنشاء حساب",
         "name": "الاسم الكامل",
@@ -19,19 +16,15 @@
         "phone": "الهاتف",
         "phoneHint": "ادخل رقم الهاتف",
         "text1": "لديك حساب في مسعفي ؟ ",
-        "text2": "سجل الدخول",
+        "text2": "تسجيل الدخول",
         "validatorMessage": "من فضلك قم بتعبئة جميع الخانات ",
         "validatorMessage2": "من فضلك قم بتعبئة جميع الخانات ",
         "passwordFormatError": "الرمز السري يجب ان يكون مكون من ٦ خانات على الاقل",
         "phoneFormatError": "من فضلك ادخل رقم هاتف صحيح",
         "emailFormatError": "من فضلك ادخل بريد الكتروني صحيح",
-        "buttonText": "سجل",
-<<<<<<< HEAD
-        "errorMessage": "وجد خطأ في النظام"
-=======
+        "buttonText": "إنشاء حساب",
         "errorMessage": "وجد خطأ في النظام",
         "authException": "بيانات الاعتماد غير صالحة"
->>>>>>> main
     },
     "Patient_login_screen": {
         "title": "تسجيل الدخول",
@@ -42,7 +35,6 @@
         "text1": "ليس لديك حساب؟ ",
         "text2": "انشاء حساب جديد",
         "buttonText": "تسجيل الدخول",
-<<<<<<< HEAD
         "errorMessage": "بيانات التسجيل غير صحيحة"
     },
     "ParamedicRegistrationScreen": {
@@ -51,10 +43,7 @@
         "note": "ملاحظة: الرمز خاص بالمسعف الذي قٌدمت بياناته من قبل جهة التوظيف إلى منصة مسعفي",
         "notfoundmessage": "لا يوجد مسعف بهذا الرمز"
     },
-    "otpscreen": {
-        "message": "أدخل الرمز المرسل إلى البريد الإلكتروني",
-        "buttonText": "إدخال"
-    },
+  
     "main_screen": {
         "title": "تقرير العمليات",
         "toptitle": "الصحه العامه",
@@ -284,8 +273,7 @@
     },
     "print_medical_card": {
         "confirm_mess": "سوف يتم طباعة البطاقة الطبية فورا وسنتواصل معكم قريبا بإذن الله",
-        "ok": "حسنا"
-=======
+        "ok": "حسنا",
         "errorMessage": "بيانات التسجيل غير صحيحة",
         "authException": "بيانات الاعتماد غير صالحة"
     },
@@ -293,6 +281,5 @@
         "message": "أدخل الرمز المرسل إلى البريد الإلكتروني",
         "buttonText": "إدخال",
         "authException": "بيانات الاعتماد غير صالحة"
->>>>>>> main
     }
 }
