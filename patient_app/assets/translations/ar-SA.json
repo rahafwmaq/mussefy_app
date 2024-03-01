@@ -1,10 +1,13 @@
 {
+<<<<<<< HEAD
     "user_type_screen": {
         "userSelection1": "أنا مسعف",
         "userSelection2": "أنا مستخدم",
         "buttonText": "الاستمرار",
         "buttonText2": "Switch to English"
     },
+=======
+>>>>>>> main
     "Patient_regestraion_screen": {
         "title": "إنشاء حساب",
         "name": "الاسم الكامل",
@@ -23,7 +26,12 @@
         "phoneFormatError": "من فضلك ادخل رقم هاتف صحيح",
         "emailFormatError": "من فضلك ادخل بريد الكتروني صحيح",
         "buttonText": "سجل",
+<<<<<<< HEAD
         "errorMessage": "وجد خطأ في النظام"
+=======
+        "errorMessage": "وجد خطأ في النظام",
+        "authException": "بيانات الاعتماد غير صالحة"
+>>>>>>> main
     },
     "Patient_login_screen": {
         "title": "تسجيل الدخول",
@@ -34,6 +42,7 @@
         "text1": "ليس لديك حساب؟ ",
         "text2": "انشاء حساب جديد",
         "buttonText": "تسجيل الدخول",
+<<<<<<< HEAD
         "errorMessage": "بيانات التسجيل غير صحيحة"
     },
     "ParamedicRegistrationScreen": {
@@ -276,5 +285,14 @@
     "print_medical_card": {
         "confirm_mess": "سوف يتم طباعة البطاقة الطبية فورا وسنتواصل معكم قريبا بإذن الله",
         "ok": "حسنا"
+=======
+        "errorMessage": "بيانات التسجيل غير صحيحة",
+        "authException": "بيانات الاعتماد غير صالحة"
+    },
+    "otpscreen": {
+        "message": "أدخل الرمز المرسل إلى البريد الإلكتروني",
+        "buttonText": "إدخال",
+        "authException": "بيانات الاعتماد غير صالحة"
+>>>>>>> main
     }
 }

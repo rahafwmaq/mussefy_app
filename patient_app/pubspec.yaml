@@ -7,11 +7,16 @@ environment:
   sdk: '>=3.2.4 <4.0.0'
 
 dependencies:
-  easy_localization: ^3.0.4
   flutter:
     sdk: flutter
   pinput: ^4.0.0
   qr_flutter: ^4.1.0
+  lottie:
+  easy_localization: 
+  flutter_bloc: 
+  flutter_dotenv: 
+  http: 
+  supabase_flutter: 
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +28,8 @@ flutter:
   assets:
     - assets/images/
     - assets/translations/
+    - assets/animations/
+    - .env
   fonts:
     - family: Tajawal
       fonts:

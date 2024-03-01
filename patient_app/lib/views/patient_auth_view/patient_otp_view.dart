@@ -1,4 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mussefy_app/bloc/auth/authintcation_bloc.dart';
+import 'package:mussefy_app/utilities/functions/loading_screen.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/navigator.dart';
@@ -39,7 +43,7 @@ class PatientOTPView extends StatelessWidget {
                       fontSize: 40,
                     ),
                     TextWidget(
-                      text: 'enter the otp code $email',
+                      text: "${'otpscreen.message'.tr()}  $email",
                       textColor: blue,
                       fontSize: 20,
                     ),
@@ -50,14 +54,31 @@ class PatientOTPView extends StatelessWidget {
                       onCompleted: (pin) => otp = pin,
                     ),
                     height40,
-                    ClickContainerWidget(
-                      onTap: () {
-                        context.removeUntil(view: const PatientHomeView());
+                    BlocListener<AuthintcationBloc, AuthintcationState>(
+                      listener: (context, state) {
+                        if (state is VerficationSuccessState) {
+                          context.removeUntil(view: const PatientHomeView());
+                        } else if (state is ErrorState) {
+                          if (state.stopLoading) {
+                            context.popView();
+                          }
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(state.message)));
+                        } else if (state is LoadingState) {
+                          showLoadingDialog(context);
+                        }
                       },
-                      color: blueTransit,
-                      text: 'Sgin Up',
-                      textColor: white,
-                      fontSize: 22,
+                      child: ClickContainerWidget(
+                        onTap: () {
+                          context
+                              .read<AuthintcationBloc>()
+                              .add(VerficationEvent(pin: otp, email: email));
+                        },
+                        color: blueTransit,
+                        text: 'otpscreen.buttonText'.tr(),
+                        textColor: white,
+                        fontSize: 22,
+                      ),
                     ),
                   ],
                 ),

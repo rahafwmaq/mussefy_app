@@ -1,14 +1,19 @@
 name: paramedic_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.4
+  supabase_flutter: ^2.3.4
+  qr_flutter:
+  barcode_widget:
+  flutter_barcode_scanner: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -19,10 +24,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - .env
   fonts:
     - family: Tajawal
       fonts:
         - asset: assets/fonts/Tajawal/Tajawal-Medium.ttf
         - asset: assets/fonts/Tajawal/Tajawal-Regular.ttf
         - asset: assets/fonts/Tajawal/Tajawal-Bold.ttf
-

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:paramedic_app/database/supa_get_delete/supa_get_delete.dart';
+import 'package:paramedic_app/globals/global.dart';
+import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
@@ -8,11 +11,65 @@ import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/view_layout/sizebox.dart';
 import 'package:paramedic_app/views/paramedic_view/paramedic_profile_pic.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_view_for_paramedic.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-class ParamedicHomeView extends StatelessWidget {
-  ParamedicHomeView({super.key});
+class ParamedicHomeView extends StatefulWidget {
+  const ParamedicHomeView({super.key});
 
+  @override
+  State<ParamedicHomeView> createState() => _ParamedicHomeViewState();
+}
+
+class _ParamedicHomeViewState extends State<ParamedicHomeView> {
   final TextEditingController patientIDController = TextEditingController();
+  bool iserror = false;
+  Future<void> scanBarcode() async {
+    String barcodeScanRes;
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+        "#ff6666",
+        "Cancel",
+        true,
+        ScanMode.QR,
+      );
+      if (!mounted) return;
+
+      if (barcodeScanRes != '-1') {
+        setState(() {
+          patientIDController.text = barcodeScanRes;
+          iserror = false;
+        });
+        fetchAndNavigate();
+      }
+    } catch (e) {
+      setState(() {
+        iserror = true;
+      });
+    }
+  }
+
+  Future<void> fetchAndNavigate() async {
+    try {
+      final Patient myPatient =
+          await SupaGetAndDelete().getPatientById(patientIDController.text);
+      globalCurrentPatient = myPatient;
+      print(globalCurrentPatient!.fullName!);
+      if (myPatient.id != null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                PatientViewForParamedic(idText: patientIDController.text),
+          ),
+        );
+      }
+    } catch (error) {
+      print("Error: $error");
+      setState(() {
+        iserror = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +137,10 @@ class ParamedicHomeView extends StatelessWidget {
                   height20,
                   ClickContainerWidget(
                     onTap: () {
-                      context.pushView(view: const PatientViewForParamedic());
+                      context.pushView(
+                          view: const PatientViewForParamedic(
+                        idText: "1abe2dce-529f-49dd-8b1d-c3f7af31233d",
+                      ));
                     },
                     color: blueTransit,
                     text: 'Submit',
@@ -100,7 +160,40 @@ class ParamedicHomeView extends StatelessWidget {
                       ),
                       width80,
                       InkWell(
-                        onTap: () {},
+                        onTap: () async {
+                          try {
+                            scanBarcode();
+
+                            print(globalCurrentPatient!.fullName!);
+                            if (globalCurrentPatient!.fullName != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PatientViewForParamedic(
+                                      idText: patientIDController.text),
+                                ),
+                              );
+                            }
+                          } catch (e) {
+                            print(e);
+                            setState(() {
+                              iserror = true;
+                            });
+                            showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (context) {
+                                  Future.delayed(
+                                      const Duration(milliseconds: 500), () {
+                                    Navigator.of(context).pop(true);
+                                  });
+
+                                  return const Center(
+                                      child: CircularProgressIndicator(
+                                          color: red));
+                                });
+                          }
+                        },
                         child: Container(
                           height: context.getHeight(divide: 7),
                           width: context.getWidth(divide: 3),

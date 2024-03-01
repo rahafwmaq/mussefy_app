@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mussefy_app/bloc/auth/authintcation_bloc.dart';
+import 'package:mussefy_app/utilities/functions/loading_screen.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/logo_image.dart';
-import 'package:mussefy_app/utilities/gloable_widgets/previous_icon_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/navigator.dart';
@@ -31,7 +34,7 @@ class PatientSginupView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const PreviousPageIconWidget(),
+                height50,
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
@@ -41,10 +44,10 @@ class PatientSginupView extends StatelessWidget {
                       children: [
                         const LogoImage(),
                         height10,
-                        const Row(
+                        Row(
                           children: [
                             TextWidget(
-                              text: 'Sgin Up',
+                              text: 'Patient_regestraion_screen.title'.tr(),
                               textColor: red,
                               fontSize: 30,
                             ),
@@ -54,7 +57,7 @@ class PatientSginupView extends StatelessWidget {
                         TextFormFieldWidget(
                           keyboardType: TextInputType.text,
                           controller: fullNameController,
-                          labelText: 'Full Name',
+                          labelText: 'Patient_regestraion_screen.name'.tr(),
                           labelTextColor: red,
                           controllerTextColor: black,
                           cursorColor: red,
@@ -68,7 +71,7 @@ class PatientSginupView extends StatelessWidget {
                         TextFormFieldWidget(
                           keyboardType: TextInputType.text,
                           controller: phoneNumberController,
-                          labelText: 'Phone Number',
+                          labelText: 'Patient_regestraion_screen.phone'.tr(),
                           labelTextColor: red,
                           controllerTextColor: black,
                           cursorColor: red,
@@ -82,7 +85,7 @@ class PatientSginupView extends StatelessWidget {
                         TextFormFieldWidget(
                           keyboardType: TextInputType.text,
                           controller: emailController,
-                          labelText: 'Email',
+                          labelText: 'Patient_regestraion_screen.email'.tr(),
                           labelTextColor: red,
                           controllerTextColor: black,
                           cursorColor: red,
@@ -95,8 +98,8 @@ class PatientSginupView extends StatelessWidget {
                         height10,
                         TextFormFieldWidget(
                           keyboardType: TextInputType.visiblePassword,
-                          controller: emailController,
-                          labelText: 'Password',
+                          controller: passwordController,
+                          labelText: 'Patient_regestraion_screen.password'.tr(),
                           labelTextColor: red,
                           controllerTextColor: black,
                           cursorColor: red,
@@ -109,31 +112,53 @@ class PatientSginupView extends StatelessWidget {
                         height8,
                         Row(
                           children: [
-                            const TextWidget(
-                                text: 'You alredy have an account ?'),
+                            TextWidget(
+                                text: 'Patient_regestraion_screen.text1'.tr()),
                             width10,
                             InkWell(
                                 onTap: () {
                                   context.pushView(view: PatientLoginView());
                                 },
-                                child: const TextWidget(
-                                    text: 'Login',
+                                child: TextWidget(
+                                    text:
+                                        'Patient_regestraion_screen.text2'.tr(),
                                     textColor: red,
                                     fontWeight: FontWeight.bold)),
                           ],
                         ),
                         height40,
-                        ClickContainerWidget(
-                          onTap: () {
-                            context.removeUntil(
-                                view: PatientOTPView(
-                              email: emailController.text,
-                            ));
+                        BlocListener<AuthintcationBloc, AuthintcationState>(
+                          listener: (context, state) {
+                            if (state is PatientRegisterationSuccessState) {
+                              context.removeUntil(
+                                  view: PatientOTPView(
+                                email: emailController.text,
+                              ));
+                            } else if (state is ErrorState) {
+                              if (state.stopLoading) {
+                                context.popView();
+                              }
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(state.message)));
+                            } else if (state is LoadingState) {
+                              showLoadingDialog(context);
+                            }
                           },
-                          color: blueTransit,
-                          text: 'Sgin Up',
-                          textColor: white,
-                          fontSize: 22,
+                          child: ClickContainerWidget(
+                            onTap: () {
+                              context.read<AuthintcationBloc>().add(
+                                  PatientRegisterationEvent(
+                                      name: fullNameController.text.trim(),
+                                      email: emailController.text.trim(),
+                                      password: passwordController.text.trim(),
+                                      phone:
+                                          phoneNumberController.text.trim()));
+                            },
+                            color: blueTransit,
+                            text: 'Patient_regestraion_screen.buttonText'.tr(),
+                            textColor: white,
+                            fontSize: 22,
+                          ),
                         ),
                       ],
                     ),
