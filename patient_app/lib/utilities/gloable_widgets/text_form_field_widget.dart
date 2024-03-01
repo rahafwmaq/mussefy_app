@@ -6,7 +6,7 @@ class TextFormFieldWidget extends StatelessWidget {
   const TextFormFieldWidget(
       {super.key,
       this.validator,
-      required this.keyboardType,
+     this.keyboardType,
       required this.controller,
       this.labelText,
       this.labelTextColor,
@@ -14,10 +14,10 @@ class TextFormFieldWidget extends StatelessWidget {
       this.controllerTextColor,
       this.suffixIcon,
       required this.obscureText,
-      this.hintText});
+      this.hintText, this.readOnly, this.onTap});
 
   final String? Function(String?)? validator;
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
   final TextEditingController controller;
   final String? labelText;
   final Color? labelTextColor;
@@ -26,10 +26,15 @@ class TextFormFieldWidget extends StatelessWidget {
   final Widget? suffixIcon;
   final bool obscureText;
   final String? hintText;
+  final bool? readOnly;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+     
+      onTap: onTap,
+      readOnly: readOnly ?? false,
       validator: validator,
       style: TextStyle(color: controllerTextColor),
       cursorColor: cursorColor,

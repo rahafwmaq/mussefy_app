@@ -1,12 +1,10 @@
-import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mussefy_app/bloc/auth/authintcation_event.dart';
 import 'package:mussefy_app/models/patient.dart';
 import 'package:mussefy_app/services/auth_services.dart';
 import 'package:mussefy_app/utilities/helpers/format.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
-part 'authintcation_event.dart';
 part 'authintcation_state.dart';
 
 class AuthintcationBloc extends Bloc<AuthintcationEvent, AuthintcationState> {
@@ -34,8 +32,6 @@ class AuthintcationBloc extends Bloc<AuthintcationEvent, AuthintcationState> {
               stopLoading: true));
         } else {
           try {
-            final response =
-                await AuthService().signUpPatient(event.email, event.password);
             newPatient = Patient(
                 fullName: event.name,
                 email: event.email,

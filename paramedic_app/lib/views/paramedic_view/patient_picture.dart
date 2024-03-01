@@ -6,11 +6,11 @@ class PatientPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return           ClipOval(
-            child: Image.asset(
-              'assets/images/patient_pic.png',
-              height: context.getHeight(divide: 7),
-            ),
-          );
+    return ClipOval(
+      child: Image.asset(
+        'assets/images/patient_pic.png',
+        height: context.getHeight(divide: 7),
+      ),
+    );
   }
 }
