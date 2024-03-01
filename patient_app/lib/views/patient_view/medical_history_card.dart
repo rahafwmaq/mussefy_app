@@ -19,9 +19,11 @@ class MedicalHistoryCard extends StatelessWidget {
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      padding: const EdgeInsets.symmetric(vertical: 20),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisSpacing: 20),
+        crossAxisCount: 2,
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
+      ),
       itemCount: home.length,
       itemBuilder: (context, index) {
         return Column(
@@ -33,22 +35,27 @@ class MedicalHistoryCard extends StatelessWidget {
                 //     GetdataEvent(patient.id!, patient, home[index]["type"]));
               },
               child: ContainerWidget(
-                  shadowColor: const Color.fromARGB(60, 0, 0, 0),
-                  blurRadius: 10,
-                  height: context.getWidth(divide: 3),
-                  width: context.getWidth(divide: 3),
-                  borderColor: noColor,
-                  borderWidth: 0,
-                  borderRadius: 20,
-                  containerColor: white,
-                  child:
-                      Image.asset(home[index]["image"], scale: 6, color: red)),
-            ),
-            height10,
-            TextWidget(
-              text: home[index]["title"],
-              textColor: black,
-              fontSize: 18,
+                shadowColor: lightGrey,
+                blurRadius: 8,
+                height: context.getWidth(divide: 2.5),
+                width: context.getWidth(divide: 2),
+                borderColor: noColor,
+                borderWidth: 0,
+                borderRadius: 20,
+                containerColor: white,
+                child: Column(
+                  children: [
+                    height10,
+                    Image.asset(home[index]["image"], scale: 6, color: red),
+                    height20,
+                    TextWidget(
+                      text: home[index]["title"],
+                      textColor: black,
+                      fontSize: 18,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         );

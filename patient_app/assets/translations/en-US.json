@@ -281,5 +281,8 @@
         "message": "Please enter OTP sent to email ",
         "buttonText": "Enter",
         "authException": "Invalid authrization"
+    },    "AI": {
+        "title": "Ask AI"
+      
     }
 }
