@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:paramedic_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
+import 'package:paramedic_app/utilities/helpers/navigator.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/view_layout/sizebox.dart';
 import 'package:paramedic_app/views/paramedic_view/paramedic_profile_pic.dart';
-import 'package:paramedic_app/utilities/gloable_widgets/container_widget.dart';
+import 'package:paramedic_app/views/paramedic_view/patient_view_for_paramedic.dart';
 
 class ParamedicHomeView extends StatelessWidget {
   ParamedicHomeView({super.key});
@@ -25,7 +26,7 @@ class ParamedicHomeView extends StatelessWidget {
           width: context.getWidth(),
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -77,6 +78,16 @@ class ParamedicHomeView extends StatelessWidget {
                     ),
                   ),
                   height20,
+                  ClickContainerWidget(
+                    onTap: () {
+                      context.pushView(view: const PatientViewForParamedic());
+                    },
+                    color: blueTransit,
+                    text: 'Submit',
+                    textColor: white,
+                    fontSize: 20,
+                  ),
+                  height20,
                   const TextWidget(text: 'OR'),
                   height20,
                   Row(
@@ -88,12 +99,25 @@ class ParamedicHomeView extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                       width80,
-                      ContainerWidget(
+                      InkWell(
                         onTap: () {},
-                        heightContainer: 8,
-                        widthContainer: 4,
-                        iconPathImage: 'assets/images/scan_qr.png',
-                      ),
+                        child: Container(
+                          height: context.getHeight(divide: 7),
+                          width: context.getWidth(divide: 3),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: const [
+                                BoxShadow(color: lightGrey, blurRadius: 10)
+                              ],
+                              color: white),
+                          child: Image.asset(
+                            'assets/images/scan_qr.png',
+                            color: red,
+                            height: context.getHeight(divide: 8),
+                            width: context.getWidth(divide: 4),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ],
