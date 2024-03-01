@@ -15,8 +15,8 @@ import 'package:paramedic_app/views/paramedic_view/patient_surgery_report_view.d
 import 'package:paramedic_app/views/paramedic_view/patient_xray_report_view.dart';
 
 class PatientViewForParamedic extends StatelessWidget {
-  const PatientViewForParamedic({super.key});
-
+  const PatientViewForParamedic({super.key, required this.idText});
+  final String idText;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -44,7 +44,8 @@ class PatientViewForParamedic extends StatelessWidget {
                   secondImagePath: 'assets/images/body_structure.png',
                   secondTitle: 'Body Structure',
                   secondOnTap: () {
-                    context.pushView(view: const PatientBodyStructureView());
+                    context.pushView(
+                        view: PatientBodyStructureView(patientId: idText));
                   },
                 ),
                 height20,

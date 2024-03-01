@@ -80,7 +80,10 @@ class ParamedicHomeView extends StatelessWidget {
                   height20,
                   ClickContainerWidget(
                     onTap: () {
-                      context.pushView(view: const PatientViewForParamedic());
+                      context.pushView(
+                          view: const PatientViewForParamedic(
+                        idText: "1abe2dce-529f-49dd-8b1d-c3f7af31233d",
+                      ));
                     },
                     color: blueTransit,
                     text: 'Submit',
