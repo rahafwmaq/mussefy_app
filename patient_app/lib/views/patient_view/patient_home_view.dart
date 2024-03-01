@@ -12,6 +12,7 @@ import 'package:mussefy_app/views/patient_view/emergency_contact_view.dart';
 import 'package:mussefy_app/views/patient_view/insurance_view.dart';
 import 'package:mussefy_app/views/patient_view/medical_history_card.dart';
 import 'package:mussefy_app/views/patient_view/patient_card.dart';
+import 'package:mussefy_app/views/patient_view/what_is_it.dart';
 
 class PatientHomeView extends StatelessWidget {
   const PatientHomeView({super.key, required this.patient});
@@ -56,6 +57,13 @@ class PatientHomeView extends StatelessWidget {
                           title: 'AI.title'.tr(),
                           onTap: () {
                             context.pushView(view: const AskAIView());
+                          },
+                        ),
+                        ContainerTextAndImageWidget(
+                          imagePath: 'assets/images/AI_ask.png',
+                          title: 'AI.title'.tr(),
+                          onTap: () {
+                            context.pushView(view: const WhatIsThis());
                           },
                         ),
                         ContainerTextAndImageWidget(
