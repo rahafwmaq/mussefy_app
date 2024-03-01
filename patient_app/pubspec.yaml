@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   pinput: ^4.0.0
+  lottie:
   easy_localization: 
   flutter_bloc: 
   flutter_dotenv: 
@@ -26,6 +27,7 @@ flutter:
   assets:
     - assets/images/
     - assets/translations/
+    - assets/animations/
     - .env
   fonts:
     - family: Tajawal

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mussefy_app/view_layout/color.dart';
+import 'package:lottie/lottie.dart';
 
 showLoadingDialog(BuildContext context) {
   showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        return const Center(
-            child: LinearProgressIndicator(
-          backgroundColor: blue,
-          color: red,
+        return Center(
+            child: Lottie.asset(
+          "assets/animations/red_loading.json",
         ));
       });
 }
