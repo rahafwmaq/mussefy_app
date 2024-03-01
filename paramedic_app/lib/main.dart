@@ -16,7 +16,7 @@ void main() async {
         supportedLocales: const [Locale('en', 'US'), Locale('ar', 'SA')],
         path:
             'assets/translations', // <-- change the path of the translation files
-        fallbackLocale: const Locale('en', 'US'),
+        fallbackLocale: const Locale('ar', 'SA'),
         child: const MainApp()),
   );
 }
