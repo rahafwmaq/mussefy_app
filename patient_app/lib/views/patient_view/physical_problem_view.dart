@@ -7,7 +7,7 @@ import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_state.dart';
 import 'package:mussefy_app/models/patient.dart';
-import 'package:mussefy_app/utilities/functions/delete_dialoge.dart';
+import 'package:mussefy_app/utilities/helpers/delete_dialoge.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/screen_size.dart';
@@ -95,31 +95,32 @@ class PhysicalProblemView extends StatelessWidget {
                                     ),
                                   ),
                                   InkWell(
-                                      onTap: () {
-                                        deleteAlert(
-                                          context: context,
-                                          onPressed: () {
-                                            context.read<PatientBloc>().add(
-                                                DeleteMobilityProblemEvent(
-                                                    state.mobilityProblem[index]
-                                                        .id
-                                                        .toString(),
-                                                    patient!.id!));
-                                            Navigator.pop(context);
-                                          },
-                                          content: state.mobilityProblem[index]
-                                              .problemName!,
-                                        );
-                                      },
-                                      child: TextWidget(
-                                        text: 'x',
-                                        fontSize: 20,
-                                        textColor: red,
-                                      ))
+                                    onTap: () {
+                                      deleteAlert(
+                                        context: context,
+                                        onPressed: () {
+                                          context.read<PatientBloc>().add(
+                                              DeleteMobilityProblemEvent(
+                                                  state
+                                                      .mobilityProblem[index].id
+                                                      .toString(),
+                                                  patient!.id!));
+                                          Navigator.pop(context);
+                                        },
+                                        content: state.mobilityProblem[index]
+                                            .problemName!,
+                                      );
+                                    },
+                                    child: const TextWidget(
+                                      text: 'x',
+                                      fontSize: 25,
+                                      textColor: red,
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
-                            Divider()
+                            const Divider()
                           ],
                         ),
                       );

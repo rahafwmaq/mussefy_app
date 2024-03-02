@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_state.dart';
-import 'package:mussefy_app/utilities/functions/delete_dialoge.dart';
+import 'package:mussefy_app/utilities/helpers/delete_dialoge.dart';
 import 'package:mussefy_app/utilities/gloable_data/globals.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/add_new_info_model_sheet_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/app_bar_widget.dart';

@@ -12,9 +12,9 @@ import 'package:mussefy_app/views/patient_view/xray_report_view.dart';
 List home = [
   {
     "type": "My Doctor",
-    "view":  MyDoctorView(
-        patient: globalCurrentPatient,
-        ),
+    "view": MyDoctorView(
+      patient: globalCurrentPatient,
+    ),
     "image": 'assets/images/my_doctor.png',
     "title": 'patient_home_screen.first_container'.tr(),
   },
@@ -26,29 +26,29 @@ List home = [
   },
   {
     "type": "Physical Problem",
-    "view":  PhysicalProblemView(
-        patient: globalCurrentPatient,
-        ),
+    "view": PhysicalProblemView(
+      patient: globalCurrentPatient,
+    ),
     "image": 'assets/images/physical_problem.png',
     "title": 'patient_home_screen.third_container'.tr(),
   },
   {
     "type": "Surgical Record",
-    "view":  SurgicalRecordView(),
+    "view": SurgicalRecordView(),
     "image": 'assets/images/surgical_record.png',
     "title": 'patient_home_screen.fourth_container'.tr(),
   },
   {
     "type": "My Medication",
-    "view": const MyMedicationView(
-        //patient: globalCurrentPatient,
-        ),
+    "view": MyMedicationView(
+      patient: globalCurrentPatient,
+    ),
     "image": 'assets/images/my_medications.png',
     "title": 'patient_home_screen.fifth_container'.tr(),
   },
   {
     "type": "XRays Report",
-    "view":  XRaysReportsView(),
+    "view": XRaysReportsView(),
     "image": 'assets/images/x-rays_reports.png',
     "title": 'patient_home_screen.seventh_container'.tr(),
   },

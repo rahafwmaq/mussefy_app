@@ -51,7 +51,7 @@ class TextFormFieldWidget extends StatelessWidget {
           contentPadding: const EdgeInsets.all(10),
           label: TextWidget(
             text: labelText ?? '',
-            textColor: labelTextColor,
+            textColor: labelTextColor ?? red,
           ),
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: red),
