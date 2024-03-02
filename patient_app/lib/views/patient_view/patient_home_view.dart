@@ -97,7 +97,14 @@ class PatientHomeView extends StatelessWidget {
                           imagePath: 'assets/images/assurance.png',
                           title: 'insurance_drawer.title'.tr(),
                           onTap: () {
-                            context.pushView(view: const InsuranceView());
+                            context.pushView(
+                                view: InsuranceView(
+                              patient: patient,
+                            ));
+
+                            context
+                                .read<PatientBloc>()
+                                .add(GetInsuranceEvent(patient));
                           },
                         ),
                       ],
