@@ -120,7 +120,7 @@ class AddNewInfoModelSheetWidget extends StatelessWidget {
                               },
                             ),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Center(
                             child: ClickContainerWidget(
                               onTap: () {

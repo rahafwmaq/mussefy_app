@@ -9,8 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.4
-  supabase_flutter: ^2.3.4
+  lottie:
+  easy_localization: 
+  flutter_bloc: 
+  flutter_dotenv: 
+  http: 
+  supabase_flutter: 
   qr_flutter:
   barcode_widget:
   flutter_barcode_scanner: ^2.0.0
@@ -25,6 +29,8 @@ flutter:
   assets:
     - assets/images/
     - .env
+    - assets/translations/
+    - assets/animations/
   fonts:
     - family: Tajawal
       fonts:
