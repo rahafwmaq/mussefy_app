@@ -34,7 +34,7 @@ List home = [
   },
   {
     "type": "Surgical Record",
-    "view": const SurgicalRecordView(),
+    "view":  SurgicalRecordView(),
     "image": 'assets/images/surgical_record.png',
     "title": 'patient_home_screen.fourth_container'.tr(),
   },

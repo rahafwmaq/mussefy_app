@@ -184,6 +184,9 @@ class AddNewInfoModelSheetWidget extends StatelessWidget {
             },
           );
         },
-        icon: const Icon(Icons.add));
+        icon: const Icon(
+          Icons.post_add_rounded,
+          size: 35,
+        ));
   }
 }
