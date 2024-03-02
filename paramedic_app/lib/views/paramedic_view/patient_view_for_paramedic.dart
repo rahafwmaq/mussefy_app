@@ -53,13 +53,18 @@ class PatientViewForParamedic extends StatelessWidget {
                   firstImagePath: 'assets/images/doctor.png',
                   firstTitle: 'Patient\'s Doctor',
                   fisrtOnTap: () {
-                    context.pushView(view: const PatientDoctorView());
+                    context.pushView(
+                        view: PatientDoctorView(
+                      patientId: idText,
+                    ));
                   },
                   secondImagePath: 'assets/images/medical.png',
                   secondTitle: 'Medical Information',
                   secondOnTap: () {
                     context.pushView(
-                        view: const PatientMedicalInformationView());
+                        view: PatientMedicalInformationView(
+                      patientId: idText,
+                    ));
                   },
                 ),
                 height20,

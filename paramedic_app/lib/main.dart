@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/paramedic_bloc.dart';
+import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.dart';
 import 'package:paramedic_app/utilities/functions/supa_initilizer.dart';
 import 'package:paramedic_app/views/logo_view/logo_view.dart';
 
@@ -30,6 +31,9 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider<ParamedicBloc>(
           create: (context) => ParamedicBloc(),
+        ),
+        BlocProvider<PatientBloc>(
+          create: (context) => PatientBloc(),
         )
       ],
       child: MaterialApp(

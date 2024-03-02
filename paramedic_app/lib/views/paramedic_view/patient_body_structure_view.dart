@@ -72,7 +72,10 @@ class _PatientBodyStructureViewState extends State<PatientBodyStructureView> {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Color(0xFF64D0F0), Color(0xFF205078)],
+                  colors: [
+                    Color.fromARGB(255, 255, 255, 255),
+                    Color.fromARGB(255, 255, 255, 255)
+                  ],
                 ),
               ),
               child: Center(child: CircularProgressIndicator())));
