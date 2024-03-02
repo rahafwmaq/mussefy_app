@@ -40,7 +40,7 @@ class TextFormFieldWidget extends StatelessWidget {
       readOnly: readOnly ?? false,
       validator: validator,
       style: TextStyle(color: controllerTextColor),
-      cursorColor: cursorColor,
+      cursorColor: cursorColor ?? red,
       obscureText: obscureText,
       keyboardType: keyboardType,
       controller: controller,

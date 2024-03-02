@@ -26,8 +26,8 @@ List home = [
   },
   {
     "type": "Physical Problem",
-    "view": const PhysicalProblemView(
-        //patient: globalCurrentPatient,
+    "view":  PhysicalProblemView(
+        patient: globalCurrentPatient,
         ),
     "image": 'assets/images/physical_problem.png',
     "title": 'patient_home_screen.third_container'.tr(),
