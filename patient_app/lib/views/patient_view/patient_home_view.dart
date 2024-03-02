@@ -91,7 +91,7 @@ class PatientHomeView extends StatelessWidget {
                           ),
                         ),
                         ContainerTextAndImageWidget(
-                          imagePath: 'assets/images/AI_ask.png',
+                          imagePath: 'assets/images/ask_doctor.png',
                           title: "تحدث مع طبيبك",
                           onTap: () {
                             context.pushView(view: const AskAIView());
