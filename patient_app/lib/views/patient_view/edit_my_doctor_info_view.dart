@@ -15,26 +15,39 @@ import 'package:mussefy_app/utilities/helpers/screen_size.dart';
 import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/view_layout/sizebox.dart';
 
-class EditMyDoctorInfoView extends StatelessWidget {
-  EditMyDoctorInfoView(
+class EditMyDoctorInfoView extends StatefulWidget {
+  const EditMyDoctorInfoView(
       {super.key, required this.patient, required this.doctor});
   final Patient patient;
   final Doctor doctor;
 
+  @override
+  State<EditMyDoctorInfoView> createState() => _EditMyDoctorInfoViewState();
+}
+
+class _EditMyDoctorInfoViewState extends State<EditMyDoctorInfoView> {
   TextEditingController doctorNameController = TextEditingController();
+
   TextEditingController doctorSpecialtyController = TextEditingController();
+
   TextEditingController doctorAddressController = TextEditingController();
+
   TextEditingController doctorEmailController = TextEditingController();
+
   TextEditingController doctorPhoneNumberController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
-    doctorNameController.text = doctor.name ?? '';
-    doctorSpecialtyController.text = doctor.speciality ?? '';
-    doctorAddressController.text = doctor.address ?? '';
-    doctorEmailController.text = doctor.email ?? '';
-    doctorPhoneNumberController.text = doctor.phone ?? '';
+  void initState() {
+    doctorNameController.text = widget.doctor.name ?? '';
+    doctorSpecialtyController.text = widget.doctor.speciality ?? '';
+    doctorAddressController.text = widget.doctor.address ?? '';
+    doctorEmailController.text = widget.doctor.email ?? '';
+    doctorPhoneNumberController.text = widget.doctor.phone ?? '';
+    super.initState();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         FocusManager.instance.primaryFocus?.unfocus();
@@ -127,11 +140,11 @@ class EditMyDoctorInfoView extends StatelessWidget {
 
                           if (doctor.id == null) {
                             context.read<PatientBloc>().add(
-                                AddPatientDoctorInfoEvent(doctor, patient));
+                                AddPatientDoctorInfoEvent(
+                                    doctor, widget.patient));
                           } else {
-                            context
-                                .read<PatientBloc>()
-                                .add(UpdateDoctorInfoEvent(doctor, patient));
+                            context.read<PatientBloc>().add(
+                                UpdateDoctorInfoEvent(doctor, widget.patient));
                           }
                         },
                         color: blueTransit,

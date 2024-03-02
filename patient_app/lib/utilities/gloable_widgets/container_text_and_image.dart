@@ -31,25 +31,27 @@ class ContainerTextAndImageWidget extends StatelessWidget {
           containerColor: white,
           shadowColor: lightGrey,
           blurRadius: 5,
-          child: Row(
-            children: [
-              height10,
-              Image.asset(
-                imagePath,
-                color: red,
-                scale: 11,
-              ),
-              width10,
-              height20,
-              SizedBox(
-                width: context.getHeight(divide: 7),
-                child: TextWidget(
-                  text: title,
-                  textColor: black,
-                  fontSize: 15,
+          child: Center(
+            child: Row(
+              children: [
+                height10,
+                Image.asset(
+                  imagePath,
+                  color: red,
+                  scale: 11,
                 ),
-              ),
-            ],
+                width8,
+                height20,
+                SizedBox(
+                  width: context.getHeight(divide: 7),
+                  child: TextWidget(
+                    text: title,
+                    textColor: black,
+                    fontSize: 15,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
