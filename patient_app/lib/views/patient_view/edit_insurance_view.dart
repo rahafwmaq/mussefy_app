@@ -6,7 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
 import 'package:mussefy_app/models/insurance_model.dart';
-import 'package:mussefy_app/models/patient.dart';
+import 'package:mussefy_app/models/patient_model.dart';
+
 import 'package:mussefy_app/utilities/gloable_data/data.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
@@ -19,25 +20,39 @@ import 'package:mussefy_app/view_layout/sizebox.dart';
 
 final dropdownInsuranceStatusFormKey = GlobalKey<FormState>();
 
-class EditInsuranceView extends StatelessWidget {
-  EditInsuranceView(
+class EditInsuranceView extends StatefulWidget {
+  const EditInsuranceView(
       {super.key, required this.patient, required this.insurance});
   final Patient patient;
   final InsuranceModel insurance;
 
+  @override
+  State<EditInsuranceView> createState() => _EditInsuranceViewState();
+}
+
+class _EditInsuranceViewState extends State<EditInsuranceView> {
   TextEditingController companyNameController = TextEditingController();
+
   TextEditingController patientInsuranceIdController = TextEditingController();
+
   TextEditingController coverageController = TextEditingController();
+
   TextEditingController contactsController = TextEditingController();
+
   String? insuranceStatusValue = '';
 
   @override
-  Widget build(BuildContext context) {
-    companyNameController.text = insurance.companyName ?? '';
-    patientInsuranceIdController.text = insurance.patientInsuranceId ?? '';
-    coverageController.text = insurance.coverage ?? '';
-    contactsController.text = insurance.contacts ?? '';
+  void initState() {
+    companyNameController.text = widget.insurance.companyName ?? '';
+    patientInsuranceIdController.text =
+        widget.insurance.patientInsuranceId ?? '';
+    coverageController.text = widget.insurance.coverage ?? '';
+    contactsController.text = widget.insurance.contacts ?? '';
+    super.initState();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
           context: context,
@@ -117,7 +132,7 @@ class EditInsuranceView extends StatelessWidget {
                             ],
                           ),
                         );
-                        final insuranceId = insurance.id;
+                        final insuranceId = widget.insurance.id;
                         // print('dddd ${insurance.id}');
                         final InsuranceModel insurancee = InsuranceModel(
                             companyName: companyNameController.text,
@@ -126,16 +141,16 @@ class EditInsuranceView extends StatelessWidget {
                             coverage: coverageController.text,
                             contacts: contactsController.text,
                             status: insuranceStatusValue);
-                        print('i am in the ui : id =${insurance.id}');
+                        print('i am in the ui : id =${widget.insurance.id}');
                         print('dddd ${insuranceId}');
 
-                        if (insurance.id == null) {
+                        if (widget.insurance.id == null) {
                           context.read<PatientBloc>().add(
                               AddPatientInsuranceInfoEvent(
-                                  insurancee, patient));
+                                  insurancee, widget.patient));
                         } else {
                           context.read<PatientBloc>().add(UpdateInsuranceEvent(
-                              insurance, patient, insuranceId!));
+                              widget.insurance, widget.patient, insuranceId!));
                         }
                       },
                       color: blueTransit,

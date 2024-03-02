@@ -7,7 +7,7 @@ import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
 import 'package:mussefy_app/models/EmergencyContact_model.dart';
 
-import 'package:mussefy_app/models/patient.dart';
+import 'package:mussefy_app/models/patient_model.dart';
 import 'package:mussefy_app/utilities/gloable_data/data.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/container_widget.dart';

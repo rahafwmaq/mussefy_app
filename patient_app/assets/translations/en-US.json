@@ -210,7 +210,7 @@
     "drawer_account": {
         "title_screen": "My Account",
         "title": "Account Information",
-        "hint_title": "Please fill out all your information so that we can complete the medical card successfully.",
+        "hint_title": "Please fill out all your personal information. So we can complete your medical card successfully",
         "national_id": "National ID",
         "birthday": "Date of Birth",
         "height": "height",

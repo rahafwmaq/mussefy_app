@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_state.dart';
-import 'package:mussefy_app/models/patient.dart';
+import 'package:mussefy_app/models/patient_model.dart';
+
 import 'package:mussefy_app/utilities/gloable_widgets/container_text_and_image.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/get_first_word.dart';
@@ -31,7 +32,9 @@ class PatientHomeView extends StatelessWidget {
       appBar: AppBar(
         iconTheme: const IconThemeData(size: 35, color: red),
       ),
-      drawer: const DrawerView(),
+      drawer: DrawerView(
+        patient: patient,
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
 import 'package:mussefy_app/models/chronic_disease_model.dart';
-import 'package:mussefy_app/models/patient.dart';
+import 'package:mussefy_app/models/patient_model.dart';
+
 import 'package:mussefy_app/utilities/gloable_widgets/row_two_text_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/screen_size.dart';

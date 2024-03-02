@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mussefy_app/models/patient.dart';
+import 'package:mussefy_app/models/patient_model.dart';
+
 import 'package:mussefy_app/utilities/helpers/screen_size.dart';
 import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/view_layout/sizebox.dart';

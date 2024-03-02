@@ -1,6 +1,10 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:mussefy_app/models/PersonalInfo_model.dart';
+import 'package:mussefy_app/models/patient_model.dart';
+
 import 'package:mussefy_app/utilities/gloable_data/data.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
@@ -15,7 +19,8 @@ import 'package:mussefy_app/view_layout/sizebox.dart';
 final dropdownBloodTypeFormKey = GlobalKey<FormState>();
 
 class PatientAccount extends StatelessWidget {
-  PatientAccount({super.key});
+  PatientAccount({super.key, required this.patient});
+  final Patient patient;
 
   TextEditingController nationalIdController = TextEditingController();
   TextEditingController birthdayController = TextEditingController();
@@ -25,6 +30,10 @@ class PatientAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PersonalInfo personalInfo = PersonalInfo();
+    nationalIdController.text = personalInfo.nationalId ?? '';
+    birthdayController.text = personalInfo.birthday ?? '';
+
     return GestureDetector(
       onTap: () {
         FocusManager.instance.primaryFocus?.unfocus();
@@ -32,28 +41,27 @@ class PatientAccount extends StatelessWidget {
       child: Scaffold(
         appBar: customAppBar(
             centerTitle: true,
-            title: 'My Account',
+            title: 'drawer_account.title_screen'.tr(),
             context: context,
             widget: Container()),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: SizedBox(
-              height: context.getHeight(divide: 1.2),
+              height: context.getHeight(divide: 1.28),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const TextWidget(
-                        text: 'Account Information',
+                      TextWidget(
+                        text: 'drawer_account.title'.tr(),
                         fontSize: 20,
                       ),
                       height10,
-                      const TextWidget(
-                        text:
-                            'Please fill out all your personal information. So we can complete your medical card successfully',
+                      TextWidget(
+                        text: 'drawer_account.hint_title'.tr(),
                         fontSize: 15,
                       ),
                       height20,
@@ -61,12 +69,12 @@ class PatientAccount extends StatelessWidget {
                         controller: nationalIdController,
                         keyboardType: TextInputType.number,
                         obscureText: false,
-                        labelText: 'National ID',
+                        labelText: 'drawer_account.national_id'.tr(),
                         labelTextColor: red,
                         cursorColor: red,
                         suffixIcon: const Icon(
                           Icons.assignment_ind_outlined,
-                          
+                          color: red,
                         ),
                       ),
                       height20,
@@ -74,12 +82,12 @@ class PatientAccount extends StatelessWidget {
                         controller: heightController,
                         keyboardType: TextInputType.number,
                         obscureText: false,
-                        labelText: 'Height',
+                        labelText: 'drawer_account.height'.tr(),
                         labelTextColor: red,
                         cursorColor: red,
                         suffixIcon: const Icon(
                           Icons.height_rounded,
-                      
+                          color: red,
                         ),
                       ),
                       height20,
@@ -87,23 +95,23 @@ class PatientAccount extends StatelessWidget {
                         controller: weightController,
                         keyboardType: TextInputType.number,
                         obscureText: false,
-                        labelText: 'Weight',
+                        labelText: 'drawer_account.weight'.tr(),
                         labelTextColor: red,
                         cursorColor: red,
                         suffixIcon: const Icon(
                           Icons.line_weight_rounded,
-                      
+                          color: red,
                         ),
                       ),
                       height20,
                       DatePickerWidget(
                         dateController: birthdayController,
-                        labelText: 'Date of Birth',
+                        labelText: 'drawer_account.birthday'.tr(),
                       ),
                       height20,
                       DropDownWidget(
                         dropdownFormKey: dropdownBloodTypeFormKey,
-                        hintTextDropDownMenu: 'Blood Type',
+                        hintTextDropDownMenu: 'drawer_account.blood_type'.tr(),
                         dropdownItems: bloodType,
                         onSelect: (newValue) {
                           bloodTypeValue = newValue!;
@@ -111,18 +119,14 @@ class PatientAccount extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Column(
-                    children: [
-                      Center(
-                        child: ClickContainerWidget(
-                          onTap: () {},
-                          color: blueTransit,
-                          text: 'Save',
-                          textColor: white,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
+                  Center(
+                    child: ClickContainerWidget(
+                      onTap: () {},
+                      color: blueTransit,
+                      text: 'Save',
+                      textColor: white,
+                      fontSize: 18,
+                    ),
                   )
                 ],
               ),

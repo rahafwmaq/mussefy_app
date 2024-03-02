@@ -8,7 +8,8 @@ import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
 import 'package:mussefy_app/models/MedicalInformation_model.dart';
 import 'package:mussefy_app/models/allergies_model.dart';
 import 'package:mussefy_app/models/chronic_disease_model.dart';
-import 'package:mussefy_app/models/patient.dart';
+import 'package:mussefy_app/models/patient_model.dart';
+
 import 'package:mussefy_app/utilities/gloable_data/data.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';

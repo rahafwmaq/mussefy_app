@@ -6,7 +6,8 @@ import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_state.dart';
 import 'package:mussefy_app/models/MedicalInformation_model.dart';
 import 'package:mussefy_app/models/PersonalInfo_model.dart';
-import 'package:mussefy_app/models/patient.dart';
+import 'package:mussefy_app/models/patient_model.dart';
+
 import 'package:mussefy_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/navigator.dart';
@@ -77,7 +78,7 @@ class MedicalInformationView extends StatelessWidget {
                         patient: state.patient,
                         medicalInformation: state.medicalInformation,
                       ),
-                      Divider(
+                      const Divider(
                         indent: 2,
                       ),
                       height20,
@@ -85,13 +86,12 @@ class MedicalInformationView extends StatelessWidget {
                         text: 'medical_inforamtion.chronic_disease'.tr(),
                         fontSize: 22,
                       ),
-
                       height20,
                       ChronicDiseaseContainer(
                         chronicDisease: state.chronicDisease,
                         patient: patient,
                       ),
-                      Divider(
+                      const Divider(
                         indent: 2,
                       ),
                       height20,

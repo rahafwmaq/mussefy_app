@@ -9,7 +9,7 @@ import 'package:mussefy_app/models/chronic_disease_model.dart';
 import 'package:mussefy_app/models/doctor_model.dart';
 import 'package:mussefy_app/models/insurance_model.dart';
 import 'package:mussefy_app/models/medications_model.dart';
-import 'package:mussefy_app/models/patient.dart';
+import 'package:mussefy_app/models/patient_model.dart';
 
 abstract class PatientBlocEvent {}
 

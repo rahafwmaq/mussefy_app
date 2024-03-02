@@ -15,7 +15,8 @@ import 'package:mussefy_app/models/chronic_disease_model.dart';
 import 'package:mussefy_app/models/doctor_model.dart';
 import 'package:mussefy_app/models/insurance_model.dart';
 import 'package:mussefy_app/models/medications_model.dart';
-import 'package:mussefy_app/models/patient.dart';
+import 'package:mussefy_app/models/patient_model.dart';
+
 import 'package:mussefy_app/models/surgery_model.dart';
 import 'package:mussefy_app/utilities/gloable_data/globals.dart';
 import 'package:mussefy_app/utilities/helpers/format.dart';
