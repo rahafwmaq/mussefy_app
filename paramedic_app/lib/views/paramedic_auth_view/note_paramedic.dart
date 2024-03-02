@@ -10,14 +10,13 @@ class NoteParamedic extends StatelessWidget {
     return SizedBox(
       width: context.getWidth(divide: 1.30),
       child: RichText(
-        text: const TextSpan(
-          text: 'Note :  ',
-          style: TextStyle(color: blue, fontWeight: FontWeight.bold),
+        text: TextSpan(
+          text: 'ParamedicRegistrationScreen.pre',
+          style: const TextStyle(color: blue, fontWeight: FontWeight.bold),
           children: <TextSpan>[
             TextSpan(
-                text:
-                    'This ID is given to paramedics staff whom information was submitted to Mussefy Database through an employer',
-                style: TextStyle(fontWeight: FontWeight.normal)),
+                text: 'ParamedicRegistrationScreen.note',
+                style: const TextStyle(fontWeight: FontWeight.normal)),
           ],
         ),
       ),

@@ -19,20 +19,18 @@ class SupaGetAndDelete {
   final supabase = Supabase.instance.client;
 
   getParamedic(String id) async {
-    print("got here in getParamedic");
-    print("id $id");
+    print("object");
     try {
       final response =
           await supabase.from('paramedic').select().eq('moseefy_id', id);
-      print(response);
       if (response.isEmpty) {
         return null;
       } else {
-        print("else in getParamedic");
         return Paramedic.fromJson(response[0]);
       }
     } catch (error) {
       print(error.toString());
+      return null;
     }
   }
 
@@ -194,9 +192,7 @@ class SupaGetAndDelete {
           .eq('id', patient.id!)
           .select();
       print(response2);
-      if (response2 != null) {
-        await supabase.from('insurance').delete().eq('id', insuranceID);
-      }
+      await supabase.from('insurance').delete().eq('id', insuranceID);
     } catch (error) {
       print(error.toString());
     }
@@ -229,12 +225,10 @@ class SupaGetAndDelete {
           .eq('id', patient.id!)
           .select();
       print(response2);
-      if (response2 != null) {
-        await supabase
-            .from('medical_information')
-            .delete()
-            .eq('id', medicalInformationId);
-      }
+      await supabase
+          .from('medical_information')
+          .delete()
+          .eq('id', medicalInformationId);
     } catch (error) {
       print(error.toString());
     }
@@ -261,9 +255,7 @@ class SupaGetAndDelete {
           .eq('id', patient.id!)
           .select();
       print(response2);
-      if (response2 != null) {
-        await supabase.from('doctors').delete().eq('id', doctorId);
-      }
+      await supabase.from('doctors').delete().eq('id', doctorId);
     } catch (error) {
       print(error.toString());
     }

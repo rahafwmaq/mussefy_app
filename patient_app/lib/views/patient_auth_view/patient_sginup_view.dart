@@ -35,7 +35,7 @@ class PatientSginupView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                height50,
+                height20,
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 50),

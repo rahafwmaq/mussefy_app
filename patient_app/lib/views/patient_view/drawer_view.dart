@@ -9,7 +9,6 @@ import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_state.dart';
 import 'package:mussefy_app/models/patient_model.dart';
-
 import 'package:mussefy_app/utilities/gloable_data/globals.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/navigator.dart';
@@ -31,11 +30,6 @@ class DrawerView extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: context.getHeight(divide: 8)),
       child: Drawer(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(100),
-          ),
-        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
           child: Column(

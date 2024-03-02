@@ -1,10 +1,10 @@
 name: mussefy_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.2.4 <4.0.0'
+  sdk: ">=3.2.4 <4.0.0"
 
 dependencies:
   flutter:
@@ -12,14 +12,14 @@ dependencies:
   pinput: ^4.0.0
   qr_flutter: ^4.1.0
   lottie:
-  easy_localization: 
-  flutter_bloc: 
-  flutter_dotenv: 
-  http: 
-  supabase_flutter: 
+  easy_localization:
+  flutter_bloc:
+  flutter_dotenv:
+  http:
+  supabase_flutter:
+  image_picker:
   file_picker: ^6.1.1
   url_launcher: ^6.2.5
-  image_picker: ^1.0.7
   cached_network_image: ^3.3.1
 
 dev_dependencies:
