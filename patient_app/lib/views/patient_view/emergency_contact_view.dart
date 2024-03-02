@@ -32,23 +32,8 @@ class EmergencyContactView extends StatelessWidget {
         appBar: customAppBar(
             context: context,
             widget: AddNewEmergency(
-              emergencyNameController: emergencyNameController,
-              emergencyPhoneController: emergencyPhoneController,
+              patient: patient,
               titleAddInfo: 'drawer_emergency_contact.title_screen'.tr(),
-              onPressed: () {
-                context.popView();
-                final EmergencyContact emergencyContact = EmergencyContact(
-                    name: emergencyNameController.text,
-                    phoneNumber: emergencyPhoneController.text,
-                    relationshipType: relationship);
-
-                context
-                    .read<PatientBloc>()
-                    .add(AddEmergencyContactEvent(emergencyContact, patient));
-
-                emergencyNameController.clear();
-                emergencyPhoneController.clear();
-              },
             ),
             title: 'drawer_widget.emergency_contact'.tr(),
             centerTitle: true),

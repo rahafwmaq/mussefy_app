@@ -2,6 +2,10 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
+import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
+import 'package:mussefy_app/models/EmergencyContact_model.dart';
 
 import 'package:mussefy_app/models/patient.dart';
 import 'package:mussefy_app/utilities/gloable_data/data.dart';
@@ -10,6 +14,7 @@ import 'package:mussefy_app/utilities/gloable_widgets/container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/drop_down_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
+import 'package:mussefy_app/utilities/helpers/navigator.dart';
 import 'package:mussefy_app/utilities/helpers/screen_size.dart';
 import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/view_layout/sizebox.dart';
@@ -17,17 +22,11 @@ import 'package:mussefy_app/view_layout/sizebox.dart';
 final dropdownRelationshipToPatientFormKey2 = GlobalKey<FormState>();
 
 class AddNewEmergency extends StatelessWidget {
-  AddNewEmergency(
-      {super.key,
-      required this.emergencyNameController,
-      required this.emergencyPhoneController,
-      required this.titleAddInfo,
-      this.patient, required this.onPressed});
+  AddNewEmergency({super.key, required this.titleAddInfo, this.patient});
 
-  TextEditingController emergencyNameController;
-  TextEditingController emergencyPhoneController;
+  TextEditingController emergencyNameController = TextEditingController();
+  TextEditingController emergencyPhoneController = TextEditingController();
   String? relationship;
-  final Function() onPressed;
 
   final String titleAddInfo;
   final Patient? patient;
@@ -109,7 +108,24 @@ class AddNewEmergency extends StatelessWidget {
                             child: ClickContainerWidget(
                               height: context.getWidth(divide: 10),
                               width: context.getWidth(divide: 3),
-                              onTap: onPressed,
+                              onTap: () {
+                                context.popView();
+                                final EmergencyContact emergencyContact =
+                                    EmergencyContact(
+                                        name:
+                                            emergencyNameController.text.trim(),
+                                        phoneNumber: emergencyPhoneController
+                                            .text
+                                            .trim(),
+                                        relationshipType: relationship);
+
+                                context.read<PatientBloc>().add(
+                                    AddEmergencyContactEvent(
+                                        emergencyContact, patient!));
+
+                                emergencyNameController.clear();
+                                emergencyPhoneController.clear();
+                              },
                               color: blueTransit,
                               text: 'add_new_info_model_sheet_widget.send_add'
                                   .tr(),

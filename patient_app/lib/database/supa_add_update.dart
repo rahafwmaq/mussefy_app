@@ -74,15 +74,13 @@ class SupaAddAndUpdate {
     try {
       final response =
           await supabase.from('insurance').insert(insurance.toMap()).select();
-      if (response != null) {
-        patient.insuranceId = response[0]['id'];
-        final response2 = await supabase
-            .from('patients')
-            .update(patient.toJson())
-            .eq('id', patient.id!)
-            .select();
-        print(response2);
-      }
+      patient.insuranceId = response[0]['id'];
+      final response2 = await supabase
+          .from('patients')
+          .update(patient.toJson())
+          .eq('id', patient.id!)
+          .select();
+      print(response2);
     } catch (error) {
       print(error.toString());
     }
@@ -92,15 +90,13 @@ class SupaAddAndUpdate {
     try {
       final response =
           await supabase.from('doctors').insert(doctor.toMap()).select();
-      if (response != null) {
-        patient.doctorId = response[0]['id'];
-        final response2 = await supabase
-            .from('patients')
-            .update(patient.toJson())
-            .eq('id', patient.id!)
-            .select();
-        print(response2);
-      }
+      patient.doctorId = response[0]['id'];
+      final response2 = await supabase
+          .from('patients')
+          .update(patient.toJson())
+          .eq('id', patient.id!)
+          .select();
+      print(response2);
     } catch (error) {
       print(error.toString());
     }
@@ -115,15 +111,13 @@ class SupaAddAndUpdate {
           .from('medical_information')
           .insert(medicalInformation.toMap())
           .select();
-      if (response != null) {
-        patient.medicalInformationId = response[0]['id'];
-        final response2 = await supabase
-            .from('patients')
-            .update(patient.toJson())
-            .eq('id', patient.id!)
-            .select();
-        print(response2);
-      }
+      patient.medicalInformationId = response[0]['id'];
+      final response2 = await supabase
+          .from('patients')
+          .update(patient.toJson())
+          .eq('id', patient.id!)
+          .select();
+      print(response2);
     } catch (error) {
       print(error.toString());
     }
@@ -174,8 +168,7 @@ class SupaAddAndUpdate {
         'relationship_to_patient': emergencyContact.relationshipType,
         'patient_id': patient.id
       }).select();
-      // print('has add emergency');
-      // print(response);
+      return response;
     } catch (error) {
       print(error.toString());
     }
