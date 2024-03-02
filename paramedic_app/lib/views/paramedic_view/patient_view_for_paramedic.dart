@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/row_two_container_widget.dart';
 import 'package:paramedic_app/utilities/helpers/navigator.dart';
@@ -15,8 +17,13 @@ import 'package:paramedic_app/views/paramedic_view/patient_surgery_report_view.d
 import 'package:paramedic_app/views/paramedic_view/patient_xray_report_view.dart';
 
 class PatientViewForParamedic extends StatelessWidget {
-  const PatientViewForParamedic({super.key, required this.idText,});
+  const PatientViewForParamedic({
+    super.key,
+    required this.idText,
+    required this.patient,
+  });
   final String idText;
+  final Patient patient;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,8 +31,8 @@ class PatientViewForParamedic extends StatelessWidget {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-        appBar:
-            customAppBar(context: context, title: 'Patient\'s Medical History'),
+        appBar: customAppBar(
+            context: context, title: 'paramedic_patient_screen.title'.tr()),
         body: SizedBox(
           width: context.getWidth(),
           child: SafeArea(
@@ -33,16 +40,19 @@ class PatientViewForParamedic extends StatelessWidget {
             child: Column(
               children: [
                 height20,
-                const PatientCard(),
+                PatientCard(
+                  patient: patient,
+                ),
                 height40,
                 RowTwoContainerWidget(
                   firstImagePath: 'assets/images/emergency_contact.png',
-                  firstTitle: 'Emergency Contact',
+                  firstTitle: 'paramedic_patient_screen.emergency_contact'.tr(),
                   fisrtOnTap: () {
                     context.pushView(view: const PatientEmergencyContactView());
                   },
                   secondImagePath: 'assets/images/body_structure.png',
-                  secondTitle: 'Body Structure',
+                  secondTitle:
+                      'paramedic_patient_screen.emergency_contact'.tr(),
                   secondOnTap: () {
                     context.pushView(
                         view: PatientBodyStructureView(patientId: idText));
@@ -51,15 +61,13 @@ class PatientViewForParamedic extends StatelessWidget {
                 height20,
                 RowTwoContainerWidget(
                   firstImagePath: 'assets/images/doctor.png',
-                  firstTitle: 'Patient\'s Doctor',
+                  firstTitle: 'paramedic_patient_screen.doctor'.tr(),
                   fisrtOnTap: () {
-                    context.pushView(
-                        view: const PatientDoctorView(
-                    
-                    ));
+                    context.pushView(view: const PatientDoctorView());
                   },
                   secondImagePath: 'assets/images/medical.png',
-                  secondTitle: 'Medical Information',
+                  secondTitle:
+                      'paramedic_patient_screen.medical_inforamtion'.tr(),
                   secondOnTap: () {
                     context.pushView(
                         view: PatientMedicalInformationView(
@@ -70,12 +78,12 @@ class PatientViewForParamedic extends StatelessWidget {
                 height20,
                 RowTwoContainerWidget(
                   firstImagePath: 'assets/images/medication.png',
-                  firstTitle: 'Medication',
+                  firstTitle: 'paramedic_patient_screen.medication'.tr(),
                   fisrtOnTap: () {
                     context.pushView(view: const PatientMedicationView());
                   },
                   secondImagePath: 'assets/images/surgery.png',
-                  secondTitle: 'Surgery Reports',
+                  secondTitle: 'paramedic_patient_screen.surgery'.tr(),
                   secondOnTap: () {
                     context.pushView(view: const PatientSurgeryReportView());
                   },
@@ -83,12 +91,12 @@ class PatientViewForParamedic extends StatelessWidget {
                 height20,
                 RowTwoContainerWidget(
                   firstImagePath: 'assets/images/X-Rays.png',
-                  firstTitle: 'X-Rays Reports',
+                  firstTitle: 'paramedic_patient_screen.xray'.tr(),
                   fisrtOnTap: () {
                     context.pushView(view: const PatientXrayReportView());
                   },
                   secondImagePath: 'assets/images/laboratory.png',
-                  secondTitle: 'Laboratory Reports',
+                  secondTitle: 'paramedic_patient_screen.laboratory'.tr(),
                   secondOnTap: () {
                     context.pushView(view: const PatientLaboratoryReportView());
                   },

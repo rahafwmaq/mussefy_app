@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.dart';
+import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_event.dart';
 import 'package:paramedic_app/database/supa_get_delete/supa_get_delete.dart';
 import 'package:paramedic_app/globals/global.dart';
 import 'package:paramedic_app/models/paramedic_model.dart';
@@ -6,7 +9,6 @@ import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
-import 'package:paramedic_app/utilities/helpers/navigator.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/view_layout/sizebox.dart';
@@ -15,7 +17,8 @@ import 'package:paramedic_app/views/paramedic_view/patient_view_for_paramedic.da
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class ParamedicHomeView extends StatefulWidget {
-  const ParamedicHomeView({super.key, required Paramedic paramedic});
+  const ParamedicHomeView({super.key, required this.paramedic});
+  final Paramedic paramedic;
 
   @override
   State<ParamedicHomeView> createState() => _ParamedicHomeViewState();
@@ -53,14 +56,19 @@ class _ParamedicHomeViewState extends State<ParamedicHomeView> {
     try {
       final Patient myPatient =
           await SupaGetAndDelete().getPatientById(patientIDController.text);
+
+      context.read<PatientBloc>().add(GetPatientInfoCardEvent(myPatient));
+
       globalCurrentPatient = myPatient;
       print(globalCurrentPatient!.fullName!);
       if (myPatient.id != null) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>
-                PatientViewForParamedic(idText: patientIDController.text),
+            builder: (context) => PatientViewForParamedic(
+              idText: patientIDController.text,
+              patient: globalCurrentPatient!,
+            ),
           ),
         );
       }
@@ -88,6 +96,23 @@ class _ParamedicHomeViewState extends State<ParamedicHomeView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.translate_rounded,
+                            size: 35,
+                          )),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.logout,
+                            size: 35,
+                          ))
+                    ],
+                  ),
                   const ParamedicProfilePic(),
                   height10,
                   const TextWidget(
@@ -95,8 +120,8 @@ class _ParamedicHomeViewState extends State<ParamedicHomeView> {
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
-                  const TextWidget(
-                    text: 'Faisal Alshamary',
+                  TextWidget(
+                    text: widget.paramedic.name!,
                     fontSize: 18,
                     fontWeight: FontWeight.w400,
                   ),
@@ -137,11 +162,8 @@ class _ParamedicHomeViewState extends State<ParamedicHomeView> {
                   ),
                   height20,
                   ClickContainerWidget(
-                    onTap: () {
-                      context.pushView(
-                          view: const PatientViewForParamedic(
-                        idText: "1abe2dce-529f-49dd-8b1d-c3f7af31233d",
-                      ));
+                    onTap: () async {
+                      fetchAndNavigate();
                     },
                     color: blueTransit,
                     text: 'Submit',
@@ -171,7 +193,9 @@ class _ParamedicHomeViewState extends State<ParamedicHomeView> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => PatientViewForParamedic(
-                                      idText: patientIDController.text),
+                                    idText: patientIDController.text,
+                                    patient: globalCurrentPatient!,
+                                  ),
                                 ),
                               );
                             }

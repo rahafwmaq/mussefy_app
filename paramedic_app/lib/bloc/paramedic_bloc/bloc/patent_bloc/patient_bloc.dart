@@ -148,11 +148,12 @@ class PatientBloc extends Bloc<PatientBlocEvent, PatientBlocSatet> {
     //--------------------- get patient personal info --------------------------
 
     on<GetPatientInfoCardEvent>((event, emit) async {
-      // print("00000000000000000000000000000000000");
+      print("00000000000000000000000000000000000");
 
       if (event.patient.personalInformationId != null) {
         final PersonalInfo patientPersonaInfo = await SupaGetAndDelete()
             .getPersonalInformationById(event.patient.personalInformationId!);
+        print('hhhh');
         final List<ChronicDisease> chronicDiseaseList =
             await getChronicDisease(event.patient);
         emit(SucssessPatientInfoCardState(

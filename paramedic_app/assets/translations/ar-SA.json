@@ -16,6 +16,21 @@
 
         
     },
+
+    "paramedic_patient_screen": {
+        "title": "السجل الطبي للمريض",
+        "emergency_contact": "جهات الإتصال الطارئة",
+        "body_structure": "هيكل الجسم",
+        "doctor": "طبيب المريض",
+        "medication": "الأدوية",
+        "medical_inforamtion": "السجل الطبي",
+        "surgery": "التقارير العمليات الجراحية",
+        "laboratory": "التقارير المخبرية",
+        "xray": "التقارير الأشعة السينية"
+
+
+        
+    },
     "user_type_screen": {
         "userSelection1": "أنا مسعف",
         "userSelection2": "أنا مستخدم",

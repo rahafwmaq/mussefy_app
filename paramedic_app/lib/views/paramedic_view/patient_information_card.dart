@@ -1,53 +1,59 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:paramedic_app/models/PersonalInfo_model.dart';
+import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/row_two_text_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/sizebox.dart';
 
-class PatientInformationCard extends StatelessWidget {
-  const PatientInformationCard({super.key});
+class PatientInformation extends StatelessWidget {
+  const PatientInformation(
+      {super.key, required this.patient, required this.personalInfo});
+  final Patient patient;
+  final PersonalInfo personalInfo;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.getWidth(divide: 2),
-      child: const Column(
+      width: context.getWidth(divide: 1.6),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           height20,
           TextWidget(
-            text: 'Patient Name :',
+            text: 'patient_information.patient_name'.tr(),
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
           TextWidget(
-            text: 'Khalid Hassan Al-Gamdi',
+            text: patient.fullName!,
             fontSize: 15,
           ),
           height6,
           RowTwoTextWidget(
-            title: 'National ID : ',
-            patientData: '1023322123',
+            title: 'patient_information.national_id'.tr(),
+            patientData: personalInfo.nationalId!,
           ),
           height6,
           RowTwoTextWidget(
-            title: 'Date of Birth : ',
-            patientData: '1957-05-09',
+            title: 'patient_information.patient_date'.tr(),
+            patientData: ' ${personalInfo.birthday ?? ''}',
           ),
           height6,
           RowTwoTextWidget(
-            title: 'Blood Type : ',
-            patientData: 'AB-',
+            title: 'patient_information.patient_blood_type'.tr(),
+            patientData: ' ${personalInfo.bloodType ?? ''}',
           ),
           height6,
           RowTwoTextWidget(
-            title: 'Height : ',
-            patientData: '170.0',
+            title: 'patient_information.patient_height'.tr(),
+            patientData: ' ${personalInfo.height ?? ''}',
           ),
           height6,
           RowTwoTextWidget(
-            title: 'Height : ',
-            patientData: '85.0',
+            title: 'patient_information.patient_weight'.tr(),
+            patientData: ' ${personalInfo.weight ?? ''}',
           ),
           height20,
         ],

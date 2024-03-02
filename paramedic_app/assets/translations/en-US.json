@@ -13,6 +13,19 @@
         "or":"OR",
         "patient_id": "Patient ID"
     },
+    "paramedic_patient_screen": {
+        "title": "Patient's Medical History",
+        "emergency_contact": "Emergency Contact",
+        "body_structure": "Body Structure",
+        "doctor": "Patient's Doctor",
+        "medication":"Medication",
+        "medical_inforamtion": "Medical Information",
+        "surgery": "Surgery Reports",
+        "laboratory": "Laboratory Reports ",
+        "xray": "X-Rays Reports"
+
+        
+    },
     
     "user_type_screen": {
         "userSelection1": "I am a paramedic",
