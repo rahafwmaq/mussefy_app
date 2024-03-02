@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
+import 'package:mussefy_app/bloc/patient_bloc/patient_state.dart';
 import 'package:mussefy_app/models/patient.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/container_text_and_image.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
@@ -66,13 +67,24 @@ class PatientHomeView extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        ContainerTextAndImageWidget(
-                          imagePath: 'assets/images/emergency_contact.png',
-                          title: 'drawer_widget.emergency_contact'.tr(),
-                          onTap: () {
-                            context.pushView(
-                                view: const EmergencyContactView());
+                        BlocListener<PatientBloc, PatientBlocSatet>(
+                          listener: (context, state) {
+                            if (state is BringContactListState) {
+                              context.pushView(
+                                  view: EmergencyContactView(
+                                patient: patient,
+                                contactList: state.contacts,
+                              ));
+                            }
                           },
+                          child: ContainerTextAndImageWidget(
+                            imagePath: 'assets/images/emergency_contact.png',
+                            title: 'drawer_widget.emergency_contact'.tr(),
+                            onTap: () {
+                              context.read<PatientBloc>().add(
+                                  GetEmergencyContactEvent(patient: patient));
+                            },
+                          ),
                         ),
                         ContainerTextAndImageWidget(
                           imagePath: 'assets/images/AI_ask.png',
