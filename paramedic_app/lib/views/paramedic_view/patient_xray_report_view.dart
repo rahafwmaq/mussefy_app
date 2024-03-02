@@ -9,7 +9,7 @@ class PatientXrayReportView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(context: context, title: 'X-Ray Reports'),
-      body: Center(
+      body: const Center(
         child: TextWidget(text: 'text'),
       ),
     );
