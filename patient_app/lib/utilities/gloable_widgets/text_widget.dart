@@ -7,7 +7,7 @@ class TextWidget extends StatelessWidget {
        this.textColor,
        this.fontSize,
        this.fontWeight,
-       this.fontFamily});
+       this.fontFamily,});
 
   final String text;
   final Color? textColor;

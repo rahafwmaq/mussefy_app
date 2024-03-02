@@ -9,20 +9,24 @@ class ClickContainerWidget extends StatelessWidget {
       required this.color,
       required this.text,
       required this.textColor,
-      required this.fontSize});
+      required this.fontSize,
+      this.height,
+      this.width});
   final Function() onTap;
   final Color color;
   final String text;
   final Color textColor;
   final double fontSize;
+  final double? height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 46,
-        width: 200,
+        height: height ?? 46,
+        width: width ?? 200,
         decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(20),
