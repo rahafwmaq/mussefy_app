@@ -54,14 +54,14 @@ class PatientHomeView extends StatelessWidget {
                         ),
                         ContainerTextAndImageWidget(
                           imagePath: 'assets/images/AI_ask.png',
-                          title: 'AI.title'.tr(),
+                          title: "تحدث مع طبيبك",
                           onTap: () {
                             context.pushView(view: const AskAIView());
                           },
                         ),
                         ContainerTextAndImageWidget(
                           imagePath: 'assets/images/AI_ask.png',
-                          title: 'AI.title'.tr(),
+                          title: "اسال الصيدلي",
                           onTap: () {
                             context.pushView(view: const WhatIsThis());
                           },

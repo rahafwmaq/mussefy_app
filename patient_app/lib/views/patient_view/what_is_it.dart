@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mussefy_app/services/ai_api.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
+import 'package:mussefy_app/views/patient_view/chat_wedget.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class WhatIsThis extends StatefulWidget {
@@ -41,6 +42,8 @@ class _WhatIsThisState extends State<WhatIsThis> {
       _addMessage(ChatMessage(isUser: true, message: '', imageUrl: response));
     }
   }
+
+  void _tosend() async {}
 
   Future<void> _uploadImageToSupabase(File image) async {
     final response = await Supabase.instance.client.storage
@@ -104,10 +107,6 @@ class _WhatIsThisState extends State<WhatIsThis> {
           SizedBox(
             height: 30,
           ),
-          Container(
-            width: 400,
-            height: 200,
-          ),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.vertical,
@@ -127,7 +126,7 @@ class _WhatIsThisState extends State<WhatIsThis> {
                   width: 100,
                   height: 100,
                   child: FloatingActionButton(
-                    backgroundColor: Colors.amber,
+                    backgroundColor: Color.fromARGB(255, 227, 68, 5),
                     onPressed: _pickImage,
                     child: Icon(
                       Icons.add_a_photo,
@@ -154,62 +153,6 @@ class _WhatIsThisState extends State<WhatIsThis> {
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class ChatMessage extends StatelessWidget {
-  final String message;
-  final bool isUser;
-  final String? imageUrl; // Added to support image URLs
-
-  const ChatMessage({
-    Key? key,
-    required this.message,
-    required this.isUser,
-    this.imageUrl, // Can be null for text messages
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final bool isImage = imageUrl != null;
-
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment:
-            isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
-        children: [
-          if (isImage)
-            Image.network(
-              imageUrl!,
-              width: 200,
-              height: 200,
-              fit: BoxFit.cover,
-            )
-          else
-            Flexible(
-              // Wrapping the Container with Flexible
-              child: Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: isUser
-                      ? Colors.blue
-                      : const Color.fromARGB(255, 6, 32, 54),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Text(
-                  message,
-                  style: const TextStyle(color: Colors.white),
-                  maxLines: null,
-                  softWrap: true,
-                  overflow: TextOverflow
-                      .visible, // Changed to visible to avoid clipping
-                ),
-              ),
-            ),
         ],
       ),
     );
