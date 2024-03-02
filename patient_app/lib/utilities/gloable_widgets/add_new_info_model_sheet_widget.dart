@@ -1,16 +1,18 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_event.dart';
-import 'package:mussefy_app/models/MobilityProblem_model.dart';
-import 'package:mussefy_app/models/patient.dart';
-import 'package:mussefy_app/utilities/gloable_data/data.dart';
+import 'package:mussefy_app/utilities/gloable_data/globals.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/container_widget.dart';
-import 'package:mussefy_app/utilities/gloable_widgets/drop_down_widget.dart';
+import 'package:mussefy_app/utilities/gloable_widgets/date_picker_widget.dart';
+import 'package:mussefy_app/utilities/gloable_widgets/file_picker_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/navigator.dart';
@@ -18,30 +20,35 @@ import 'package:mussefy_app/utilities/helpers/screen_size.dart';
 import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/view_layout/sizebox.dart';
 
-final dropdownMobilityProblrmTypeFormKey = GlobalKey<FormState>();
-final dropdownMobilityProblrmPlacementFormKey = GlobalKey<FormState>();
+// this custom widget for adding
+// - new Sergury
+// - new X-Rays
+// - new Lab Result
 
-class AddNewMobilityProblem extends StatelessWidget {
-  AddNewMobilityProblem(
+class AddNewInfoModelSheetWidget extends StatelessWidget {
+  AddNewInfoModelSheetWidget(
       {super.key,
-      required this.problemNameController,
-      required this.problemDescriptionController,
+      required this.prosessDateController,
+      required this.prosessNameController,
       required this.nameLabelText,
+      required this.dateLabelText,
       required this.titleAddInfo,
-      this.mobilityType,
-      this.mobilityPlace,
-      this.patient});
+      required this.onPressed,
+      this.dropDownWidget,
+      required this.type});
 
-  TextEditingController problemNameController;
-  TextEditingController problemDescriptionController;
+  TextEditingController prosessDateController;
+  TextEditingController prosessNameController;
   final String nameLabelText;
+  final String dateLabelText;
   final String titleAddInfo;
-  String? mobilityType;
-  String? mobilityPlace;
-  final Patient? patient;
+  final Function() onPressed;
+  final Widget? dropDownWidget;
+  final String type;
 
   @override
   Widget build(BuildContext context) {
+    File? fileee;
     return IconButton(
         onPressed: () {
           showModalBottomSheet(
@@ -54,8 +61,10 @@ class AddNewMobilityProblem extends StatelessWidget {
                 },
                 child: Padding(
                   padding: EdgeInsets.only(
+                      top: 80,
                       bottom: MediaQuery.of(context).viewInsets.bottom),
                   child: ContainerWidget(
+                    height: context.getHeight(divide: 1.5),
                     width: context.getWidth(),
                     borderColor: noColor,
                     borderWidth: 0,
@@ -65,9 +74,8 @@ class AddNewMobilityProblem extends StatelessWidget {
                     shadowColor: noColor,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 30),
+                          horizontal: 20, vertical: 20),
                       child: Column(
-                        mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Center(
@@ -77,7 +85,7 @@ class AddNewMobilityProblem extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          height30,
+                          height10,
                           TextWidget(
                             text: 'add_new_info_model_sheet_widget.title_widget'
                                 .tr(),
@@ -85,67 +93,41 @@ class AddNewMobilityProblem extends StatelessWidget {
                           ),
                           height20,
                           TextFormFieldWidget(
-                            cursorColor: red,
-                            labelTextColor: red,
-                            controller: problemNameController,
-                            labelText: nameLabelText,
+                            controller: prosessNameController,
                             obscureText: false,
+                            labelTextColor: red,
+                            labelText: nameLabelText,
                           ),
                           height20,
-                          DropDownWidget(
-                            dropdownFormKey: dropdownMobilityProblrmTypeFormKey,
-                            hintTextDropDownMenu:
-                                'dropDownPhysicalProblrmType.hint_text_type'
-                                    .tr(),
-                            dropdownItems: physicalProblrmType,
-                            onSelect: (newValue) {
-                              mobilityType = newValue;
-                            },
+                          DatePickerWidget(
+                            labelText: dateLabelText,
+                            dateController: prosessDateController,
                           ),
                           height20,
-                          DropDownWidget(
-                            dropdownFormKey:
-                                dropdownMobilityProblrmPlacementFormKey,
-                            hintTextDropDownMenu:
-                                'dropDownPlacementIssue.hint_text_physical_place'
-                                    .tr(),
-                            dropdownItems: placementIssue,
-                            onSelect: (newValue) {
-                              mobilityPlace = newValue;
-                            },
+                          Container(
+                            child: dropDownWidget,
                           ),
-                          height30,
+                          height20,
+                          Center(
+                            child: FilePickerWidget(
+                              onPressed: () async {
+                                print("here");
+                                FilePickerResult? result =
+                                    await FilePicker.platform.pickFiles();
+                                if (result != null) {
+                                  fileee = File(result.files.single.path!);
+                                }
+                              },
+                            ),
+                          ),
+                          Spacer(),
                           Center(
                             child: ClickContainerWidget(
-                              height: context.getWidth(divide: 10),
-                              width: context.getWidth(divide: 3),
                               onTap: () {
-                                context.popView();
-                                print("1");
-                                print(problemNameController.text);
-                                print(mobilityType);
-                                print(mobilityPlace);
-                                if (problemNameController.text.isNotEmpty &&
-                                    mobilityType != null &&
-                                    mobilityPlace != null) {
-                                  print("2");
-
-                                  final MobilityProblem mobilityProblem =
-                                      MobilityProblem(
-                                          problemName:
-                                              problemNameController.text,
-                                          problemType: mobilityType,
-                                          problemPlace: mobilityPlace,
-                                          patientId: patient!.id);
-                                  print("3");
-
-                                  context.read<PatientBloc>().add(
-                                      AddPatientMobilityProblemEvent(
-                                          mobilityProblem,
-                                          patient!.id.toString(),
-                                          patient!));
-                                } else {
-                                  return showDialog(
+                                if (prosessDateController.text.isEmpty ||
+                                    prosessNameController.text.isEmpty ||
+                                    fileee == null) {
+                                  showDialog(
                                     context: context,
                                     builder: (BuildContext context) =>
                                         AlertDialog(
@@ -166,16 +148,33 @@ class AddNewMobilityProblem extends StatelessWidget {
                                       ],
                                     ),
                                   );
+                                } else {
+                                  if (type == 'xray_reports') {
+                                    print('here=======');
+                                    context.read<PatientBloc>().add(
+                                        UploadXrayReportEvent(
+                                            date: prosessDateController.text,
+                                            name: prosessNameController.text,
+                                            pdfFile: fileee ?? File(""),
+                                            patient: globalCurrentPatient!));
+                                  } else if (type == 'surgery_reports') {
+                                    context.read<PatientBloc>().add(
+                                        UploadSurgeryReportEvent(
+                                            date: prosessDateController.text,
+                                            name: prosessNameController.text,
+                                            pdfFile: fileee ?? File(""),
+                                            patient: globalCurrentPatient!));
+                                  }
+                                  context.popView();
                                 }
-                                problemNameController.clear();
                               },
-                              color: blueTransit,
                               text: 'add_new_info_model_sheet_widget.send_add'
                                   .tr(),
+                              color: blueTransit,
                               textColor: white,
                               fontSize: 20,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -185,9 +184,6 @@ class AddNewMobilityProblem extends StatelessWidget {
             },
           );
         },
-        icon: const Icon(
-          Icons.post_add_rounded,
-          size: 35,
-        ));
+        icon: const Icon(Icons.add));
   }
 }

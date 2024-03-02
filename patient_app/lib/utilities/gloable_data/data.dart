@@ -48,7 +48,7 @@ List home = [
   },
   {
     "type": "XRays Report",
-    "view": const XRaysReportsView(),
+    "view":  XRaysReportsView(),
     "image": 'assets/images/x-rays_reports.png',
     "title": 'patient_home_screen.seventh_container'.tr(),
   },

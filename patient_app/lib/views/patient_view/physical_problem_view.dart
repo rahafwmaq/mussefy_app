@@ -9,7 +9,6 @@ import 'package:mussefy_app/bloc/patient_bloc/patient_state.dart';
 import 'package:mussefy_app/models/patient.dart';
 import 'package:mussefy_app/utilities/functions/delete_dialoge.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/app_bar_widget.dart';
-import 'package:mussefy_app/utilities/gloable_widgets/container_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/screen_size.dart';
 import 'package:mussefy_app/view_layout/color.dart';
@@ -30,61 +29,19 @@ class PhysicalProblemView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-          context: context,
-          title: 'physical_proplem.title_screen'.tr(),
-          centerTitle: true,
-          widget: AddNewMobilityProblem(
-              problemNameController: problemNameController,
-              problemDescriptionController: problemDescriptionController,
-              titleAddInfo: 'physical_proplem.title_add_info'.tr(),
-              nameLabelText: 'physical_proplem.name_label_text'.tr(),
-              mobilityType: mobilityType,
-              mobilityPlace: mobilityPlace,
-              patient: patient,
-              onPressed: () {
-                // context.popScreen();
-                // print("1");
-                // print(problemNameController.text);
-                // print(mobilityType);
-                // print(mobilityPlace);
-                // if (problemNameController.text.isNotEmpty &&
-                //     mobilityType != null &&
-                //     mobilityPlace != null) {
-                //   print("2");
-
-                //   final MobilityProblem mobilityProblem = MobilityProblem(
-                //       problemName: problemNameController.text,
-                //       problemType: mobilityType,
-                //       problemPlace: mobilityPlace,
-                //       patientId: patient!.id);
-                //   print("3");
-
-                //   context.read<PatientBloc>().add(
-                //       AddPatientMobilityProblemEvent(
-                //           mobilityProblem, patient!.id.toString(), patient!));
-                // } else {
-                //   return null;
-                // }
-                // problemNameController.clear();
-                // return showDialog(
-                //   context: context,
-                //   builder: (BuildContext context) => AlertDialog(
-                //     title: TextWidget(
-                //         text: 'Patient_regestraion_screen.validatorMessage2'
-                //             .tr()),
-                //     actions: <Widget>[
-                //       TextButton(
-                //         onPressed: () => Navigator.pop(context),
-                //         child: Center(
-                //             child: TextWidget(
-                //           text: 'my_doctor_view.OK'.tr(),
-                //           colorText: red,
-                //         )),
-                //       ),
-                //     ],
-                //   ),
-                // );
-              })),
+        context: context,
+        title: 'physical_proplem.title_screen'.tr(),
+        centerTitle: true,
+        widget: AddNewMobilityProblem(
+          problemNameController: problemNameController,
+          problemDescriptionController: problemDescriptionController,
+          titleAddInfo: 'physical_proplem.title_add_info'.tr(),
+          nameLabelText: 'physical_proplem.name_label_text'.tr(),
+          mobilityType: mobilityType,
+          mobilityPlace: mobilityPlace,
+          patient: patient,
+        ),
+      ),
       body: SizedBox(
         height: context.getHeight(),
         width: context.getWidth(),
