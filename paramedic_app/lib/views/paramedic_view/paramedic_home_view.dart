@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:paramedic_app/models/paramedic_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
@@ -6,11 +8,13 @@ import 'package:paramedic_app/utilities/helpers/navigator.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/view_layout/sizebox.dart';
+import 'package:paramedic_app/views/paramedic_auth_view/paramedic_login_view.dart';
 import 'package:paramedic_app/views/paramedic_view/paramedic_profile_pic.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_view_for_paramedic.dart';
 
 class ParamedicHomeView extends StatelessWidget {
-  ParamedicHomeView({super.key});
+  ParamedicHomeView({super.key, required this.paramedic});
+  final Paramedic paramedic;
 
   final TextEditingController patientIDController = TextEditingController();
 
@@ -30,33 +34,62 @@ class ParamedicHomeView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          if (context.locale.toString() == "en_US") {
+                            context.setLocale(const Locale('ar', 'SA'));
+                          } else {
+                            context.setLocale(const Locale('en', 'US'));
+                          }
+                        },
+                        icon: const Icon(
+                          Icons.translate_rounded,
+                          color: red,
+                          size: 30,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          context.removeUntil(view: ParamedicLoginView());
+                        },
+                        icon: const Icon(
+                          Icons.logout,
+                          color: red,
+                          size: 30,
+                        ),
+                      )
+                    ],
+                  ),
                   const ParamedicProfilePic(),
                   height10,
-                  const TextWidget(
-                    text: 'ID : 103',
+                  TextWidget(
+                    text: '${'ParamedicRegistrationScreen.ID'.tr()} 101',
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
-                  const TextWidget(
-                    text: 'Faisal Alshamary',
+                  TextWidget(
+                    text: paramedic.name!,
                     fontSize: 18,
                     fontWeight: FontWeight.w400,
                   ),
-                  const TextWidget(
-                    text: 'Dr.fisal99@gmail.com',
+                  TextWidget(
+                    text: paramedic.email!,
                     fontSize: 18,
                     fontWeight: FontWeight.w400,
                   ),
-                  const TextWidget(
-                    text: 'King Abdulaziz Hosital',
+                  TextWidget(
+                    text: paramedic.hospital!,
                     fontSize: 18,
                     fontWeight: FontWeight.w400,
                   ),
                   height70,
-                  const Row(
+                   Row(
                     children: [
                       TextWidget(
-                        text: 'Search by Patient ID :',
+                        text: 'ParamedicRegistrationScreen.serachby_id'.tr(),
                         fontSize: 18,
                         textColor: red,
                         fontWeight: FontWeight.bold,
@@ -67,7 +100,7 @@ class ParamedicHomeView extends StatelessWidget {
                   TextFormFieldWidget(
                     keyboardType: TextInputType.text,
                     controller: patientIDController,
-                    labelText: 'Patient ID',
+                    labelText: 'ParamedicRegistrationScreen.patient_id'.tr(),
                     labelTextColor: red,
                     controllerTextColor: black,
                     cursorColor: red,
@@ -86,17 +119,17 @@ class ParamedicHomeView extends StatelessWidget {
                       ));
                     },
                     color: blueTransit,
-                    text: 'Submit',
+                    text:'ParamedicRegistrationScreen.buttonText'.tr(),
                     textColor: white,
                     fontSize: 20,
                   ),
                   height20,
-                  const TextWidget(text: 'OR'),
+                   TextWidget(text: 'ParamedicRegistrationScreen.or'.tr(),),
                   height20,
                   Row(
                     children: [
-                      const TextWidget(
-                        text: 'Scan QR Code :',
+                       TextWidget(
+                        text: 'ParamedicRegistrationScreen.scan_qr'.tr(),
                         fontSize: 18,
                         textColor: red,
                         fontWeight: FontWeight.bold,

@@ -57,7 +57,9 @@ class ParamedicLoginView extends StatelessWidget {
                           listener: (context, state) {
                             if (state is ParamedicLoginSuccessState) {
                               context.removeUntil(
-                                  view:  ParamedicHomeView());
+                                  view: ParamedicHomeView(
+                                paramedic: state.paramedic,
+                              ));
                             } else if (state is ParamedicErrorState) {
                               context.popView();
                               ScaffoldMessenger.of(context).showSnackBar(

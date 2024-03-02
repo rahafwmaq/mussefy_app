@@ -16,6 +16,7 @@ import 'package:mussefy_app/utilities/helpers/screen_size.dart';
 import 'package:mussefy_app/utilities/helpers/signout_dialog.dart';
 import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/view_layout/sizebox.dart';
+import 'package:mussefy_app/views/patient_auth_view/patient_login_view.dart';
 import 'package:mussefy_app/views/patient_view/drawer_content.dart';
 import 'package:mussefy_app/views/patient_view/patient_account_view.dart';
 import 'package:image_picker/image_picker.dart';
@@ -111,7 +112,7 @@ class DrawerView extends StatelessWidget {
                       content: '',
                       onPressed: () {
                         context.read<AuthintcationBloc>().add(SignOutEvent());
-                        context.popView();
+                        context.removeUntil(view: PatientLoginView());
                       });
                 },
               ),
