@@ -54,7 +54,7 @@ List home = [
   },
   {
     "type": "Laboratory Result",
-    "view": const LaboratoryResult(),
+    "view": LaboratoryResult(),
     "image": 'assets/images/laboratory_results.png',
     "title": 'patient_home_screen.sixth_container'.tr(),
   },
