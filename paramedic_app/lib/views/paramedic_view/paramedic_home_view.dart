@@ -86,7 +86,7 @@ class ParamedicHomeView extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                   height70,
-                   Row(
+                  Row(
                     children: [
                       TextWidget(
                         text: 'ParamedicRegistrationScreen.serachby_id'.tr(),
@@ -119,16 +119,19 @@ class ParamedicHomeView extends StatelessWidget {
                       ));
                     },
                     color: blueTransit,
-                    text:'ParamedicRegistrationScreen.buttonText'.tr(),
+                    text: 'ParamedicRegistrationScreen.buttonText'.tr(),
                     textColor: white,
                     fontSize: 20,
                   ),
                   height20,
-                   TextWidget(text: 'ParamedicRegistrationScreen.or'.tr(),),
+                  TextWidget(
+                    text: 'ParamedicRegistrationScreen.or'.tr(),
+                    fontSize: 20,
+                  ),
                   height20,
                   Row(
                     children: [
-                       TextWidget(
+                      TextWidget(
                         text: 'ParamedicRegistrationScreen.scan_qr'.tr(),
                         fontSize: 18,
                         textColor: red,
