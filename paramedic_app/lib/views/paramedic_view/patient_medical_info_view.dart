@@ -81,15 +81,15 @@ class _PatientMedicalInformationViewState
                                   children: [
                                     TextWidget(
                                       text:
-                                          '${'my_medication.my_medication_name'.tr()} ${medication!.medicationName}',
+                                          '${'my_medication.my_medication_name'.tr()} ${medication.medicationName}',
                                     ),
                                     TextWidget(
                                       text:
-                                          '${'my_medication.my_medication_units'.tr()}${medication!.dose}',
+                                          '${'my_medication.my_medication_units'.tr()}${medication.dose}',
                                     ),
                                     TextWidget(
                                       text:
-                                          '${'my_medication.my_medication_time'.tr()} ${medication!.medicationTime}',
+                                          '${'my_medication.my_medication_time'.tr()} ${medication.medicationTime}',
                                     ),
                                   ],
                                 ),

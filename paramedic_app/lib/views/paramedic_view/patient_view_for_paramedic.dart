@@ -15,7 +15,7 @@ import 'package:paramedic_app/views/paramedic_view/patient_surgery_report_view.d
 import 'package:paramedic_app/views/paramedic_view/patient_xray_report_view.dart';
 
 class PatientViewForParamedic extends StatelessWidget {
-  const PatientViewForParamedic({super.key, required this.idText});
+  const PatientViewForParamedic({super.key, required this.idText,});
   final String idText;
   @override
   Widget build(BuildContext context) {
@@ -54,8 +54,8 @@ class PatientViewForParamedic extends StatelessWidget {
                   firstTitle: 'Patient\'s Doctor',
                   fisrtOnTap: () {
                     context.pushView(
-                        view: PatientDoctorView(
-                      patientId: idText,
+                        view: const PatientDoctorView(
+                    
                     ));
                   },
                   secondImagePath: 'assets/images/medical.png',
