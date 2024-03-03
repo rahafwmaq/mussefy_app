@@ -93,7 +93,9 @@ class PatientViewForParamedic extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            const PatientMedicalInformationView(),
+            PatientMedicalInformationView(
+              myPatient: patient,
+            ),
             SizedBox(
               height: context.getHeight(),
               width: context.getWidth(),

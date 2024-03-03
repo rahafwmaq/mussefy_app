@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.dart';
+import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_event.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_state.dart';
 import 'package:paramedic_app/models/MedicalInformation_model.dart';
 import 'package:paramedic_app/models/PersonalInfo_model.dart';
@@ -15,10 +16,14 @@ import 'package:paramedic_app/views/paramedic_view/chronic_disease_container.dar
 import 'package:paramedic_app/views/paramedic_view/patient_information_container.dart';
 
 class PatientMedicalInformationView extends StatelessWidget {
-  const PatientMedicalInformationView({super.key});
+  const PatientMedicalInformationView({super.key, required this.myPatient});
+  final Patient myPatient;
 
   @override
   Widget build(BuildContext context) {
+    context
+        .read<PatientBloc>()
+        .add(GetdataEvent(myPatient.id!, myPatient, 'Medical Information'));
     PersonalInfo personalInfo = PersonalInfo();
     MedicalInformation medicalInformation = MedicalInformation();
     Patient patient = Patient();
