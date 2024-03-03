@@ -1,6 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mussefy_app/services/chat_api.dart';
+import 'package:mussefy_app/utilities/gloable_widgets/app_bar_widget.dart';
+import 'package:mussefy_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:mussefy_app/utilities/helpers/screen_size.dart';
+import 'package:mussefy_app/view_layout/color.dart';
 import 'package:mussefy_app/view_layout/sizebox.dart';
 import 'package:mussefy_app/views/patient_view/chat_wedget.dart';
 
@@ -88,53 +92,12 @@ class _AskAIViewState extends State<AskAIView> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: customAppBar(
+          context: context,
+          widget: Container(),
+          title: 'patient_home_screen.doctor_ai'.tr()),
       body: Column(
         children: [
-          Container(
-            width: context.getWidth(divide: 1),
-            height: context.getHeight(divide: 4.6),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Center(
-              child: Row(
-                children: [
-                  width16,
-                  Container(
-                    height: context.getHeight(divide: 10),
-                    width: context.getWidth(divide: 5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(70),
-                    ),
-                    child: Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(70),
-                      ),
-                    ),
-                  ),
-                  width20,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      height38,
-                      height10,
-                      Text(
-                        "Ai doctor ",
-                        style: TextStyle(fontSize: 34),
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.arrow_forward_rounded,
-                        size: 35,
-                      )),
-                ],
-              ),
-            ),
-          ),
           Expanded(
             child: ListView.builder(
               controller: _scrollController,
@@ -150,28 +113,16 @@ class _AskAIViewState extends State<AskAIView> with WidgetsBindingObserver {
             child: Row(
               children: [
                 Expanded(
-                  child: TextField(
+                  child: TextFormFieldWidget(
                     controller: _messageController,
-                    decoration: const InputDecoration(
-                      hintText: 'اكتب رسالتك هنا ...',
-                      border: OutlineInputBorder(),
-                    ),
+                    obscureText: false,
                     onTap: _scrollToBottom,
+                    hintText: 'patient_home_screen.hint_ai_chat'.tr(),
                   ),
                 ),
-                const SizedBox(width: 20),
-                Container(
-                  width: context.getWidth(divide: 6),
-                  height: context.getHeight(divide: 15),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 225, 64, 5),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: IconButton(
-                    icon: const Icon(Icons.send,
-                        size: 30, color: Color.fromARGB(255, 255, 255, 255)),
-                    onPressed: _sendMessage,
-                  ),
+                IconButton(
+                  icon: const Icon(Icons.send, size: 30, color: red),
+                  onPressed: _sendMessage,
                 ),
               ],
             ),

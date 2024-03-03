@@ -47,7 +47,7 @@ class ContainerTextAndImageWidget extends StatelessWidget {
                   child: TextWidget(
                     text: title,
                     textColor: black,
-                    fontSize: 15,
+                    fontSize: 18,
                   ),
                 ),
               ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mussefy_app/view_layout/color.dart';
 
 class ChatMessage extends StatelessWidget {
   final String message;
@@ -32,21 +33,22 @@ class ChatMessage extends StatelessWidget {
           else
             Flexible(
               // Wrapping the Container with Flexible
-              child: Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: isUser
-                      ? Colors.blue
-                      : const Color.fromARGB(255, 6, 32, 54),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Text(
-                  message,
-                  style: const TextStyle(color: Colors.white),
-                  maxLines: null,
-                  softWrap: true,
-                  overflow: TextOverflow
-                      .visible, // Changed to visible to avoid clipping
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: isUser ? blueTransit : redTransit,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    message,
+                    style: const TextStyle(color: Colors.white),
+                    maxLines: null,
+                    softWrap: true,
+                    overflow: TextOverflow
+                        .visible, // Changed to visible to avoid clipping
+                  ),
                 ),
               ),
             ),

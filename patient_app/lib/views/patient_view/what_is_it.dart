@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mussefy_app/services/ai_api.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/app_bar_widget.dart';
+import 'package:mussefy_app/utilities/helpers/screen_size.dart';
+import 'package:mussefy_app/view_layout/color.dart';
+import 'package:mussefy_app/view_layout/sizebox.dart';
 import 'package:mussefy_app/views/patient_view/chat_wedget.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -71,15 +74,16 @@ class _WhatIsThisState extends State<WhatIsThis> {
         .from('images')
         .getPublicUrl('folder/${_image}');
     if (mypath != "") {
-      _addMessage(ChatMessage(isUser: true, message: "Waht in the image?"));
+      _addMessage(
+          const ChatMessage(isUser: true, message: "Waht in the image?"));
       print(response);
 
       try {
         String responseMessage = await _dallEClient.chatbot(response);
         _addMessage(ChatMessage(isUser: false, message: responseMessage));
       } catch (e) {
-        _addMessage(
-            ChatMessage(isUser: false, message: 'Failed to get response.'));
+        _addMessage(const ChatMessage(
+            isUser: false, message: 'Failed to get response.'));
         print('Error: $e');
       }
 
@@ -99,13 +103,11 @@ class _WhatIsThisState extends State<WhatIsThis> {
       appBar: customAppBar(
           context: context,
           widget: Container(),
-          title: 'AI.title'.tr(),
+          title: 'patient_home_screen.pharmacist_ai'.tr(),
           centerTitle: true),
       body: Column(
         children: [
-          SizedBox(
-            height: 30,
-          ),
+          height30,
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.vertical,
@@ -115,36 +117,44 @@ class _WhatIsThisState extends State<WhatIsThis> {
               },
             ),
           ),
-          Divider(height: 1),
+          const Divider(
+            height: 1,
+            indent: 2,
+            color: red,
+          ),
           Padding(
             padding: const EdgeInsets.all(8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 100,
-                  height: 100,
+                SizedBox(
+                  width: context.getWidth(divide: 3),
+                  height: context.getHeight(divide: 10),
                   child: FloatingActionButton(
-                    backgroundColor: Color.fromARGB(255, 227, 68, 5),
+                    backgroundColor: redTransit,
                     onPressed: _pickImage,
-                    child: Icon(
+                    child: const Icon(
                       Icons.add_a_photo,
-                      size: 30,
+                      color: white,
+                      size: 50,
                     ),
                   ),
                 ),
                 const SizedBox(width: 20),
                 Container(
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 25, 0, 255),
+                    color: blueTransit,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Container(
-                    width: 100,
-                    height: 100,
+                  child: SizedBox(
+                    width: context.getWidth(divide: 3),
+                    height: context.getHeight(divide: 10),
                     child: IconButton(
-                      icon: const Icon(Icons.question_mark,
-                          color: Color.fromARGB(255, 255, 255, 255)),
+                      icon: const Icon(
+                        Icons.question_mark,
+                        color: white,
+                        size: 50,
+                      ),
                       onPressed: _sendMessage,
                     ),
                   ),

@@ -71,7 +71,12 @@
         "fourth_container": "العمليات الجراحية",
         "fifth_container": "دوائي",
         "sixth_container": "نتائج المختبر",
-        "seventh_container": "تقارير الأشعة"
+        "seventh_container": "تقارير الأشعة",
+      "ask_doctor_ai":"اسال الدكتور AI",
+      "ask_pharmacist_ai":"اسال الصيدلاني AI",
+      "doctor_ai":"الدكتور AI",
+      "pharmacist_ai":"الصيدلاني AI",
+      "hint_ai_chat":"اكتب رسالتك هنا ..."
     },
     "my_doctor_view": {
         "title_screen": "طبيبي",
