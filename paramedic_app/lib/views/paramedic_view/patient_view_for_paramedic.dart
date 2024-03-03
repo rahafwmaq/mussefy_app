@@ -1,5 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.dart';
+import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_event.dart';
 import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/row_two_container_widget.dart';
@@ -51,8 +54,7 @@ class PatientViewForParamedic extends StatelessWidget {
                     context.pushView(view: const PatientEmergencyContactView());
                   },
                   secondImagePath: 'assets/images/body_structure.png',
-                  secondTitle:
-                      'paramedic_patient_screen.emergency_contact'.tr(),
+                  secondTitle: 'paramedic_patient_screen.body_structure'.tr(),
                   secondOnTap: () {
                     context.pushView(
                         view: PatientBodyStructureView(patientId: idText));
@@ -63,16 +65,21 @@ class PatientViewForParamedic extends StatelessWidget {
                   firstImagePath: 'assets/images/doctor.png',
                   firstTitle: 'paramedic_patient_screen.doctor'.tr(),
                   fisrtOnTap: () {
-                    context.pushView(view: const PatientDoctorView());
+                    context
+                        .read<PatientBloc>()
+                        .add(GetdataEvent(patient.id!, patient, 'My Doctor'));
+                    context.pushView(
+                        view: PatientDoctorView(
+                      patient: patient,
+                    ));
                   },
                   secondImagePath: 'assets/images/medical.png',
                   secondTitle:
                       'paramedic_patient_screen.medical_inforamtion'.tr(),
                   secondOnTap: () {
-                    context.pushView(
-                        view: PatientMedicalInformationView(
-                      patientId: idText,
-                    ));
+                    context.read<PatientBloc>().add(GetdataEvent(
+                        patient.id!, patient, 'Medical Information'));
+                    context.pushView(view: PatientMedicalInformationView());
                   },
                 ),
                 height20,
@@ -80,12 +87,16 @@ class PatientViewForParamedic extends StatelessWidget {
                   firstImagePath: 'assets/images/medication.png',
                   firstTitle: 'paramedic_patient_screen.medication'.tr(),
                   fisrtOnTap: () {
-                    context.pushView(view: const PatientMedicationView());
+                    context.read<PatientBloc>().add(
+                        GetdataEvent(patient.id!, patient, 'My Medication'));
+                    context.pushView(view: PatientMedicationView());
                   },
                   secondImagePath: 'assets/images/surgery.png',
                   secondTitle: 'paramedic_patient_screen.surgery'.tr(),
                   secondOnTap: () {
-                    context.pushView(view: const PatientSurgeryReportView());
+                    context.read<PatientBloc>().add(
+                        GetdataEvent(patient.id!, patient, 'Surgical Record'));
+                    context.pushView(view: PatientSurgeryReportView());
                   },
                 ),
                 height20,
@@ -93,12 +104,16 @@ class PatientViewForParamedic extends StatelessWidget {
                   firstImagePath: 'assets/images/X-Rays.png',
                   firstTitle: 'paramedic_patient_screen.xray'.tr(),
                   fisrtOnTap: () {
-                    context.pushView(view: const PatientXrayReportView());
+                    context.read<PatientBloc>().add(
+                        GetdataEvent(patient.id!, patient, 'XRays Report'));
+                    context.pushView(view: PatientXrayReportView());
                   },
                   secondImagePath: 'assets/images/laboratory.png',
                   secondTitle: 'paramedic_patient_screen.laboratory'.tr(),
                   secondOnTap: () {
-                    context.pushView(view: const PatientLaboratoryReportView());
+                    context.read<PatientBloc>().add(GetdataEvent(
+                        patient.id!, patient, 'Laboratory Result'));
+                    context.pushView(view: PatientLaboratoryReportView());
                   },
                 ),
                 height40

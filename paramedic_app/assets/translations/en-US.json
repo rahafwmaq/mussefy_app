@@ -97,7 +97,7 @@
         "seventh_container": "X-Rays Reports"
     },
     "my_doctor_view": {
-        "title_screen": "My Doctor",
+        "title_screen": "Doctor",
         "practice_name": "Practice Name : ",
         "practice_id": "Practice ID : ",
         "practice_specialty": "Specialty : ",
@@ -113,7 +113,7 @@
         "OK": "OK"
     },
     "medical_inforamtion": {
-        "title_screen": "My Medical Information",
+        "title_screen": "Medical Information",
         "patient_information": "Patient Information : ",
         "emergency_contact": "Emergency Contact : ",
         "chronic_disease": "Chronic Disease : ",
@@ -145,7 +145,7 @@
         "suggestion": "Tap on + to add"
     },
     "surgical_record": {
-        "title_screen": "Surgical Record",
+        "title_screen": "Surgical Reporst",
         "surgical_record_name": "Surgery Name  : ",
         "surgical_record_date": "Surgery Date  : ",
         "title_add_info": "Add New Surgery Information",
@@ -154,7 +154,7 @@
         "suggestion": "Tap on + to add"
     },
     "my_medication": {
-        "title_screen": "My Medication",
+        "title_screen": "Medications",
         "my_medication_name": "Medication Name  : ",
         "my_medication_units": "Medication Units : ",
         "my_medication_time": "Medication Time : ",
@@ -165,7 +165,7 @@
         "suggestion": "Tap on + to add"
     },
     "laboratory_result": {
-        "title_screen": "My Laboratory Result",
+        "title_screen": "Laboratory Reporst",
         "laboratory_result_name": "Laboratory test Name : ",
         "laboratory_result_date": "Laboratory test Date : ",
         "title_add_info": "Add New Laboratory test Information",

@@ -33,7 +33,7 @@ class PatientInformation extends StatelessWidget {
           height6,
           RowTwoTextWidget(
             title: 'patient_information.national_id'.tr(),
-            patientData: personalInfo.nationalId!,
+            patientData: personalInfo.nationalId ?? '',
           ),
           height6,
           RowTwoTextWidget(

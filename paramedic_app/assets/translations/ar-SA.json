@@ -101,7 +101,7 @@
         "seventh_container": "تقارير الأشعة"
     },
     "my_doctor_view": {
-        "title_screen": "طبيبي",
+        "title_screen": "الطبيب",
         "practice_name": "اسم الطبيب : ",
         "practice_id": "الرقم الوظيفي : ",
         "practice_specialty": "التخصص : ",
@@ -117,7 +117,7 @@
         "OK": "حسنا"
     },
     "medical_inforamtion": {
-        "title_screen": "معلوماتي الطبية",
+        "title_screen": "السجل الطبية",
         "patient_information": "معلومات المريض : ",
         "emergency_contact": "جهات الاتصال الطارئة : ",
         "chronic_disease": "الأمراض المزمنة : ",
@@ -158,7 +158,7 @@
         "suggestion": "انقر على زر + للاضافة"
     },
     "my_medication": {
-        "title_screen": "دوائي",
+        "title_screen": "الأدوية",
         "my_medication_name": "اسم الدواء  : ",
         "my_medication_units": "جرعات الدواء : ",
         "my_medication_time": "وقت الدواء : ",
@@ -169,7 +169,7 @@
         "suggestion": "انقر على زر + للاضافة"
     },
     "laboratory_result": {
-        "title_screen": "نتائج المختبر",
+        "title_screen": "التقارير المختبرية",
         "laboratory_result_name": "اسم تحاليل المختبر : ",
         "laboratory_result_date": "تاريخ تحاليل المختبر : ",
         "title_add_info": "إضافة معلومات تحاليل مختبر جديدة",
