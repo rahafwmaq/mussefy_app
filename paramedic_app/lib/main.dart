@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/paramedic_bloc.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.dart';
 import 'package:paramedic_app/utilities/functions/supa_initilizer.dart';
+import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/views/logo_view/logo_view.dart';
 
 void main() async {
@@ -37,11 +38,17 @@ class MainApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          debugShowCheckedModeBanner: false,
-          home: const LogoView()),
+        theme: ThemeData(
+            fontFamily: 'Tajawal',
+            iconTheme: const IconThemeData(color: red),
+            iconButtonTheme: const IconButtonThemeData(
+                style: ButtonStyle(iconColor: MaterialStatePropertyAll(red)))),
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        debugShowCheckedModeBanner: false,
+        home: const LogoView(),
+      ),
     );
   }
 }

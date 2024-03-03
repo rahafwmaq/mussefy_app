@@ -3,10 +3,32 @@
         "title": "Enter your Moseefy ID",
         "buttonText": "Submit",
         "pre": "Note: ",
-        "note": "Note: this id is given to paramedics whom information was submitted to Moseefy database through an employer",
+        "note": " This id is given to paramedics whom information was submitted to Moseefy database through an employer",
         "notfoundmessage": "No Paramedic with this id was found",
         "errorMessage": "error was found in system",
-        "validatorMessage": "Please enter the id to continue"
+        "validatorMessage": "Please enter the id to continue",
+        "ID":" Moseefy ID : ",
+        "serachby_id": "Search by Patient ID :",
+        "scan_qr": "Scan QR Code :",
+        "or":"OR",
+        "patient_id": "Patient ID"
+    },
+    "paramedic_patient_screen": {
+        "title": "Patient's Medical History",
+        "emergency_contact": "Emergency Contact",
+        "body_structure": "Body Structure",
+        "doctor": "Patient's Doctor",
+        "medication":"Medication",
+        "medical_inforamtion": "Medical Information",
+        "surgery": "Surgery Reports",
+        "laboratory": "Laboratory Reports ",
+        "xray": "X-Rays Reports",
+        "front_body": "Front Body Structure",
+        "back_body": "Back Body Structure",
+        "injury": "Ingury",
+        "disability": "Disability"
+
+        
     },
     
     "user_type_screen": {
@@ -46,12 +68,7 @@
         "buttonText": "login",
         "errorMessage": "invalid credintals"
     },
-    "ParamedicRegistrationScreen": {
-        "title": "Enter your Moseefy ID",
-        "buttonText": "Submit",
-        "note": "Note: this id is given to paramedics whom information was submitted to Moseefy database through an employer",
-        "notfoundmessage": "No Paramedic with this id was found"
-    },
+
     "otpscreen": {
         "message": "Please enter OTP sent to email ",
         "buttonText": "Enter"
@@ -84,7 +101,7 @@
         "seventh_container": "X-Rays Reports"
     },
     "my_doctor_view": {
-        "title_screen": "My Doctor",
+        "title_screen": "Doctor",
         "practice_name": "Practice Name : ",
         "practice_id": "Practice ID : ",
         "practice_specialty": "Specialty : ",
@@ -100,7 +117,7 @@
         "OK": "OK"
     },
     "medical_inforamtion": {
-        "title_screen": "My Medical Information",
+        "title_screen": "Medical Information",
         "patient_information": "Patient Information : ",
         "emergency_contact": "Emergency Contact : ",
         "chronic_disease": "Chronic Disease : ",
@@ -132,7 +149,7 @@
         "suggestion": "Tap on + to add"
     },
     "surgical_record": {
-        "title_screen": "Surgical Record",
+        "title_screen": "Surgical Reporst",
         "surgical_record_name": "Surgery Name  : ",
         "surgical_record_date": "Surgery Date  : ",
         "title_add_info": "Add New Surgery Information",
@@ -141,7 +158,7 @@
         "suggestion": "Tap on + to add"
     },
     "my_medication": {
-        "title_screen": "My Medication",
+        "title_screen": "Medications",
         "my_medication_name": "Medication Name  : ",
         "my_medication_units": "Medication Units : ",
         "my_medication_time": "Medication Time : ",
@@ -152,7 +169,7 @@
         "suggestion": "Tap on + to add"
     },
     "laboratory_result": {
-        "title_screen": "My Laboratory Result",
+        "title_screen": "Laboratory Reporst",
         "laboratory_result_name": "Laboratory test Name : ",
         "laboratory_result_date": "Laboratory test Date : ",
         "title_add_info": "Add New Laboratory test Information",

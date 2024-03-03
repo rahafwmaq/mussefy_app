@@ -9,7 +9,7 @@ class PatientPicture extends StatelessWidget {
     return ClipOval(
       child: Image.asset(
         'assets/images/patient_pic.png',
-        height: context.getHeight(divide: 7),
+        height: context.getHeight(divide: 8),
       ),
     );
   }

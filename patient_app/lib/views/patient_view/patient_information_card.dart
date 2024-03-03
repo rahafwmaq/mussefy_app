@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mussefy_app/models/PersonalInfo_model.dart';
 import 'package:mussefy_app/models/patient_model.dart';
-
 import 'package:mussefy_app/utilities/gloable_widgets/row_two_text_widget.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/utilities/helpers/screen_size.dart';
@@ -34,12 +33,12 @@ class PatientInformationCard extends StatelessWidget {
           height6,
           RowTwoTextWidget(
             title: 'patient_information.national_id'.tr(),
-            patientData: personalInfo.nationalId ?? '',
+            patientData: personalInfo.nationalId ?? '110xxxxxxx',
           ),
           height6,
           RowTwoTextWidget(
             title: 'patient_information.patient_date'.tr(),
-            patientData: personalInfo.birthday ?? '',
+            patientData: personalInfo.birthday ?? 'mm/dd/yyyy',
           ),
           height6,
           RowTwoTextWidget(
@@ -49,12 +48,12 @@ class PatientInformationCard extends StatelessWidget {
           height6,
           RowTwoTextWidget(
             title: 'patient_information.patient_height'.tr(),
-            patientData: ' ${personalInfo.height ?? ''}',
+            patientData: ' ${personalInfo.height ?? ""}',
           ),
           height6,
           RowTwoTextWidget(
             title: 'patient_information.patient_weight'.tr(),
-            patientData: ' ${personalInfo.weight ?? ''}',
+            patientData: ' ${personalInfo.weight ?? ""}',
           ),
           height20,
         ],

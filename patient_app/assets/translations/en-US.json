@@ -70,7 +70,12 @@
         "fourth_container": "Surgical Record",
         "fifth_container": "My Medication",
         "sixth_container": "Laboratory Result",
-        "seventh_container": "X-Rays Reports"
+        "seventh_container": "X-Rays Reports",
+        "ask_doctor_ai":"Ask AI Doctor",
+        "ask_pharmacist_ai":"Ask AI Pharmacist",
+        "doctor_ai":"AI Doctor",
+        "pharmacist_ai":"AI Pharmacist",
+        "hint_ai_chat":"Write your message here ..."
     },
     "my_doctor_view": {
         "title_screen": "My Doctor",

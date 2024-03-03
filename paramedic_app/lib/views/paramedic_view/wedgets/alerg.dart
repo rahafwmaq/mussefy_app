@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:paramedic_app/models/allergies_model.dart';
 import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';

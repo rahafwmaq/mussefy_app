@@ -23,9 +23,6 @@ class EmergencyContactView extends StatelessWidget {
   final Patient patient;
   List<EmergencyContact> contactList;
 
-  TextEditingController emergencyNameController = TextEditingController();
-  TextEditingController emergencyPhoneController = TextEditingController();
-  String? relationship;
 
   @override
   Widget build(BuildContext context) {

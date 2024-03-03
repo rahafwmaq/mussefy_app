@@ -4,7 +4,6 @@ import 'package:mussefy_app/bloc/patient_bloc/patient_bloc.dart';
 import 'package:mussefy_app/bloc/patient_bloc/patient_state.dart';
 import 'package:mussefy_app/models/PersonalInfo_model.dart';
 import 'package:mussefy_app/models/patient_model.dart';
-
 import 'package:mussefy_app/utilities/gloable_data/globals.dart';
 import 'package:mussefy_app/utilities/helpers/screen_size.dart';
 import 'package:mussefy_app/view_layout/color.dart';

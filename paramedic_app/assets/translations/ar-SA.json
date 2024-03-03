@@ -2,12 +2,38 @@
 
     "ParamedicRegistrationScreen": {
         "title": "أدخل رمز مسعفي الخاص بك",
-        "buttonText": "إدخال",
+        "buttonText": "إرسال",
         "pre": "ملاحظة: ",
-        "note": "الرمز خاص بالمسعف الذي قٌدمت بياناته من قبل جهة التوظيف إلى منصة مسعفي",
+        "note": "يتم منح الرمز خاص بالمسعف الذي قٌدمت بياناته من قبل جهة التوظيف إلى منصة مسعفي",
         "notfoundmessage": "لا يوجد مسعف بهذا الرمز",
         "errorMessage": "حدث خطأ في النظام",
-        "validatorMessage": "من فضلك قم باضافة الرمز للدخول "
+        "validatorMessage": "من فضلك قم باضافة الرمز للدخول ",
+        "ID":"رمز المسعف : ",
+        "serachby_id": "البحث برقم المريض :",
+        "scan_qr": "مسح الباركود :",
+        "or":"او",
+        "patient_id": "رقم المريض"
+
+        
+    },
+
+    "paramedic_patient_screen": {
+        "title": "السجل الطبي للمريض",
+        "emergency_contact": "جهات الإتصال الطارئة",
+        "body_structure": "هيكل الجسم",
+        "doctor": "طبيب المريض",
+        "medication": "الأدوية",
+        "medical_inforamtion": "السجل الطبي",
+        "surgery": "التقارير العمليات الجراحية",
+        "laboratory": "التقارير المخبرية",
+        "xray": "التقارير الأشعة السينية",
+        "front_body": "هيكل الجسم الأمامي",
+        "back_body": "هيكل الجسم الخلفي",
+        "injury": "إصابة",
+        "disability": "شلل"
+
+
+        
     },
     "user_type_screen": {
         "userSelection1": "أنا مسعف",
@@ -46,12 +72,7 @@
         "buttonText": "تسجيل الدخول",
         "errorMessage": "بيانات التسجيل غير صحيحة"
     },
-    "ParamedicRegistrationScreen": {
-        "title": "أدخل رمز مسعفي الخاص بك",
-        "buttonText": "إدخال",
-        "note": "ملاحظة: الرمز خاص بالمسعف الذي قٌدمت بياناته من قبل جهة التوظيف إلى منصة مسعفي",
-        "notfoundmessage": "لا يوجد مسعف بهذا الرمز"
-    },
+  
     "otpscreen": {
         "message": "أدخل الرمز المرسل إلى البريد الإلكتروني",
         "buttonText": "إدخال"
@@ -84,7 +105,7 @@
         "seventh_container": "تقارير الأشعة"
     },
     "my_doctor_view": {
-        "title_screen": "طبيبي",
+        "title_screen": "الطبيب",
         "practice_name": "اسم الطبيب : ",
         "practice_id": "الرقم الوظيفي : ",
         "practice_specialty": "التخصص : ",
@@ -100,7 +121,7 @@
         "OK": "حسنا"
     },
     "medical_inforamtion": {
-        "title_screen": "معلوماتي الطبية",
+        "title_screen": "السجل الطبي",
         "patient_information": "معلومات المريض : ",
         "emergency_contact": "جهات الاتصال الطارئة : ",
         "chronic_disease": "الأمراض المزمنة : ",
@@ -141,7 +162,7 @@
         "suggestion": "انقر على زر + للاضافة"
     },
     "my_medication": {
-        "title_screen": "دوائي",
+        "title_screen": "الأدوية",
         "my_medication_name": "اسم الدواء  : ",
         "my_medication_units": "جرعات الدواء : ",
         "my_medication_time": "وقت الدواء : ",
@@ -152,7 +173,7 @@
         "suggestion": "انقر على زر + للاضافة"
     },
     "laboratory_result": {
-        "title_screen": "نتائج المختبر",
+        "title_screen": "التقارير المختبرية",
         "laboratory_result_name": "اسم تحاليل المختبر : ",
         "laboratory_result_date": "تاريخ تحاليل المختبر : ",
         "title_add_info": "إضافة معلومات تحاليل مختبر جديدة",

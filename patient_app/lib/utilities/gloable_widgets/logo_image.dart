@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mussefy_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:mussefy_app/view_layout/color.dart';
+import 'package:mussefy_app/view_layout/sizebox.dart';
 
 class LogoImage extends StatelessWidget {
   const LogoImage({super.key});
@@ -9,7 +10,8 @@ class LogoImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset('assets/images/mussefy_logo.png'),
+        Image.asset('assets/images/patients_logo.png'),
+        height10,
         const TextWidget(
           text: 'مسعفي',
           textColor: red,

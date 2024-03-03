@@ -91,15 +91,15 @@ class PatientHomeView extends StatelessWidget {
                           ),
                         ),
                         ContainerTextAndImageWidget(
-                          imagePath: 'assets/images/AI_ask.png',
-                          title: "تحدث مع طبيبك",
+                          imagePath: 'assets/images/ask_doctor.png',
+                          title: 'patient_home_screen.ask_doctor_ai'.tr(),
                           onTap: () {
                             context.pushView(view: const AskAIView());
                           },
                         ),
                         ContainerTextAndImageWidget(
                           imagePath: 'assets/images/AI_ask.png',
-                          title: "اسال الصيدلي",
+                          title: 'patient_home_screen.ask_pharmacist_ai'.tr(),
                           onTap: () {
                             context.pushView(view: const WhatIsThis());
                           },
