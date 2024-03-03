@@ -123,7 +123,7 @@ class PatientAccount extends StatelessWidget {
                     child: ClickContainerWidget(
                       onTap: () {},
                       color: blueTransit,
-                      text: 'Save',
+                      text: 'drawer_account.save'.tr(),
                       textColor: white,
                       fontSize: 18,
                     ),
