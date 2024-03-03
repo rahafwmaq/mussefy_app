@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:paramedic_app/database/supa_get_delete/supa_get_delete.dart';
 import 'package:paramedic_app/models/MedicalInformation_model.dart';
@@ -84,7 +85,8 @@ class _PatientBodyStructureViewState extends State<PatientBodyStructureView> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const TextWidget(text: 'Body Structure'),
+          title:
+              TextWidget(text: 'paramedic_patient_screen.body_structure'.tr()),
           centerTitle: true,
           leading: IconButton(
             onPressed: () {
@@ -95,15 +97,17 @@ class _PatientBodyStructureViewState extends State<PatientBodyStructureView> {
               size: 35,
             ),
           ),
-          bottom: const TabBar(
+          bottom: TabBar(
               labelColor: red,
               dividerColor: lightGrey,
               indicatorColor: red,
               tabs: [
                 TextWidget(
-                  text: 'Front Body',
+                  text: 'paramedic_patient_screen.front_body'.tr(),
                 ),
-                TextWidget(text: 'Back Body')
+                TextWidget(
+                  text: 'paramedic_patient_screen.back_body'.tr(),
+                )
               ]),
         ),
         body: TabBarView(
@@ -111,22 +115,22 @@ class _PatientBodyStructureViewState extends State<PatientBodyStructureView> {
             SizedBox(
               height: context.getHeight(),
               width: context.getWidth(),
-              child: const Stack(
+              child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  FrontBodyDiagram(
+                  const FrontBodyDiagram(
                     patientId: "1abe2dce-529f-49dd-8b1d-c3f7af31233d",
                   ),
                   KeyBodyDigram(
                     positionTop: 12,
                     positionLeft: 20,
-                    keyName: 'Ingury',
+                    keyName: 'paramedic_patient_screen.injury'.tr(),
                     color: redTransit,
                   ),
                   KeyBodyDigram(
                     positionTop: 50,
                     positionLeft: 20,
-                    keyName: 'Disability',
+                    keyName: 'paramedic_patient_screen.disability'.tr(),
                     color: blackTransit,
                   )
                 ],
@@ -141,16 +145,16 @@ class _PatientBodyStructureViewState extends State<PatientBodyStructureView> {
                   BackBodyDigram(
                     patientId: widget.patientId,
                   ),
-                  const KeyBodyDigram(
+                  KeyBodyDigram(
                     positionTop: 12,
                     positionLeft: 20,
-                    keyName: 'Ingury',
+                    keyName: 'paramedic_patient_screen.injury'.tr(),
                     color: redTransit,
                   ),
-                  const KeyBodyDigram(
+                  KeyBodyDigram(
                     positionTop: 50,
                     positionLeft: 20,
-                    keyName: 'Disability',
+                    keyName: 'paramedic_patient_screen.disability'.tr(),
                     color: blackTransit,
                   )
                 ],

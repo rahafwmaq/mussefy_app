@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_event.dart';
+import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_state.dart';
 import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/row_two_container_widget.dart';
@@ -47,18 +48,32 @@ class PatientViewForParamedic extends StatelessWidget {
                   patient: patient,
                 ),
                 height40,
-                RowTwoContainerWidget(
-                  firstImagePath: 'assets/images/emergency_contact.png',
-                  firstTitle: 'paramedic_patient_screen.emergency_contact'.tr(),
-                  fisrtOnTap: () {
-                    context.pushView(view: const PatientEmergencyContactView());
+                BlocListener<PatientBloc, PatientBlocSatet>(
+                  listener: (context, state) {
+                    if (state is BringContactListState) {
+                      context.pushView(
+                          view: PatientEmergencyContactView(
+                        patient: patient,
+                        contactList: state.contacts,
+                      ));
+                    }
                   },
-                  secondImagePath: 'assets/images/body_structure.png',
-                  secondTitle: 'paramedic_patient_screen.body_structure'.tr(),
-                  secondOnTap: () {
-                    context.pushView(
-                        view: PatientBodyStructureView(patientId: idText));
-                  },
+                  child: RowTwoContainerWidget(
+                    firstImagePath: 'assets/images/emergency_contact.png',
+                    firstTitle:
+                        'paramedic_patient_screen.emergency_contact'.tr(),
+                    fisrtOnTap: () {
+                      context
+                          .read<PatientBloc>()
+                          .add(GetEmergencyContactEvent(patient: patient));
+                    },
+                    secondImagePath: 'assets/images/body_structure.png',
+                    secondTitle: 'paramedic_patient_screen.body_structure'.tr(),
+                    secondOnTap: () {
+                      context.pushView(
+                          view: PatientBodyStructureView(patientId: idText));
+                    },
+                  ),
                 ),
                 height20,
                 RowTwoContainerWidget(
@@ -79,7 +94,8 @@ class PatientViewForParamedic extends StatelessWidget {
                   secondOnTap: () {
                     context.read<PatientBloc>().add(GetdataEvent(
                         patient.id!, patient, 'Medical Information'));
-                    context.pushView(view: PatientMedicalInformationView());
+                    context.pushView(
+                        view: const PatientMedicalInformationView());
                   },
                 ),
                 height20,

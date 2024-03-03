@@ -22,7 +22,11 @@
         "medical_inforamtion": "Medical Information",
         "surgery": "Surgery Reports",
         "laboratory": "Laboratory Reports ",
-        "xray": "X-Rays Reports"
+        "xray": "X-Rays Reports",
+        "front_body": "Front Body",
+        "back_body": "Back Body",
+        "injury": "Ingury",
+        "disability": "Disability"
 
         
     },
