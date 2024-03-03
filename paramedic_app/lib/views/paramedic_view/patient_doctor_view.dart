@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.dart';
+import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_event.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_state.dart';
 import 'package:paramedic_app/models/doctor_model.dart';
 import 'package:paramedic_app/models/patient_model.dart';
@@ -16,6 +17,9 @@ class PatientDoctorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context
+        .read<PatientBloc>()
+        .add(GetdataEvent(patient!.id!, patient!, 'My Doctor'));
     Doctor doctor = Doctor();
     return Scaffold(
       body: SafeArea(
@@ -27,7 +31,8 @@ class PatientDoctorView extends StatelessWidget {
                 if (state.doctor != null) {
                   doctor = state.doctor!;
                 }
-              } else {
+              }
+              if (state is LoadingPatientaState) {
                 return const Center(
                   child: CircularProgressIndicator(color: red),
                 );

@@ -26,12 +26,12 @@ class PatientViewForParamedic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context
-        .read<PatientBloc>()
-        .add(GetdataEvent(patient.id!, patient, 'My Medication'));
-    context
-        .read<PatientBloc>()
-        .add(GetdataEvent(patient.id!, patient, 'My Doctor'));
+    // context
+    //     .read<PatientBloc>()
+    //     .add(GetdataEvent(patient.id!, patient, 'My Medication'));
+    // context
+    //     .read<PatientBloc>()
+    //     .add(GetdataEvent(patient.id!, patient, 'My Doctor'));
     return DefaultTabController(
       length: 5,
       child: Scaffold(
@@ -142,7 +142,7 @@ class PatientViewForParamedic extends StatelessWidget {
                 ],
               ),
             ),
-            PatientMedicationView(),
+            PatientMedicationView(patient: patient),
             PatientDoctorView(
               patient: patient,
             ),

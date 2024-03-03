@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.dart';
+import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_event.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_state.dart';
 import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
@@ -11,12 +12,14 @@ import 'package:paramedic_app/view_layout/color.dart';
 // ignore_for_file: must_be_immutable
 
 class PatientMedicationView extends StatelessWidget {
-  PatientMedicationView({super.key, this.patient});
+  const PatientMedicationView({super.key, this.patient});
   final Patient? patient;
-
 
   @override
   Widget build(BuildContext context) {
+    context
+        .read<PatientBloc>()
+        .add(GetdataEvent(patient!.id!, patient!, 'My Medication'));
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
