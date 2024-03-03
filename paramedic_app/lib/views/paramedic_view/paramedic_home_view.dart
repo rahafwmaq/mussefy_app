@@ -7,6 +7,7 @@ import 'package:paramedic_app/database/supa_get_delete/supa_get_delete.dart';
 import 'package:paramedic_app/globals/global.dart';
 import 'package:paramedic_app/models/paramedic_model.dart';
 import 'package:paramedic_app/models/patient_model.dart';
+import 'package:paramedic_app/utilities/functions/loading_screen.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
@@ -175,6 +176,7 @@ class _ParamedicHomeViewState extends State<ParamedicHomeView> {
                   height20,
                   ClickContainerWidget(
                     onTap: () async {
+                      showLoadingDialog(context);
                       fetchAndNavigate();
                     },
                     color: blueTransit,

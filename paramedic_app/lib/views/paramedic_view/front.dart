@@ -99,9 +99,9 @@ class _FrontBodyDiagramState extends State<FrontBodyDiagram> {
   Color determineColor(String problemType) {
     switch (problemType) {
       case 'injury':
-        return Colors.red.withOpacity(0.7); // Red for injury
+        return redTransit; // Red for injury
       case 'disability':
-        return Colors.black.withOpacity(0.8); // Black for disability
+        return blackTransit; // Black for disability
       default:
         return Colors
             .grey; // Default color if no problem or unknown problem type

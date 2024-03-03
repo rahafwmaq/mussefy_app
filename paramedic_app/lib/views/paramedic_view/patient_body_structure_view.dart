@@ -79,7 +79,7 @@ class _PatientBodyStructureViewState extends State<PatientBodyStructureView> {
                   ],
                 ),
               ),
-              child: Center(child: CircularProgressIndicator())));
+              child: Center(child: CircularProgressIndicator(color: red,))));
     }
     return DefaultTabController(
       length: 2,

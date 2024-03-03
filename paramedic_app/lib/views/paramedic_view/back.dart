@@ -3,6 +3,7 @@ import 'package:paramedic_app/database/supa_get_delete/supa_get_delete.dart';
 import 'package:paramedic_app/models/MobilityProblem_model.dart';
 import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
+import 'package:paramedic_app/view_layout/color.dart';
 
 class BackBodyDigram extends StatefulWidget {
   const BackBodyDigram({
@@ -98,9 +99,9 @@ class _BackBodyDigramState extends State<BackBodyDigram> {
   Color determineColor(String problemType) {
     switch (problemType) {
       case 'injury':
-        return Colors.red.withOpacity(0.7); // Red for injury
+        return redTransit; // Red for injury
       case 'disability':
-        return Colors.black.withOpacity(0.8); // Black for disability
+        return blackTransit; // Black for disability
       default:
         return Colors
             .grey; // Default color if no problem or unknown problem type
