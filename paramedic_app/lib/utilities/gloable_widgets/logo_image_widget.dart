@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
+import 'package:paramedic_app/view_layout/sizebox.dart';
 
 import '../../view_layout/color.dart';
 
@@ -10,7 +11,8 @@ class LogoImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset('assets/images/mussefy_logo.png'),
+        Image.asset('assets/images/paramedic_logo.png'),
+        height10,
         const TextWidget(
           text: 'مسعفي',
           textColor: red,
