@@ -7,15 +7,15 @@ import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_state
 import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/utilities/helpers/navigator.dart';
+import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
-import 'package:paramedic_app/views/paramedic_view/patient_body_structure_view.dart';
+import 'package:paramedic_app/views/paramedic_view/back.dart';
+import 'package:paramedic_app/views/paramedic_view/front.dart';
+import 'package:paramedic_app/views/paramedic_view/key_body_digram.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_doctor_view.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_emergency_contact_view.dart';
-import 'package:paramedic_app/views/paramedic_view/patient_laboratory_report_view.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_medical_info_view.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_medication_view.dart';
-import 'package:paramedic_app/views/paramedic_view/patient_surgery_report_view.dart';
-import 'package:paramedic_app/views/paramedic_view/patient_xray_report_view.dart';
 
 class PatientViewForParamedic extends StatelessWidget {
   const PatientViewForParamedic(
@@ -26,8 +26,14 @@ class PatientViewForParamedic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context
+        .read<PatientBloc>()
+        .add(GetdataEvent(patient.id!, patient, 'My Medication'));
+    context
+        .read<PatientBloc>()
+        .add(GetdataEvent(patient.id!, patient, 'My Doctor'));
     return DefaultTabController(
-      length: 7,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           title: TextWidget(text: 'paramedic_patient_screen.title'.tr()),
@@ -71,22 +77,16 @@ class PatientViewForParamedic extends StatelessWidget {
                 text: 'medical_inforamtion.title_screen'.tr(),
               ),
               TextWidget(
-                text: 'paramedic_patient_screen.body_structure'.tr(),
+                text: 'paramedic_patient_screen.front_body'.tr(),
               ),
               TextWidget(
-                text: 'my_doctor_view.title_screen'.tr(),
+                text: 'paramedic_patient_screen.back_body'.tr(),
               ),
               TextWidget(
                 text: 'my_medication.title_screen'.tr(),
               ),
               TextWidget(
-                text: 'surgical_record.title_screen'.tr(),
-              ),
-              TextWidget(
-                text: 'laboratory_result.title_screen'.tr(),
-              ),
-              TextWidget(
-                text: 'x-rays_reports.title_screen'.tr(),
+                text: 'my_doctor_view.title_screen'.tr(),
               ),
             ],
           ),
@@ -94,16 +94,58 @@ class PatientViewForParamedic extends StatelessWidget {
         body: TabBarView(
           children: [
             const PatientMedicalInformationView(),
-            PatientBodyStructureView(
-              patientId: idText,
+            SizedBox(
+              height: context.getHeight(),
+              width: context.getWidth(),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  const FrontBodyDiagram(
+                    patientId: "1abe2dce-529f-49dd-8b1d-c3f7af31233d",
+                  ),
+                  KeyBodyDigram(
+                    positionTop: 12,
+                    positionLeft: 20,
+                    keyName: 'paramedic_patient_screen.injury'.tr(),
+                    color: redTransit,
+                  ),
+                  KeyBodyDigram(
+                    positionTop: 50,
+                    positionLeft: 20,
+                    keyName: 'paramedic_patient_screen.disability'.tr(),
+                    color: blackTransit,
+                  )
+                ],
+              ),
             ),
+            SizedBox(
+              height: context.getHeight(),
+              width: context.getWidth(),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  BackBodyDigram(
+                    patientId: patient.id!,
+                  ),
+                  KeyBodyDigram(
+                    positionTop: 12,
+                    positionLeft: 20,
+                    keyName: 'paramedic_patient_screen.injury'.tr(),
+                    color: redTransit,
+                  ),
+                  KeyBodyDigram(
+                    positionTop: 50,
+                    positionLeft: 20,
+                    keyName: 'paramedic_patient_screen.disability'.tr(),
+                    color: blackTransit,
+                  )
+                ],
+              ),
+            ),
+            PatientMedicationView(),
             PatientDoctorView(
               patient: patient,
             ),
-            PatientMedicationView(),
-            const PatientSurgeryReportView(),
-            const PatientLaboratoryReportView(),
-            const PatientXrayReportView()
           ],
         ),
       ),

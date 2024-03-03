@@ -7,7 +7,6 @@ import 'package:paramedic_app/database/supa_get_delete/supa_get_delete.dart';
 import 'package:paramedic_app/globals/global.dart';
 import 'package:paramedic_app/models/paramedic_model.dart';
 import 'package:paramedic_app/models/patient_model.dart';
-import 'package:paramedic_app/utilities/functions/loading_screen.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/click_container_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_form_field_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
@@ -60,29 +59,12 @@ class _ParamedicHomeViewState extends State<ParamedicHomeView> {
     try {
       final Patient myPatient =
           await SupaGetAndDelete().getPatientById(patientIDController.text);
-      context
-          .read<PatientBloc>()
-          .add(GetdataEvent(myPatient.id!, myPatient, 'My Doctor'));
+ 
 
-      // get Medical Information
       context
           .read<PatientBloc>()
           .add(GetdataEvent(myPatient.id!, myPatient, 'Medical Information'));
 
-      // get
-      context
-          .read<PatientBloc>()
-          .add(GetdataEvent(myPatient.id!, myPatient, 'My Medication'));
-
-      context
-          .read<PatientBloc>()
-          .add(GetdataEvent(myPatient.id!, myPatient, 'Surgical Record'));
-      context
-          .read<PatientBloc>()
-          .add(GetdataEvent(myPatient.id!, myPatient, 'XRays Report'));
-      context
-          .read<PatientBloc>()
-          .add(GetdataEvent(myPatient.id!, myPatient, 'Laboratory Result'));
       context.read<PatientBloc>().add(GetPatientInfoCardEvent(myPatient));
       globalCurrentPatient = myPatient;
       print(globalCurrentPatient!.fullName!);

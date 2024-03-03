@@ -23,8 +23,8 @@
         "surgery": "Surgery Reports",
         "laboratory": "Laboratory Reports ",
         "xray": "X-Rays Reports",
-        "front_body": "Front Body",
-        "back_body": "Back Body",
+        "front_body": "Front Body Structure",
+        "back_body": "Back Body Structure",
         "injury": "Ingury",
         "disability": "Disability"
 

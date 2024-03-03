@@ -34,14 +34,6 @@ class PatientInfoContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RowTwoTextWidget(
-                title: 'patient_information.national_id'.tr(),
-                patientData: personalInfo.nationalId ?? '',
-                titleFontSize: 16,
-                titleFontWeight: FontWeight.w500,
-                patientDataFontSize: 15,
-              ),
-              height8,
-              RowTwoTextWidget(
                 title: 'patient_information.patient_name'.tr(),
                 patientData: patient!.fullName ?? '',
                 titleFontSize: 16,
@@ -50,32 +42,8 @@ class PatientInfoContainer extends StatelessWidget {
               ),
               height8,
               RowTwoTextWidget(
-                title: 'patient_information.patient_date'.tr(),
-                patientData: personalInfo.birthday ?? '',
-                titleFontSize: 16,
-                titleFontWeight: FontWeight.w500,
-                patientDataFontSize: 15,
-              ),
-              height8,
-              RowTwoTextWidget(
                 title: 'patient_information.patient_blood_type'.tr(),
                 patientData: personalInfo.bloodType ?? '',
-                titleFontSize: 16,
-                titleFontWeight: FontWeight.w500,
-                patientDataFontSize: 15,
-              ),
-              height8,
-              RowTwoTextWidget(
-                title: 'patient_information.patient_height'.tr(),
-                patientData: ' ${personalInfo.height ?? ''}',
-                titleFontSize: 16,
-                titleFontWeight: FontWeight.w500,
-                patientDataFontSize: 15,
-              ),
-              height8,
-              RowTwoTextWidget(
-                title: 'patient_information.patient_weight'.tr(),
-                patientData: '${personalInfo.weight ?? ''}',
                 titleFontSize: 16,
                 titleFontWeight: FontWeight.w500,
                 patientDataFontSize: 15,
