@@ -5,13 +5,10 @@ import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_event.dart';
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_state.dart';
 import 'package:paramedic_app/models/patient_model.dart';
-import 'package:paramedic_app/utilities/gloable_widgets/app_bar_widget.dart';
-import 'package:paramedic_app/utilities/gloable_widgets/row_two_container_widget.dart';
+import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/utilities/helpers/navigator.dart';
-import 'package:paramedic_app/utilities/helpers/screen_size.dart';
-import 'package:paramedic_app/view_layout/sizebox.dart';
+import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_body_structure_view.dart';
-import 'package:paramedic_app/views/paramedic_view/patient_card.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_doctor_view.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_emergency_contact_view.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_laboratory_report_view.dart';
@@ -21,121 +18,93 @@ import 'package:paramedic_app/views/paramedic_view/patient_surgery_report_view.d
 import 'package:paramedic_app/views/paramedic_view/patient_xray_report_view.dart';
 
 class PatientViewForParamedic extends StatelessWidget {
-  const PatientViewForParamedic({
-    super.key,
-    required this.idText,
-    required this.patient,
-  });
-  final String idText;
+  const PatientViewForParamedic(
+      {super.key, required this.patient, required this.idText});
+
   final Patient patient;
+  final String idText;
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
+    return DefaultTabController(
+      length: 7,
       child: Scaffold(
-        appBar: customAppBar(
-            context: context, title: 'paramedic_patient_screen.title'.tr()),
-        body: SizedBox(
-          width: context.getWidth(),
-          child: SafeArea(
-              child: SingleChildScrollView(
-            child: Column(
-              children: [
-                height20,
-                PatientCard(
-                  patient: patient,
-                ),
-                height40,
-                BlocListener<PatientBloc, PatientBlocSatet>(
-                  listener: (context, state) {
-                    if (state is BringContactListState) {
-                      context.pushView(
-                          view: PatientEmergencyContactView(
-                        patient: patient,
-                        contactList: state.contacts,
-                      ));
-                    }
-                  },
-                  child: RowTwoContainerWidget(
-                    firstImagePath: 'assets/images/emergency_contact.png',
-                    firstTitle:
-                        'paramedic_patient_screen.emergency_contact'.tr(),
-                    fisrtOnTap: () {
-                      context
-                          .read<PatientBloc>()
-                          .add(GetEmergencyContactEvent(patient: patient));
-                    },
-                    secondImagePath: 'assets/images/body_structure.png',
-                    secondTitle: 'paramedic_patient_screen.body_structure'.tr(),
-                    secondOnTap: () {
-                      context.pushView(
-                          view: PatientBodyStructureView(patientId: idText));
-                    },
-                  ),
-                ),
-                height20,
-                RowTwoContainerWidget(
-                  firstImagePath: 'assets/images/doctor.png',
-                  firstTitle: 'paramedic_patient_screen.doctor'.tr(),
-                  fisrtOnTap: () {
+        appBar: AppBar(
+          title: TextWidget(text: 'paramedic_patient_screen.title'.tr()),
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: () {
+              context.popView();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 35,
+            ),
+          ),
+          actions: [
+            BlocListener<PatientBloc, PatientBlocSatet>(
+              listener: (context, state) {
+                if (state is BringContactListState) {
+                  context.pushView(
+                      view: PatientEmergencyContactView(
+                    patient: patient,
+                    contactList: state.contacts,
+                  ));
+                }
+              },
+              child: IconButton(
+                  onPressed: () {
                     context
                         .read<PatientBloc>()
-                        .add(GetdataEvent(patient.id!, patient, 'My Doctor'));
-                    context.pushView(
-                        view: PatientDoctorView(
-                      patient: patient,
-                    ));
+                        .add(GetEmergencyContactEvent(patient: patient));
                   },
-                  secondImagePath: 'assets/images/medical.png',
-                  secondTitle:
-                      'paramedic_patient_screen.medical_inforamtion'.tr(),
-                  secondOnTap: () {
-                    context.read<PatientBloc>().add(GetdataEvent(
-                        patient.id!, patient, 'Medical Information'));
-                    context.pushView(
-                        view: const PatientMedicalInformationView());
-                  },
-                ),
-                height20,
-                RowTwoContainerWidget(
-                  firstImagePath: 'assets/images/medication.png',
-                  firstTitle: 'paramedic_patient_screen.medication'.tr(),
-                  fisrtOnTap: () {
-                    context.read<PatientBloc>().add(
-                        GetdataEvent(patient.id!, patient, 'My Medication'));
-                    context.pushView(view: PatientMedicationView());
-                  },
-                  secondImagePath: 'assets/images/surgery.png',
-                  secondTitle: 'paramedic_patient_screen.surgery'.tr(),
-                  secondOnTap: () {
-                    context.read<PatientBloc>().add(
-                        GetdataEvent(patient.id!, patient, 'Surgical Record'));
-                    context.pushView(view: PatientSurgeryReportView());
-                  },
-                ),
-                height20,
-                RowTwoContainerWidget(
-                  firstImagePath: 'assets/images/X-Rays.png',
-                  firstTitle: 'paramedic_patient_screen.xray'.tr(),
-                  fisrtOnTap: () {
-                    context.read<PatientBloc>().add(
-                        GetdataEvent(patient.id!, patient, 'XRays Report'));
-                    context.pushView(view: PatientXrayReportView());
-                  },
-                  secondImagePath: 'assets/images/laboratory.png',
-                  secondTitle: 'paramedic_patient_screen.laboratory'.tr(),
-                  secondOnTap: () {
-                    context.read<PatientBloc>().add(GetdataEvent(
-                        patient.id!, patient, 'Laboratory Result'));
-                    context.pushView(view: PatientLaboratoryReportView());
-                  },
-                ),
-                height40
-              ],
+                  icon: const Icon(Icons.emergency_outlined)),
+            )
+          ],
+          bottom: TabBar(
+            isScrollable: true,
+            labelColor: red,
+            dividerColor: lightGrey,
+            indicatorColor: red,
+            tabs: [
+              TextWidget(
+                text: 'medical_inforamtion.title_screen'.tr(),
+              ),
+              TextWidget(
+                text: 'paramedic_patient_screen.body_structure'.tr(),
+              ),
+              TextWidget(
+                text: 'my_doctor_view.title_screen'.tr(),
+              ),
+              TextWidget(
+                text: 'my_medication.title_screen'.tr(),
+              ),
+              TextWidget(
+                text: 'surgical_record.title_screen'.tr(),
+              ),
+              TextWidget(
+                text: 'laboratory_result.title_screen'.tr(),
+              ),
+              TextWidget(
+                text: 'x-rays_reports.title_screen'.tr(),
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            const PatientMedicalInformationView(),
+            PatientBodyStructureView(
+              patientId: idText,
             ),
-          )),
+            PatientDoctorView(
+              patient: patient,
+            ),
+            PatientMedicationView(),
+            const PatientSurgeryReportView(),
+            const PatientLaboratoryReportView(),
+            const PatientXrayReportView()
+          ],
         ),
       ),
     );

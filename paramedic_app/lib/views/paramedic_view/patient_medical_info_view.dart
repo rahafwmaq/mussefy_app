@@ -6,7 +6,6 @@ import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_state
 import 'package:paramedic_app/models/MedicalInformation_model.dart';
 import 'package:paramedic_app/models/PersonalInfo_model.dart';
 import 'package:paramedic_app/models/patient_model.dart';
-import 'package:paramedic_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
@@ -25,10 +24,6 @@ class PatientMedicalInformationView extends StatelessWidget {
     Patient patient = Patient();
 
     return Scaffold(
-      appBar: customAppBar(
-        title: 'medical_inforamtion.title_screen'.tr(),
-        context: context,
-      ),
       body: SizedBox(
         width: context.getWidth(),
         child: Padding(

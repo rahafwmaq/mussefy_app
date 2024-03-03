@@ -7,26 +7,18 @@ import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_state.dart';
 import 'package:paramedic_app/models/XRay_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/Container_card.dart';
-import 'package:paramedic_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
 
 class PatientXrayReportView extends StatelessWidget {
-  PatientXrayReportView({super.key});
+  const PatientXrayReportView({super.key});
 
-  TextEditingController xrayDateController = TextEditingController();
-  TextEditingController xrayNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(
-        context: context,
-        title: 'x-rays_reports.title_screen'.tr(),
-        centerTitle: true,
-      ),
       body: SizedBox(
         height: context.getHeight(),
         width: context.getWidth(),

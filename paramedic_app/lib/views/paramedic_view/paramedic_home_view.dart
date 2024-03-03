@@ -16,8 +16,8 @@ import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/view_layout/sizebox.dart';
 import 'package:paramedic_app/views/paramedic_auth_view/paramedic_login_view.dart';
-import 'package:paramedic_app/views/paramedic_view/paramedic_profile_pic.dart';
 import 'package:paramedic_app/views/paramedic_view/patient_view_for_paramedic.dart';
+import 'package:paramedic_app/views/paramedic_view/paramedic_profile_pic.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class ParamedicHomeView extends StatefulWidget {
@@ -60,9 +60,30 @@ class _ParamedicHomeViewState extends State<ParamedicHomeView> {
     try {
       final Patient myPatient =
           await SupaGetAndDelete().getPatientById(patientIDController.text);
+      context
+          .read<PatientBloc>()
+          .add(GetdataEvent(myPatient.id!, myPatient, 'My Doctor'));
 
+      // get Medical Information
+      context
+          .read<PatientBloc>()
+          .add(GetdataEvent(myPatient.id!, myPatient, 'Medical Information'));
+
+      // get
+      context
+          .read<PatientBloc>()
+          .add(GetdataEvent(myPatient.id!, myPatient, 'My Medication'));
+
+      context
+          .read<PatientBloc>()
+          .add(GetdataEvent(myPatient.id!, myPatient, 'Surgical Record'));
+      context
+          .read<PatientBloc>()
+          .add(GetdataEvent(myPatient.id!, myPatient, 'XRays Report'));
+      context
+          .read<PatientBloc>()
+          .add(GetdataEvent(myPatient.id!, myPatient, 'Laboratory Result'));
       context.read<PatientBloc>().add(GetPatientInfoCardEvent(myPatient));
-
       globalCurrentPatient = myPatient;
       print(globalCurrentPatient!.fullName!);
       if (myPatient.id != null) {
@@ -176,7 +197,8 @@ class _ParamedicHomeViewState extends State<ParamedicHomeView> {
                   height20,
                   ClickContainerWidget(
                     onTap: () async {
-                      showLoadingDialog(context);
+                      //showLoadingDialog(context);
+
                       fetchAndNavigate();
                     },
                     color: blueTransit,

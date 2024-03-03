@@ -38,17 +38,17 @@ class MainApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-          theme: ThemeData(
-              fontFamily: 'Tajawal',
-              iconTheme: const IconThemeData(color: red),
-              iconButtonTheme: const IconButtonThemeData(
-                  style:
-                      ButtonStyle(iconColor: MaterialStatePropertyAll(red)))),
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          debugShowCheckedModeBanner: false,
-          home: const LogoView()),
+        theme: ThemeData(
+            fontFamily: 'Tajawal',
+            iconTheme: const IconThemeData(color: red),
+            iconButtonTheme: const IconButtonThemeData(
+                style: ButtonStyle(iconColor: MaterialStatePropertyAll(red)))),
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        debugShowCheckedModeBanner: false,
+        home: const LogoView(),
+      ),
     );
   }
 }

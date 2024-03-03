@@ -1,5 +1,3 @@
-
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +5,6 @@ import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_bloc.
 import 'package:paramedic_app/bloc/paramedic_bloc/bloc/patent_bloc/patient_state.dart';
 import 'package:paramedic_app/models/doctor_model.dart';
 import 'package:paramedic_app/models/patient_model.dart';
-import 'package:paramedic_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/view_layout/sizebox.dart';
@@ -20,13 +17,7 @@ class PatientDoctorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Doctor doctor = Doctor();
-
     return Scaffold(
-      appBar: customAppBar(
-        title: 'my_doctor_view.title_screen'.tr(),
-        context: context,
-
-      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

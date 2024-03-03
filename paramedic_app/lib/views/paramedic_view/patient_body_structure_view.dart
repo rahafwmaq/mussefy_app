@@ -6,7 +6,6 @@ import 'package:paramedic_app/models/MobilityProblem_model.dart';
 import 'package:paramedic_app/models/doctor_model.dart';
 import 'package:paramedic_app/models/patient_model.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
-import 'package:paramedic_app/utilities/helpers/navigator.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
 import 'package:paramedic_app/views/paramedic_view/back.dart';
@@ -79,24 +78,18 @@ class _PatientBodyStructureViewState extends State<PatientBodyStructureView> {
                   ],
                 ),
               ),
-              child: Center(child: CircularProgressIndicator(color: red,))));
+              child: Center(
+                  child: CircularProgressIndicator(
+                color: red,
+              ))));
     }
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title:
-              TextWidget(text: 'paramedic_patient_screen.body_structure'.tr()),
+          leading: Container(),
+          title: const TextWidget(text: ''),
           centerTitle: true,
-          leading: IconButton(
-            onPressed: () {
-              context.popView();
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              size: 35,
-            ),
-          ),
           bottom: TabBar(
               labelColor: red,
               dividerColor: lightGrey,

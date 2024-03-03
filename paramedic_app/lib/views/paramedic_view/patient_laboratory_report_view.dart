@@ -3,25 +3,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/Container_card.dart';
-import 'package:paramedic_app/utilities/gloable_widgets/app_bar_widget.dart';
 import 'package:paramedic_app/utilities/gloable_widgets/text_widget.dart';
 import 'package:paramedic_app/utilities/helpers/screen_size.dart';
 import 'package:paramedic_app/view_layout/color.dart';
 
 class PatientLaboratoryReportView extends StatelessWidget {
-  PatientLaboratoryReportView({super.key});
-
-  TextEditingController labResultDateController = TextEditingController();
-  TextEditingController labResultController = TextEditingController();
+  const PatientLaboratoryReportView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(
-        context: context,
-        title: 'laboratory_result.title_screen'.tr(),
-        centerTitle: true,
-      ),
       body: SizedBox(
         height: context.getHeight(),
         width: context.getWidth(),
